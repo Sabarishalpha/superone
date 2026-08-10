@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Aarman Automation Services — Auto Components, Gear Box Housing, Pump Components, Fabricated Parts, Steel Components, Tool & Die machining." />
+  <title>Services | Aarman Automation</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="assets/css/variables.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/animation.css" />
+  <link rel="stylesheet" href="assets/css/responsive.css" />
+  <style>
+    .services-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-6);
+    }
+
+    .service-detail-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8) var(--space-6);
+      box-shadow: var(--shadow-card);
+      transition: all var(--transition-base);
+    }
+
+    .service-detail-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent);
+    }
+
+    .service-detail-card:hover .service-detail-icon {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .service-detail-image {
+      margin-bottom: var(--space-5);
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+      max-height: 180px;
+    }
+
+    .service-detail-image img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      height: 100%;
+      transition: transform 0.35s ease;
+    }
+
+    .service-detail-image img:hover {
+      transform: scale(1.03);
+    }
+
+    .service-detail-icon {
+      width: 64px;
+      height: 64px;
+      background: var(--bg-light-2);
+      border-radius: var(--radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-5);
+      color: var(--color-primary);
+      transition: all var(--transition-base);
+    }
+
+    .service-detail-icon svg {
+      width: 32px;
+      height: 32px;
+    }
+
+    .service-detail-card h3 {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: var(--space-3);
+    }
+
+    .service-detail-card p {
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: var(--space-4);
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .service-tag {
+      padding: 3px 10px;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--bg-light-2);
+      color: var(--color-primary);
+      border-radius: var(--radius-full);
+    }
+
+    @media (max-width: 768px) {
+      .services-detail-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .services-detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-bar">
+    <div class="container">
+      <div class="top-bar-tagline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 8v4l3 3" />
+        </svg>
+        <span>Precision Machining. Reliable Solutions.</span>
+      </div>
+      <div class="top-bar-contact">
+        <a href="mailto:ramesh@aarmanautomation.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+            <polyline points="22,6 12,13 2,6" />
+          </svg>
+          ramesh@aarmanautomation.com
+        </a>
+        <a href="tel:+919843226136">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          +91 98432 26136
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/logo.png" alt="Aarman Automation">
+        </a>
+      </div>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About Us</a></li>
+        <li><a href="services.html" class="nav-link active">Services</a></li>
+        <li><a href="process.html" class="nav-link">Process</a></li>
+        <li><a href="infrastructure.html" class="nav-link">Infrastructure</a></li>
+        <li><a href="quality.html" class="nav-link">Quality</a></li>
+        <li><a href="industries.html" class="nav-link">Industries</a></li>
+        <li><a href="gallery.html" class="nav-link">Gallery</a></li>
+        <li><a href="contact.html" class="nav-link">Contact Us</a></li>
+      </ul>
+      <!-- <div class="nav-actions">
+        <a href="contact.html" class="btn btn-dark">Request a Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Toggle Menu"><span></span><span></span><span></span></button> -->
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-eyebrow">
+        <span><a href="index.html" style="color:inherit">Home</a></span>
+        <span class="sep">/</span>
+        <span class="current">Services</span>
+      </div>
+      <h1>Manufacturing &amp; Job Work Services</h1>
+      <p>High-precision CNC machining services for automotive, industrial, and engineering applications. Every component
+        crafted to exact specification.</p>
+    </div>
+  </section>
+
+  <!-- Services Detail -->
+  <section class="section">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Our Core Services</h2>
+        <p class="section-subtitle" style="margin:0 auto">Comprehensive CNC machining and precision manufacturing
+          services delivered with accuracy, consistency, and on-time reliability.</p>
+      </div>
+
+      <div class="services-detail-grid">
+        <div class="service-detail-card animate-on-scroll animate-delay-1">
+          <div class="service-detail-image">
+            <img src="assets/images/Auto Components  Machining.png" alt="Auto Components Machining">
+          </div>
+          <div class="service-detail-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="24" cy="24" r="6" />
+              <path
+                d="M24 4v6M24 38v6M4 24h6M38 24h6M7.76 7.76l4.24 4.24M35.99 35.99l4.24 4.24M7.76 40.24l4.24-4.24M35.99 12.01l4.24-4.24" />
+              <circle cx="24" cy="24" r="14" stroke-dasharray="3 3" />
+            </svg>
+          </div>
+          <h3>Auto Components Machining</h3>
+          <p>Precision machining of automotive components including engine parts, transmission components, brackets,
+            housings, and structural assemblies with tight tolerances.</p>
+          <div class="service-tags">
+            <span class="service-tag">Engine Parts</span>
+            <span class="service-tag">Transmission</span>
+            <span class="service-tag">Brackets</span>
+            <span class="service-tag">Housings</span>
+          </div>
+        </div>
+
+        <div class="service-detail-card animate-on-scroll animate-delay-2">
+          <div class="service-detail-image">
+            <img src="assets/images/Gear Box Housing Components Machining.jpg" alt="Gear Box Housing Components Machining">
+          </div>
+          <div class="service-detail-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="24" cy="24" r="8" />
+              <path d="M24 2v6M24 40v6M2 24h6M40 24h6" />
+              <path d="M9.76 9.76l4.24 4.24M33.99 33.99l4.24 4.24M9.76 38.24l4.24-4.24M33.99 9.76l4.24 4.24" />
+              <circle cx="24" cy="24" r="16" stroke-dasharray="4 2" />
+              <circle cx="24" cy="24" r="3" fill="currentColor" />
+            </svg>
+          </div>
+          <h3>Gear Box Housing Components Machining</h3>
+          <p>Complex 5-axis machining of gear box housings and casing components requiring precision bores, intricate
+            internal features, and accurate mating surfaces.</p>
+          <div class="service-tags">
+            <span class="service-tag">5-Axis CNC</span>
+            <span class="service-tag">Precision Bore</span>
+            <span class="service-tag">Housings</span>
+          </div>
+        </div>
+
+        <div class="service-detail-card animate-on-scroll animate-delay-3">
+          <div class="service-detail-image">
+            <img src="assets/images/centrifugal-pump-parts-exploded-view.webp.jpg" alt="Pump Components Machining">
+          </div>
+          <div class="service-detail-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <rect x="8" y="16" width="32" height="20" rx="3" />
+              <path d="M16 16V10a8 8 0 0 1 16 0v6" />
+              <circle cx="24" cy="26" r="4" />
+              <line x1="24" y1="30" x2="24" y2="34" />
+            </svg>
+          </div>
+          <h3>Pump Components Machining</h3>
+          <p>High-accuracy pump components including impellers, casings, shafts, and end-plates machined to hydraulic
+            specifications with excellent surface finish.</p>
+          <div class="service-tags">
+            <span class="service-tag">Impellers</span>
+            <span class="service-tag">Casings</span>
+            <span class="service-tag">Shafts</span>
+          </div>
+        </div>
+
+        <div class="service-detail-card animate-on-scroll animate-delay-4">
+          <div class="service-detail-image">
+            <img src="assets/images/Fabricated Components Machining.jpg" alt="Fabricated Components Machining">
+          </div>
+          <div class="service-detail-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <rect x="6" y="6" width="36" height="36" rx="2" />
+              <line x1="16" y1="6" x2="16" y2="42" />
+              <line x1="32" y1="6" x2="32" y2="42" />
+              <line x1="6" y1="16" x2="42" y2="16" />
+              <line x1="6" y1="32" x2="42" y2="32" />
+            </svg>
+          </div>
+          <h3>Fabricated Components Machining</h3>
+          <p>Post-fabrication precision machining of welded and fabricated assemblies including flanges, frames,
+            structural components, and custom machined parts.</p>
+          <div class="service-tags">
+            <span class="service-tag">Flanges</span>
+            <span class="service-tag">Frames</span>
+            <span class="service-tag">Custom Parts</span>
+          </div>
+        </div>
+
+        <div class="service-detail-card animate-on-scroll animate-delay-5">
+          <div class="service-detail-image">
+            <img src="assets/images/Auto Components  Machining.png" alt="Steel Components Machining">
+          </div>
+          <div class="service-detail-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <rect x="10" y="8" width="28" height="32" rx="2" />
+              <line x1="16" y1="16" x2="32" y2="16" />
+              <line x1="16" y1="22" x2="32" y2="22" />
+              <line x1="16" y1="28" x2="24" y2="28" />
+              <path d="M10 4h28M10 44h28" />
+            </svg>
+          </div>
+          <h3>Steel Components Machining</h3>
+          <p>Durable steel components machining for heavy engineering, defense, and industrial applications.
+            Specializing in alloy steel, stainless steel, and tool steel components.</p>
+          <div class="service-tags">
+            <span class="service-tag">Alloy Steel</span>
+            <span class="service-tag">SS Components</span>
+            <span class="service-tag">Tool Steel</span>
+          </div>
+        </div>
+
+        <div class="service-detail-card animate-on-scroll animate-delay-6">
+          <div class="service-detail-image">
+            <img src="assets/images/Tool & Die Pattern Machining.jpg" alt="Tool & Die Pattern Machining">
+          </div>
+          <div class="service-detail-icon">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <polygon points="24,6 40,18 40,30 24,42 8,30 8,18" />
+              <polygon points="24,14 34,22 34,26 24,34 14,26 14,22" />
+              <circle cx="24" cy="24" r="4" />
+            </svg>
+          </div>
+          <h3>Tool &amp; Die Pattern Machining</h3>
+          <p>Complex tool and die manufacturing including core, cavity, and pattern machining with high-accuracy surface
+            finishing for mold and die applications.</p>
+          <div class="service-tags">
+            <span class="service-tag">Core &amp; Cavity</span>
+            <span class="service-tag">Pattern</span>
+            <span class="service-tag">Mold Making</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="text-center mb-12">
+        <div class="section-label white">Why Choose Us</div>
+        <h2 class="section-title white">Our Competitive Advantages</h2>
+      </div>
+      <div class="grid-4">
+        <div class="info-card dark animate-on-scroll animate-delay-1">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg></div>
+          <h3>Tight Tolerances</h3>
+          <p>Capable of achieving tolerances up to ±0.005mm on precision CNC machining centers.</p>
+        </div>
+        <div class="info-card dark animate-on-scroll animate-delay-2">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg></div>
+          <h3>Fast Turnaround</h3>
+          <p>Streamlined production processes ensure fast turnaround times without compromising quality.</p>
+        </div>
+        <div class="info-card dark animate-on-scroll animate-delay-3">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg></div>
+          <h3>100% Inspection</h3>
+          <p>Every component undergoes comprehensive dimensional inspection using CMM equipment.</p>
+        </div>
+        <div class="info-card dark animate-on-scroll animate-delay-4">
+          <div class="info-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg></div>
+          <h3>Expert Team</h3>
+          <p>Experienced engineers and machinists dedicated to delivering precision excellence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Need a Custom Machining Solution?</h2>
+      <p>Share your drawing or specification — our engineers will provide a detailed quotation within 24 hours.</p>
+      <div class="cta-banner-btns">
+        <a href="contact.html" class="btn btn-primary">Request a Quote <svg viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg></a>
+        <a href="quality.html" class="btn btn-outline">View Quality Standards</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+      <div class="logo">
+        <a href="index.html">
+          <img src="assets/images/logo.png" alt="Aarman Automation">
+        </a>
+      </div>
+            <p>High-precision CNC machining and engineering solutions. Committed to quality since 2021.</p>
+            <div class="footer-social">
+              <a href="#"><svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg></a>
+            </div>
+          </div>
+          <div class="footer-col">
+            <h4>Quick Links</h4>
+            <ul class="footer-links">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="process.html">Process</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Services</h4>
+            <ul class="footer-links">
+              <li><a href="services.html">Auto Components</a></li>
+              <li><a href="services.html">Gear Box Housing</a></li>
+              <li><a href="services.html">Pump Components</a></li>
+              <li><a href="services.html">Tool &amp; Die</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>Contact</h4>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              <p>Building No / Flat No: D. NO 3/263/1, 447/1C Vedasamykovil Thottam, Muthugoundenpurur, Sulur, Coimbatore-641402 </p>
+            </div>
+            <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <a href="tel:+919843226136"> +919843226136</a>
+            </div>
+                        <div class="footer-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <a href="tel:+917401487020"> +917401487020 </a>
+            </div>
+            
+          </div>  
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <div class="footer-bottom-inner">
+          <p class="footer-copy">&copy; 2024 Aarman Automation. All Rights Reserved.</p>
+                    <p class="footer-copy">Designed with precision for <a href="#">sabarish.work</a></p>
+
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" id="backToTop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15" />
+    </svg></button>
+
+  <script src="assets/js/navbar.js"></script>
+  <script src="assets/js/animation.js"></script>
+  <script src="assets/js/counter.js"></script>
+  <script src="assets/js/cursor.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+
+</html>
