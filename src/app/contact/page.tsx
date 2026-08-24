@@ -725,8 +725,7 @@ const toggleService = (service: string) => {
           </div>
         </div>
       </section>
-
-      <Footer />
+      <Footer/>
     </>
   );
 }
