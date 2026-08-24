@@ -119,18 +119,19 @@ export default function ContactPage() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [openFAQ, setOpenFAQ] = useState<number | null>(0);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-    defaultValues: {
-      services: [],
-      consent: false,
-    },
-  });
+const {
+  register,
+  handleSubmit,
+  setValue,
+  formState: { errors, isSubmitting },
+  reset,
+} = useForm<ContactFormData>({
+  resolver: zodResolver(contactSchema),
+  defaultValues: {
+    services: [],
+    consent: false,
+  },
+});
 
   const onSubmit = async (data: ContactFormData) => {
     // Simulate form submission delay
@@ -155,10 +156,21 @@ export default function ContactPage() {
   };
 
   const toggleService = (service: string) => {
-    setSelectedServices((prev) =>
-      prev.includes(service) ? prev.filter((s) => s !== service) : [...prev, service]
-    );
-  };
+const toggleService = (service: string) => {
+  setSelectedServices((prev) => {
+    const updated = prev.includes(service)
+      ? prev.filter((s) => s !== service)
+      : [...prev, service];
+
+    setValue("services", updated, {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
+
+    return updated;
+  });
+};
 
   const resetForm = () => {
     reset();
@@ -355,7 +367,15 @@ export default function ContactPage() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                  <form
+                    onSubmit={handleSubmit(
+                      onSubmit,
+                      (validationErrors) => {
+                        console.log("FORM VALIDATION ERRORS:", validationErrors);
+                      }
+                    )}
+                    className="space-y-6"
+                  >
                   {/* Full Name */}
                   <div data-form-field>
                     <label className="mb-2 block text-sm font-medium text-black">
@@ -430,9 +450,13 @@ export default function ContactPage() {
                     <label className="mb-3 block text-sm font-medium text-black">
                       Services Required <span className="text-red-600">*</span>
                     </label>
+                  
                     <div className="space-y-2">
                       {SERVICES.map((service) => (
-                        <label key={service} className="flex items-center gap-3">
+                        <label
+                          key={service}
+                          className="flex cursor-pointer items-center gap-3"
+                        >
                           <input
                             type="checkbox"
                             value={service}
@@ -440,12 +464,18 @@ export default function ContactPage() {
                             onChange={() => toggleService(service)}
                             className="h-4 w-4 border border-stone-300 bg-white accent-black"
                           />
-                          <span className="text-sm text-black">{service}</span>
+                  
+                          <span className="text-sm text-black">
+                            {service}
+                          </span>
                         </label>
                       ))}
                     </div>
-                    {selectedServices.length === 0 && errors.services && (
-                      <p className="mt-2 text-xs text-red-600">{errors.services.message}</p>
+                  
+                    {errors.services && (
+                      <p className="mt-2 text-xs text-red-600">
+                        {errors.services.message}
+                      </p>
                     )}
                   </div>
 
@@ -588,14 +618,14 @@ export default function ContactPage() {
                   )}
 
                   {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    data-form-submit
-                    className="w-full border border-black bg-black px-6 py-4 text-base font-medium text-white transition-all duration-300 hover:bg-white hover:text-black disabled:opacity-60"
-                  >
-                    {isSubmitting ? "Sending..." : "Send Enquiry →"}
-                  </button>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  data-form-submit
+                  className="w-full border border-black bg-black px-6 py-4 text-base font-medium text-white transition-all duration-300 hover:bg-white hover:text-black disabled:opacity-60"
+                >
+                  {isSubmitting ? "Sending..." : "Send Enquiry →"}
+                </button>
                 </form>
               )}
             </div>
@@ -672,6 +702,7 @@ export default function ContactPage() {
                 className="border border-stone-300 transition-all duration-300"
               >
                 <button
+                  type="button"
                   onClick={() => setOpenFAQ(openFAQ === index ? null : index)}
                   className="flex w-full items-center justify-between bg-white px-6 py-4 text-left hover:bg-stone-50"
                 >
