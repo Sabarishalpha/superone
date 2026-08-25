@@ -129,7 +129,7 @@ export default function About() {
         >
           {/* Statistics Heading */}
           <h3 className="mb-12 text-center text-3xl font-light text-black sm:text-4xl md:text-5xl">
-            By The Numbers
+            Built. Proven. Celebrated.
           </h3>
 
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 md:gap-12 lg:gap-16">
