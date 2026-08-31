@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger);
 const brands = [
   {
     name: "REHAU",
-    logo: "/logos/rehau.svg",
+    logo: "/images/logo.png",
   },
   {
     name: "BOSCH",
