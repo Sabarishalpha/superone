@@ -7,6 +7,7 @@ import Projects from "./components/Projects";
 import Footer from "./components/Footer";
 import FeaturedProjects from "./components/FeaturedProjects";
 import VideoShowcase from "./components/VideoShowcase";
+import BrandPartners from "@/components/BrandPartners";
 
 export default function Home() {
   return (
@@ -18,9 +19,11 @@ export default function Home() {
         <About />
         <Services />
         <FeaturedProjects />
+        <BrandPartners />
         <Testimonials />
         <VideoShowcase />
         <Projects />
+        
       </main>
 
       <Footer />
