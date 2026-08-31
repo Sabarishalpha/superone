@@ -158,7 +158,7 @@ export default function Hero() {
               <div className="mb-7">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="text-[10px] font-medium uppercase tracking-[0.25em] text-black/40">
-                    Free Consultation
+                    Let&apos;s get you started
                   </span>
 
                   <span className="text-xs text-black/35">
@@ -167,7 +167,7 @@ export default function Hero() {
                 </div>
 
                 <h2 className="text-2xl font-medium tracking-[-0.03em] text-black sm:text-3xl">
-                  Let&apos;s get you started
+                  Free Consultation
                 </h2>
 
                 <p className="mt-3 text-sm leading-6 text-black/50">
