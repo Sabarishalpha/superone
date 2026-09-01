@@ -198,50 +198,6 @@ export default function VideoShowcase() {
             lg:mb-16
           "
         >
-          {/* LEFT */}
-
-          <div>
-            <p
-              className="
-                mb-5 text-[10px] font-medium uppercase
-                tracking-[0.32em] text-stone-400
-                sm:text-xs
-              "
-            >
-              Behind The Design
-            </p>
-
-            <h2
-              className="
-                max-w-3xl text-4xl font-light leading-[1.05]
-                tracking-[-0.03em] text-white
-                sm:text-5xl
-                md:text-6xl
-                lg:text-7xl
-              "
-            >
-              Where ideas become
-              <br className="hidden sm:block" />
-              beautiful spaces.
-            </h2>
-          </div>
-
-          {/* RIGHT */}
-
-          <div className="max-w-sm md:pb-1 lg:max-w-md">
-            <p
-              className="
-                text-sm leading-7 text-stone-400
-                sm:text-base sm:leading-8
-              "
-            >
-              Discover our approach to interior design, from the first
-              sketch to the final detail. Every space is thoughtfully
-              crafted around the people who live in it.
-            </p>
-          </div>
-        </div>
-
         {/* =====================================================
             VIDEO
         ====================================================== */}
