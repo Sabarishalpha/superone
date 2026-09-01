@@ -4,15 +4,14 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  font-size: 20px; /* 25% larger than default 16px */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: 'Viga', sans-serif;
-  --font-viga: 'Viga', sans-serif;
-}
+  --font-sans: var(--font-caveat);
+  --font-caveat: var(--font-caveat);
+} 
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -21,19 +20,11 @@
   }
 }
 
-html {
-  font-size: 20px;
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Viga', sans-serif;
+  font-family: 'Viga', cursive;
 }
-
-/* ==========================================
-   REDUCED MOTION
-========================================== */
 
 @media (prefers-reduced-motion: reduce) {
   html {
@@ -50,10 +41,7 @@ body {
   }
 }
 
-/* ==========================================
-   SWIPER PAGINATION
-========================================== */
-
+/* Swiper Pagination Styles */
 .swiper-pagination {
   display: flex !important;
   gap: 8px;
@@ -81,19 +69,13 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* ==========================================
-   SWIPER CONTAINER
-========================================== */
-
+/* Swiper Container */
 .swiper {
   width: 100%;
   height: 100%;
 }
 
-/* ==========================================
-   ABOUT SECTION PAGINATION
-========================================== */
-
+/* About Section Carousel Pagination - Dark dots on light background */
 .about-swiper-pagination {
   display: flex !important;
   gap: 8px;
@@ -121,10 +103,7 @@ body {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-/* ==========================================
-   SERVICES SECTION PAGINATION
-========================================== */
-
+/* Services Section Carousel Pagination - White dots on dark background */
 .services-swiper-pagination {
   display: flex !important;
   gap: 8px;
