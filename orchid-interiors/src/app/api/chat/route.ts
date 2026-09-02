@@ -54,10 +54,11 @@ export async function POST(request: NextRequest) {
 
       return NextResponse.json(
         {
-          error: "Gemini API key is missing.",
+          error:
+            "Gemini is not configured yet. Add GEMINI_API_KEY to your .env.local file to enable the chat assistant.",
         },
         {
-          status: 500,
+          status: 503,
         }
       );
     }
@@ -125,10 +126,10 @@ export async function POST(request: NextRequest) {
       },
     ];
 
-    console.log("🤖 Sending request to Gemini...");
+    console.log(" Sending request to Gemini...");
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.6-flash",
+      model: "gemini-3.5-flash",
       contents,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,

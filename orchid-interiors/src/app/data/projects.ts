@@ -1,6 +1,8 @@
 export type ProjectCategory =
   | "Residential"
   | "Commercial"
+  | "Institution"
+  | "Hospitality"
   | "Modern"
   | "Luxury";
 
@@ -37,7 +39,6 @@ export const PROJECTS: Project[] = [
     slug: "harmonia-residence",
     category: "Residential",
     location: "Bangalore",
-
     image: "/images/projects/harmonia.jpg",
     width: 1600,
     height: 1067,
@@ -122,28 +123,6 @@ export const PROJECTS: Project[] = [
     ],
 
     video: "/videos/projects/solara.mp4",
-  },
-
-  {
-    id: 5,
-    number: "05",
-    title: "The Aurelia Home",
-    slug: "aurelia-home",
-    category: "Residential",
-    location: "Coimbatore",
-
-    image: "/images/projects/aurelia.jpg",
-    width: 1600,
-    height: 1067,
-
-    gallery: [
-      "/images/projects/aurelia.jpg",
-      "/images/projects/aurelia-2.jpg",
-      "/images/projects/aurelia-3.jpg",
-      "/images/projects/aurelia-4.jpg",
-    ],
-
-    video: "/videos/projects/aurelia.mp4",
   },
 
   // ============================================================
@@ -238,28 +217,6 @@ export const PROJECTS: Project[] = [
     video: "/videos/projects/nexa.mp4",
   },
 
-  {
-    id: 10,
-    number: "05",
-    title: "The Forma Office",
-    slug: "forma-office",
-    category: "Commercial",
-    location: "Coimbatore",
-
-    image: "/images/projects/forma.jpg",
-    width: 1600,
-    height: 1067,
-
-    gallery: [
-      "/images/projects/forma.jpg",
-      "/images/projects/forma-2.jpg",
-      "/images/projects/forma-3.jpg",
-      "/images/projects/forma-4.jpg",
-    ],
-
-    video: "/videos/projects/forma.mp4",
-  },
-
   // ============================================================
   // MODERN — 5 PROJECTS
   // ============================================================
@@ -350,28 +307,6 @@ export const PROJECTS: Project[] = [
     ],
 
     video: "/videos/projects/axis.mp4",
-  },
-
-  {
-    id: 15,
-    number: "05",
-    title: "The Element House",
-    slug: "element-house",
-    category: "Modern",
-    location: "Chennai",
-
-    image: "/images/projects/element.jpg",
-    width: 1600,
-    height: 1067,
-
-    gallery: [
-      "/images/projects/element.jpg",
-      "/images/projects/element-2.jpg",
-      "/images/projects/element-3.jpg",
-      "/images/projects/element-4.jpg",
-    ],
-
-    video: "/videos/projects/element.mp4",
   },
 
   // ============================================================
@@ -466,25 +401,4 @@ export const PROJECTS: Project[] = [
     video: "/videos/projects/opulent-house.mp4",
   },
 
-  {
-    id: 20,
-    number: "05",
-    title: "The Prestige Villa",
-    slug: "prestige-villa",
-    category: "Luxury",
-    location: "Chennai",
-
-    image: "/images/projects/prestige-villa.jpg",
-    width: 1600,
-    height: 1067,
-
-    gallery: [
-      "/images/projects/prestige-villa.jpg",
-      "/images/projects/prestige-villa-2.jpg",
-      "/images/projects/prestige-villa-3.jpg",
-      "/images/projects/prestige-villa-4.jpg",
-    ],
-
-    video: "/videos/projects/prestige-villa.mp4",
-  },
 ];

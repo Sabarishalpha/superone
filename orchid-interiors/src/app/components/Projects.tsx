@@ -9,6 +9,8 @@ import { PROJECTS } from "../data/projects";
 const CATEGORIES = [
   "Residential",
   "Commercial",
+  "Institution",
+  "Hospitality",
   "Modern",
   "Luxury",
 ] as const;
@@ -20,7 +22,7 @@ export default function Projects() {
     useState<CategoryType>("Residential");
 
   const filteredProjects = PROJECTS.filter(
-    (project) => project.category === activeCategory
+    (project) => project.category === activeCategory,
   );
 
   /*
@@ -29,9 +31,7 @@ export default function Projects() {
    * animation code can listen for if required.
    */
   useEffect(() => {
-    window.dispatchEvent(
-      new CustomEvent("projects-category-change")
-    );
+    window.dispatchEvent(new CustomEvent("projects-category-change"));
   }, [activeCategory]);
 
   return (
@@ -54,7 +54,6 @@ export default function Projects() {
       "
     >
       <div className="mx-auto max-w-[1600px]">
-
         {/* =====================================================
             SECTION INTRODUCTION
         ====================================================== */}
@@ -144,7 +143,7 @@ export default function Projects() {
         >
           {CATEGORIES.map((category) => {
             const count = PROJECTS.filter(
-              (project) => project.category === category
+              (project) => project.category === category,
             ).length;
 
             return (
@@ -448,9 +447,7 @@ export default function Projects() {
               text-center
             "
           >
-            <p className="text-sm text-stone-500">
-              Projects coming soon.
-            </p>
+            <p className="text-sm text-stone-500">Projects coming soon.</p>
           </div>
         )}
 
@@ -459,13 +456,9 @@ export default function Projects() {
         ====================================================== */}
 
         <div className="mt-8 flex justify-between text-[10px] uppercase tracking-[0.2em] text-stone-400">
-          <span>
-            {activeCategory}
-          </span>
+          <span>{activeCategory}</span>
 
-          <span>
-            {filteredProjects.length} Projects
-          </span>
+          <span>{filteredProjects.length} Projects</span>
         </div>
 
         {/* =====================================================
@@ -493,7 +486,6 @@ export default function Projects() {
             "
           >
             View All Projects
-
             <ArrowRight
               className="
                 h-4

@@ -34,9 +34,7 @@ export async function generateMetadata({
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const project = PROJECTS.find(
-    (item) => item.slug === slug
-  );
+  const project = PROJECTS.find((item) => item.slug === slug);
 
   return {
     title: project
@@ -53,14 +51,10 @@ export async function generateMetadata({
    PROJECT DETAIL PAGE
 ========================================================== */
 
-export default async function ProjectDetailPage({
-  params,
-}: ProjectPageProps) {
+export default async function ProjectDetailPage({ params }: ProjectPageProps) {
   const { slug } = await params;
 
-  const project = PROJECTS.find(
-    (item) => item.slug === slug
-  );
+  const project = PROJECTS.find((item) => item.slug === slug);
 
   if (!project) {
     return null;
@@ -75,7 +69,6 @@ export default async function ProjectDetailPage({
       <Navbar />
 
       <main className="bg-stone-50 pt-24">
-
         {/* ==================================================
             PROJECT HERO
         ================================================== */}
@@ -93,7 +86,6 @@ export default async function ProjectDetailPage({
             lg:py-24
           "
         >
-
           {/* Back to Projects */}
 
           <Link
@@ -112,7 +104,6 @@ export default async function ProjectDetailPage({
             "
           >
             <ArrowLeft className="h-4 w-4" />
-
             All projects
           </Link>
 
@@ -126,11 +117,9 @@ export default async function ProjectDetailPage({
               lg:items-end
             "
           >
-
             {/* Project Information */}
 
             <div>
-
               {/* Category */}
 
               <p
@@ -173,11 +162,9 @@ export default async function ProjectDetailPage({
                   text-stone-700
                 "
               >
-                A considered{" "}
-                {project.category.toLowerCase()}{" "}
-                interior shaped around atmosphere,
-                materiality and the everyday
-                experience of the space.
+                A considered {project.category.toLowerCase()} interior shaped
+                around atmosphere, materiality and the everyday experience of
+                the space.
               </p>
 
               {/* CTA */}
@@ -199,7 +186,6 @@ export default async function ProjectDetailPage({
                 "
               >
                 Discuss your project
-
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -255,7 +241,6 @@ export default async function ProjectDetailPage({
               md:grid-cols-3
             "
           >
-
             {/* Heading */}
 
             <div>
@@ -278,8 +263,7 @@ export default async function ProjectDetailPage({
                   text-black
                 "
               >
-                A space with its own point
-                of view.
+                A space with its own point of view.
               </h2>
             </div>
 
@@ -292,10 +276,8 @@ export default async function ProjectDetailPage({
                 text-stone-700
               "
             >
-              Every decision is made to bring
-              the architecture, the brief and
-              the people who use it into quiet
-              alignment.
+              Every decision is made to bring the architecture, the brief and
+              the people who use it into quiet alignment.
             </p>
 
             {/* Text */}
@@ -307,10 +289,8 @@ export default async function ProjectDetailPage({
                 text-stone-700
               "
             >
-              From the larger composition to
-              the smallest finish, the result
-              is personal, functional and made
-              to last.
+              From the larger composition to the smallest finish, the result is
+              personal, functional and made to last.
             </p>
           </div>
         </section>
@@ -319,10 +299,9 @@ export default async function ProjectDetailPage({
             PROJECT JOURNAL
         ================================================== */}
 
-        {project.gallery &&
-          project.gallery.length > 0 && (
-            <section
-              className="
+        {project.gallery && project.gallery.length > 0 && (
+          <section
+            className="
                 bg-stone-50
                 px-4
                 py-16
@@ -331,13 +310,12 @@ export default async function ProjectDetailPage({
                 lg:px-16
                 lg:py-24
               "
-            >
-              <div className="mx-auto max-w-7xl">
+          >
+            <div className="mx-auto max-w-7xl">
+              {/* Gallery Header */}
 
-                {/* Gallery Header */}
-
-                <div
-                  className="
+              <div
+                className="
                     mb-10
                     flex
                     flex-col
@@ -346,92 +324,76 @@ export default async function ProjectDetailPage({
                     sm:flex-row
                     sm:items-end
                   "
-                >
-                  <div>
-
-                    <p
-                      className="
+              >
+                <div>
+                  <p
+                    className="
                         mb-4
                         text-xs
                         tracking-[0.28em]
                         text-stone-500
                         uppercase
                       "
-                    >
-                      PROJECT JOURNAL
-                    </p>
+                  >
+                    PROJECT JOURNAL
+                  </p>
 
-                    <h2
-                      className="
+                  <h2
+                    className="
                         text-3xl
                         font-light
                         text-black
                         sm:text-4xl
                       "
-                    >
-                      {project.title}, in
-                      detail.
-                    </h2>
+                  >
+                    {project.title}, in detail.
+                  </h2>
+                </div>
 
-                  </div>
-
-                  <p
-                    className="
+                <p
+                  className="
                       max-w-sm
                       text-sm
                       leading-6
                       text-stone-600
                     "
-                  >
-                    A visual study of the
-                    materials, rooms and
-                    considered details behind
-                    this {project.location}{" "}
-                    project.
-                  </p>
-                </div>
+                >
+                  A visual study of the materials, rooms and considered details
+                  behind this {project.location} project.
+                </p>
+              </div>
 
-                {/* ==================================================
+              {/* ==================================================
                     PROJECT VIDEO
                 ================================================== */}
 
-                {project.video && (
-                  <div className="mb-6 overflow-hidden bg-black">
-                    <video
-                      className="
+              {project.video && (
+                <div className="mb-6 overflow-hidden bg-black">
+                  <video
+                    className="
                         aspect-video
                         w-full
                         object-cover
                       "
-                      controls
-                      muted
-                      playsInline
-                      preload="metadata"
-                      poster={project.image}
-                    >
-                      <source
-                        src={project.video}
-                        type="video/mp4"
-                      />
+                    controls
+                    controlsList="nodownload"
+                    playsInline
+                    preload="metadata"
+                  >
+                    <source src={project.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              )}
 
-                      Your browser does not
-                      support the video tag.
-                    </video>
-                  </div>
-                )}
-
-                {/* ==================================================
+              {/* ==================================================
                     INTERACTIVE IMAGE GALLERY
                 ================================================== */}
 
-                <ImageGallery
-                  images={project.gallery}
-                  title={project.title}
-                />
-
-              </div>
-            </section>
-          )}
+              <ImageGallery images={project.gallery} title={project.title} />
+            </div>
+          </section>
+        )}
       </main>
 
       {/* ====================================================

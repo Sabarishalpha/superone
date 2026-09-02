@@ -26,6 +26,11 @@ body {
   font-family: 'Viga', cursive;
 }
 
+p {
+  font-size: 1.2em;
+  line-height: 1.7;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;

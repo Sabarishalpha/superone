@@ -232,7 +232,7 @@ export default function Navbar() {
                       rounded-full
                       px-4
                       py-2.5
-                      text-[13px]
+                      text-[15.6px]
                       font-medium
                       tracking-[-0.01em]
                       transition-all
@@ -292,7 +292,7 @@ export default function Navbar() {
                 bg-[#171717]
                 px-5
                 py-3
-                text-[13px]
+                text-[15.6px]
                 font-medium
                 text-white
                 transition-all
@@ -352,15 +352,9 @@ export default function Navbar() {
             "
           >
             {isMenuOpen ? (
-              <X
-                className="h-5 w-5"
-                strokeWidth={1.7}
-              />
+              <X className="h-5 w-5" strokeWidth={1.7} />
             ) : (
-              <Menu
-                className="h-5 w-5"
-                strokeWidth={1.7}
-              />
+              <Menu className="h-5 w-5" strokeWidth={1.7} />
             )}
           </button>
         </nav>
@@ -437,17 +431,13 @@ export default function Navbar() {
                         className={`
                           text-[10px]
                           font-medium
-                          ${
-                            isActive
-                              ? "text-black/40"
-                              : "text-white/25"
-                          }
+                          ${isActive ? "text-black/40" : "text-white/25"}
                         `}
                       >
                         0{index + 1}
                       </span>
 
-                      <span className="text-[15px] font-medium">
+                      <span className="text-[18px] font-medium">
                         {link.label}
                       </span>
                     </div>
@@ -505,7 +495,7 @@ export default function Navbar() {
                     Let&apos;s create
                   </p>
 
-                  <p className="mt-1 text-[15px] font-medium">
+                  <p className="mt-1 text-[18px] font-medium">
                     Start a Project
                   </p>
                 </div>

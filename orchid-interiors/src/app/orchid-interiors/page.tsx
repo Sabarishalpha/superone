@@ -3,20 +3,53 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  Check,
-  MessageCircle,
-} from "lucide-react";
+import { Check, MessageCircle } from "lucide-react";
 
 const WHATSAPP_LINK = "#lead-form";
 
 const reels = [
-  ["01", "Home", "A feeling of calm, layered through light, material and proportion.", "/videos/home-reel.mp4"],
-  ["02", "Kitchen", "Thoughtful functionality with a refined, considered finish.", "/videos/kitchen-reel.mp4"],
-  ["03", "Living Room", "The everyday spaces where character, comfort and connection meet.", "/videos/living-room-reel.mp4"],
-  ["04", "Entryway", "A considered first impression shaped by light, texture and proportion.", "/videos/entryway-reel.mp4"],
-  ["05", "Bedroom", "Quiet material palettes and layered details for deeper rest.", "/videos/bedroom-reel.mp4"],
-  ["06", "Dining", "Warm, welcoming settings made for everyday rituals and connection.", "/videos/dining-reel.mp4"],
+  [
+    "01",
+    "Home",
+    "A feeling of calm, layered through light, material and proportion.",
+    "/videos/home-reel.mp4",
+    "/images/about-1.jpeg",
+  ],
+  [
+    "02",
+    "Kitchen",
+    "Thoughtful functionality with a refined, considered finish.",
+    "/videos/kitchen-reel.mp4",
+    "/images/about-2.jpeg",
+  ],
+  [
+    "03",
+    "Living Room",
+    "The everyday spaces where character, comfort and connection meet.",
+    "/videos/living-room-reel.mp4",
+    "/images/about-3.jpeg",
+  ],
+  [
+    "04",
+    "Entryway",
+    "A considered first impression shaped by light, texture and proportion.",
+    "/videos/entryway-reel.mp4",
+    "/images/about-4.jpeg",
+  ],
+  [
+    "05",
+    "Bedroom",
+    "Quiet material palettes and layered details for deeper rest.",
+    "/videos/bedroom-reel.mp4",
+    "/images/about-5.jpeg",
+  ],
+  [
+    "06",
+    "Dining",
+    "Warm, welcoming settings made for everyday rituals and connection.",
+    "/videos/dining-reel.mp4",
+    "/images/about.png",
+  ],
 ] as const;
 
 const businessSchema = {
@@ -156,10 +189,7 @@ export default function OrchidInteriorsLandingPage() {
           <p className="text-xs tracking-[0.25em] text-[#857d71] uppercase">
             DESIGN REELS
           </p>
-          <h2
-            id="reels-title"
-            className="mt-5 text-4xl font-light sm:text-6xl"
-          >
+          <h2 id="reels-title" className="mt-5 text-4xl font-light sm:text-6xl">
             See the feeling.
             <br />
             Before the first conversation.
@@ -169,26 +199,37 @@ export default function OrchidInteriorsLandingPage() {
           </p>
           <div className="mt-12 flex snap-x gap-4 overflow-x-auto pb-4 scrollbar-none md:grid md:grid-cols-6 md:gap-4 md:overflow-visible md:pb-0">
             {reels.map(([number, title, text, video, poster]) => (
-              <article key={number} className="group min-w-[78vw] snap-center border-t border-black/30 pt-5 sm:min-w-[52vw] md:min-w-0">
+              <article
+                key={number}
+                className="group min-w-[78vw] snap-center border-t border-black/30 pt-5 sm:min-w-[52vw] md:min-w-0"
+              >
                 <div className="relative aspect-9/16 overflow-hidden bg-[#d8d1c6]">
                   <video
                     className="absolute inset-0 h-full w-full object-cover"
                     controls
-                    muted
+                    controlsList="nodownload"
                     loop
                     playsInline
-                      preload="none"
+                    preload="none"
                     poster={poster}
                     aria-label={`${title} interior design reel`}
                   >
                     <source src={video} type="video/mp4" />
-                    <Image src={poster} alt={`${title} interior design`} fill className="object-cover" sizes="(max-width: 768px) 100vw, 33vw" />
+                    <Image
+                      src={poster}
+                      alt={`${title} interior design`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                   </video>
                 </div>
                 <div className="pt-5">
                   <p className="text-sm text-[#857d71]">{number}</p>
                   <h3 className="mt-3 text-2xl font-light">{title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[#625e56]">{text}</p>
+                  <p className="mt-3 text-sm leading-7 text-[#625e56]">
+                    {text}
+                  </p>
                 </div>
               </article>
             ))}
@@ -241,7 +282,8 @@ export default function OrchidInteriorsLandingPage() {
                 Your project details are ready for the Orchid Interiors team.
               </p>
               <p className="mt-2 text-base leading-7 text-[#625e56]">
-                Connect the enquiry API before launch to send this request to your team.
+                Connect the enquiry API before launch to send this request to
+                your team.
               </p>
             </div>
           ) : (
@@ -384,7 +426,7 @@ export default function OrchidInteriorsLandingPage() {
         </div>
       </section> */}
 
-        {/* <section
+      {/* <section
           className="bg-[#f4f1eb] px-5 py-20 sm:px-8 md:py-28 lg:px-12"
           aria-labelledby="faq-title"
         >

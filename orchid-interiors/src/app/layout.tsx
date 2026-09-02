@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Caveat } from "next/font/google";
-import LeadPopup from "./components/LeadPopup";
 import SmoothMotion from "./components/SmoothMotion";
 import "./globals.css";
 import ChatBot from "./components/ChatBot";
@@ -21,7 +20,9 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://orchidinteriors.com"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://orchidinteriors.com",
+  ),
   title: {
     default: "Orchid Interiors | Premium Interior Design in Coimbatore",
     template: "%s | Orchid Interiors",
@@ -35,7 +36,9 @@ export const metadata: Metadata = {
     title: "Orchid Interiors | Premium Interior Design in Coimbatore",
     description:
       "Premium residential, commercial and turnkey interior design solutions by Orchid Interiors in Coimbatore and Tamil Nadu.",
-    images: [{ url: "/images/hero-1.png", alt: "Orchid Interiors interior design" }],
+    images: [
+      { url: "/images/hero-1.png", alt: "Orchid Interiors interior design" },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -55,7 +58,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         {children}
         <SmoothMotion />
-        <LeadPopup />
         <ChatBot />
       </body>
     </html>

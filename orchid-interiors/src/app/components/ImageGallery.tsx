@@ -16,13 +16,8 @@ type ImageGalleryProps = {
   title: string;
 };
 
-export default function ImageGallery({
-  images,
-  title,
-}: ImageGalleryProps) {
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(
-    null
-  );
+export default function ImageGallery({ images, title }: ImageGalleryProps) {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
 
   const [zoom, setZoom] = useState(1);
 
@@ -53,9 +48,7 @@ export default function ImageGallery({
   const nextImage = useCallback(() => {
     if (selectedIndex === null) return;
 
-    setSelectedIndex(
-      (selectedIndex + 1) % images.length
-    );
+    setSelectedIndex((selectedIndex + 1) % images.length);
 
     setZoom(1);
   }, [images.length, selectedIndex]);
@@ -67,10 +60,7 @@ export default function ImageGallery({
   const previousImage = useCallback(() => {
     if (selectedIndex === null) return;
 
-    setSelectedIndex(
-      (selectedIndex - 1 + images.length) %
-        images.length
-    );
+    setSelectedIndex((selectedIndex - 1 + images.length) % images.length);
 
     setZoom(1);
   }, [images.length, selectedIndex]);
@@ -98,15 +88,11 @@ export default function ImageGallery({
 
         case "+":
         case "=":
-          setZoom((value) =>
-            Math.min(value + 0.25, 3)
-          );
+          setZoom((value) => Math.min(value + 0.25, 3));
           break;
 
         case "-":
-          setZoom((value) =>
-            Math.max(value - 0.25, 1)
-          );
+          setZoom((value) => Math.max(value - 0.25, 1));
           break;
 
         case "0":
@@ -115,16 +101,10 @@ export default function ImageGallery({
       }
     };
 
-    document.addEventListener(
-      "keydown",
-      handleKeyDown
-    );
+    document.addEventListener("keydown", handleKeyDown);
 
     return () => {
-      document.removeEventListener(
-        "keydown",
-        handleKeyDown
-      );
+      document.removeEventListener("keydown", handleKeyDown);
     };
   }, [closeGallery, isOpen, nextImage, previousImage, selectedIndex]);
 
@@ -171,9 +151,7 @@ export default function ImageGallery({
                   : "aspect-16/10"
               }
             `}
-            aria-label={`Open ${title} image ${
-              index + 1
-            }`}
+            aria-label={`Open ${title} image ${index + 1}`}
           >
             <Image
               src={image}
@@ -230,10 +208,7 @@ export default function ImageGallery({
                 group-hover:opacity-100
               "
             >
-              <ZoomIn
-                className="h-4 w-4"
-                strokeWidth={1.5}
-              />
+              <ZoomIn className="h-4 w-4" strokeWidth={1.5} />
             </div>
           </button>
         ))}
@@ -281,9 +256,7 @@ export default function ImageGallery({
               backdrop-blur-md
               sm:px-6
             "
-            onClick={(event) =>
-              event.stopPropagation()
-            }
+            onClick={(event) => event.stopPropagation()}
           >
             {/* Counter */}
 
@@ -295,15 +268,9 @@ export default function ImageGallery({
                 uppercase
               "
             >
-              {String(selectedIndex + 1).padStart(
-                2,
-                "0"
-              )}
+              {String(selectedIndex + 1).padStart(2, "0")}
               {" / "}
-              {String(images.length).padStart(
-                2,
-                "0"
-              )}
+              {String(images.length).padStart(2, "0")}
             </div>
 
             {/* Controls */}
@@ -313,14 +280,7 @@ export default function ImageGallery({
 
               <button
                 type="button"
-                onClick={() =>
-                  setZoom((value) =>
-                    Math.max(
-                      value - 0.25,
-                      1
-                    )
-                  )
-                }
+                onClick={() => setZoom((value) => Math.max(value - 0.25, 1))}
                 disabled={zoom <= 1}
                 className="
                   flex
@@ -362,14 +322,7 @@ export default function ImageGallery({
 
               <button
                 type="button"
-                onClick={() =>
-                  setZoom((value) =>
-                    Math.min(
-                      value + 0.25,
-                      3
-                    )
-                  )
-                }
+                onClick={() => setZoom((value) => Math.min(value + 0.25, 3))}
                 disabled={zoom >= 3}
                 className="
                   flex
@@ -535,9 +488,7 @@ export default function ImageGallery({
               sm:h-[calc(100vh-140px)]
               sm:w-[calc(100vw-150px)]
             "
-            onClick={(event) =>
-              event.stopPropagation()
-            }
+            onClick={(event) => event.stopPropagation()}
           >
             <div
               className="
@@ -552,9 +503,7 @@ export default function ImageGallery({
               <Image
                 key={images[selectedIndex]}
                 src={images[selectedIndex]}
-                alt={`${title} detail ${
-                  selectedIndex + 1
-                }`}
+                alt={`${title} detail ${selectedIndex + 1}`}
                 fill
                 priority
                 className="
@@ -592,9 +541,7 @@ export default function ImageGallery({
               pt-14
               text-center
             "
-            onClick={(event) =>
-              event.stopPropagation()
-            }
+            onClick={(event) => event.stopPropagation()}
           >
             <p className="text-xs tracking-[0.2em] text-white/50 uppercase">
               {title}
