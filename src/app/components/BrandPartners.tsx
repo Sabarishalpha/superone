@@ -10,49 +10,53 @@ gsap.registerPlugin(ScrollTrigger);
 const brands = [
   {
     name: "REHAU",
-    logo: "/logos/rehau.svg",
+    logo: "/logos/rehau.jpeg",
   },
   {
     name: "BOSCH",
-    logo: "/logos/bosch.svg",
+    logo: "/logos/bosch.jpeg",
   },
   {
     name: "Royale Touche",
-    logo: "/logos/royale-touche.svg",
+    logo: "/logos/royale-touche.jpeg",
   },
   {
     name: "CROMA",
     description: "Decorative Laminates",
-    logo: "/logos/croma.svg",
+    logo: "/logos/croma.jpeg",
   },
   {
     name: "AIROLAM",
     description: "Laminates | Plywood | Panels | Doors",
-    logo: "/logos/airolam.svg",
+    logo: "/logos/airolam.jpeg",
   },
   {
     name: "E3 Edge Band",
-    logo: "/logos/e3-edge-band.svg",
+    logo: "/logos/e3-edge-band.jpeg",
   },
   {
     name: "CenturyPly",
-    logo: "/logos/centuryply.svg",
+    logo: "/logos/centuryply.jpeg",
   },
   {
     name: "Sharon",
-    logo: "/logos/sharon.svg",
+    logo: "/logos/sharon.jpeg",
+  },
+  {
+    name: "Sharon",
+    logo: "/logos/blum.svg",
   },
   {
     name: "Godrej",
-    logo: "/logos/godrej.svg",
+    logo: "/logos/godrej.jpeg",
   },
   {
     name: "Ebco",
-    logo: "/logos/ebco.svg",
+    logo: "/logos/ebco.jpeg",
   },
   {
     name: "Hettich",
-    logo: "/logos/hettich.svg",
+    logo: "/logos/hettich.jpeg",
   },
   {
     name: "Blum",
@@ -60,15 +64,15 @@ const brands = [
   },
   {
     name: "Mikasa Ply",
-    logo: "/logos/mikasa-ply.svg",
+    logo: "/logos/mikasa-ply.png",
   },
   {
     name: "Ozone",
-    logo: "/logos/ozone.svg",
+    logo: "/logos/ozone.webp",
   },
   {
     name: "Faber",
-    logo: "/logos/faber.svg",
+    logo: "/logos/faber.avif",
   },
 ];
 
