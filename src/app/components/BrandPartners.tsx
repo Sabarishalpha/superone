@@ -102,7 +102,7 @@ function BrandCard({
           width={180}
           height={80}
           className="
-            max-h-14 w-auto max-w-[160px]
+            max-h-25 w-auto max-w-[240px]
             object-contain
             opacity-50
             grayscale
