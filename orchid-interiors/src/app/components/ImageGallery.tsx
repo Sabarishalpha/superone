@@ -130,7 +130,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
           GALLERY GRID
       ====================================================== */}
 
-      <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
         {images.map((image, index) => (
           <button
             key={image}
@@ -147,7 +147,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
               focus-visible:ring-black
               ${
                 index === 0
-                  ? "col-span-2 aspect-16/10 md:col-span-2"
+                  ? "aspect-16/10 sm:col-span-2 md:col-span-2"
                   : "aspect-16/10"
               }
             `}
@@ -164,7 +164,7 @@ export default function ImageGallery({ images, title }: ImageGalleryProps) {
                 group-hover:scale-105
               "
               sizes="
-                (max-width: 640px) 50vw,
+                (max-width: 640px) 100vw,
                 (max-width: 1024px) 33vw,
                 25vw
               "

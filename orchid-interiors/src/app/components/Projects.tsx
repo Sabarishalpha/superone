@@ -9,9 +9,9 @@ import { PROJECTS } from "../data/projects";
 const CATEGORIES = [
   "Residential",
   "Commercial",
-  "Institution",
-  "Hospitality",
   "Modern",
+  "Hospitality",
+  "Institute",
   "Luxury",
 ] as const;
 

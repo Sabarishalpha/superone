@@ -21,14 +21,14 @@ const videos = [
     category: "Design · Craft · Detail",
   },
   {
-    desktop: "/videos/orchid-interiors-landscape.mp4",
-    mobile: "/videos/orchid-interiors-mobile-1.mp4",
+    desktop: "/videos/orchid-interiors-landscape-2.mp4",
+    mobile: "/videos/orchid-interiors-mobile-2.mp4",
     title: "Spaces designed around you.",
     category: "Space · Form · Living",
   },
   {
-    desktop: "/videos/orchid-interiors-landscape.mp4",
-    mobile: "/videos/orchid-interiors-mobile-1.mp4",
+    desktop: "/videos/orchid-interiors-landscape-3.mp4",
+    mobile: "/videos/orchid-interiors-mobile-3.mp4",
     title: "Where craftsmanship meets comfort.",
     category: "Material · Texture · Craft",
   },

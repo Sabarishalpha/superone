@@ -4,7 +4,7 @@ import { z } from "zod";
 const leadSchema = z.object({
   name: z.string().trim().min(2),
   phone: z.string().trim().min(7),
-  email: z.string().trim().email(),
+  email: z.string().trim().email().optional(),
   location: z.string().trim().min(2),
   propertyType: z.string().trim().min(1),
   interiorRequirement: z.string().trim().min(1),

@@ -50,15 +50,14 @@ export async function POST(request: NextRequest) {
     const apiKey = process.env.GEMINI_API_KEY;
 
     if (!apiKey) {
-      console.error("❌ GEMINI_API_KEY is missing");
+          console.error("GEMINI_API_KEY is missing");
 
       return NextResponse.json(
         {
-          error:
-            "Gemini is not configured yet. Add GEMINI_API_KEY to your .env.local file to enable the chat assistant.",
+              error: "The chat service is temporarily unavailable.",
         },
-        {
-          status: 503,
+            {
+              status: 503,
         }
       );
     }
@@ -126,10 +125,10 @@ export async function POST(request: NextRequest) {
       },
     ];
 
-    console.log(" Sending request to Gemini...");
+    console.log("🤖 Sending request to Gemini...");
 
     const response = await ai.models.generateContent({
-      model: "gemini-3.5-flash",
+      model: "gemini-3.6-flash",
       contents,
       config: {
         systemInstruction: SYSTEM_INSTRUCTION,

@@ -377,6 +377,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
                       "
                     controls
                     controlsList="nodownload"
+                    muted
                     playsInline
                     preload="metadata"
                   >

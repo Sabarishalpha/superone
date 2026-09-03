@@ -1,9 +1,9 @@
 export type ProjectCategory =
   | "Residential"
   | "Commercial"
-  | "Institution"
-  | "Hospitality"
   | "Modern"
+  | "Hospitality"
+  | "Institute"
   | "Luxury";
 
 export type Project = {
@@ -29,7 +29,7 @@ export type Project = {
 
 export const PROJECTS: Project[] = [
   // ============================================================
-  // RESIDENTIAL — 5 PROJECTS
+  // RESIDENTIAL — 4 PROJECTS
   // ============================================================
 
   {
@@ -39,24 +39,42 @@ export const PROJECTS: Project[] = [
     slug: "harmonia-residence",
     category: "Residential",
     location: "Bangalore",
-    image: "/images/projects/harmonia.jpg",
-    width: 1600,
-    height: 1067,
+
+    image: "/images/projects/Sathyamoorthy (12).png",
+    width: 1920 ,
+    height: 1080,
 
     gallery: [
-      "/images/projects/harmonia.jpg",
-      "/images/projects/harmonia-2.jpg",
-      "/images/projects/harmonia-3.jpg",
-      "/images/projects/harmonia-4.jpg",
-      "/images/projects/harmonia-5.jpg",
-      "/images/projects/harmonia-6.jpg",
-      "/images/projects/harmonia-7.jpg",
-      "/images/projects/harmonia-8.jpg",
-      "/images/projects/harmonia-9.jpg",
-      "/images/projects/harmonia-10.jpg",
+      "/images/projects/Sathyamoorthy (1).png",
+      "/images/projects/Sathyamoorthy (2).png",
+      "/images/projects/Sathyamoorthy (3).png",
+      "/images/projects/Sathyamoorthy (4).png",
+      "/images/projects/Sathyamoorthy (5).png",
+      "/images/projects/Sathyamoorthy (6).png",
+      "/images/projects/Sathyamoorthy (7).png",
+      "/images/projects/Sathyamoorthy (8).png",
+      "/images/projects/Sathyamoorthy (9).png",
+      "/images/projects/Sathyamoorthy (10).png",
+      "/images/projects/Sathyamoorthy (11).png",
+      "/images/projects/Sathyamoorthy (12).png",
+      "/images/projects/Sathyamoorthy (13).png",
+      "/images/projects/Sathyamoorthy (14).png",
+      "/images/projects/Sathyamoorthy (15).png",
+      "/images/projects/Sathyamoorthy (16).png",
+      "/images/projects/Sathyamoorthy (17).png",
+      "/images/projects/Sathyamoorthy (18).png",
+      "/images/projects/Sathyamoorthy (19).png",
+      "/images/projects/Sathyamoorthy (20).png",
+      "/images/projects/Sathyamoorthy (21).png",
+      "/images/projects/Sathyamoorthy (22).png",
+      "/images/projects/Sathyamoorthy (23).png",
+      "/images/projects/Sathyamoorthy (24).png",
+      "/images/projects/Sathyamoorthy (25).png",
+      "/images/projects/Sathyamoorthy (26).png",
+
     ],
 
-    video: "/videos/projects/harmonia.mp4",
+    video: "/videos/projects/test.mp4",
   },
 
   {
@@ -67,18 +85,42 @@ export const PROJECTS: Project[] = [
     category: "Residential",
     location: "Coimbatore",
 
-    image: "/images/projects/aria.jpg",
-    width: 1600,
-    height: 1067,
+    image: "/images/projects/Ravichandram interior (1).jpg",
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
-      "/images/projects/aria.jpg",
-      "/images/projects/aria-2.jpg",
-      "/images/projects/aria-3.jpg",
-      "/images/projects/aria-4.jpg",
+  // ============================================================
+  // 24 images
+  //   // ============================================================
+
+      "/images/projects/Ravichandram interior (1).jpg",
+      "/images/projects/Ravichandram interior (2).jpg",
+      "/images/projects/Ravichandram interior (3).jpg",
+      "/images/projects/Ravichandram interior (4).jpg",
+      "/images/projects/Ravichandram interior (5).jpg",
+      "/images/projects/Ravichandram interior (6).jpg",
+      "/images/projects/Ravichandram interior (7).jpg",
+      "/images/projects/Ravichandram interior (8).jpg",
+      "/images/projects/Ravichandram interior (9).jpg",
+      "/images/projects/Ravichandram interior (10).jpg",
+      "/images/projects/Ravichandram interior (11).jpg",
+      "/images/projects/Ravichandram interior (12).jpg",
+      "/images/projects/Ravichandram interior (13).jpg",
+      "/images/projects/Ravichandram interior (14).jpg",
+      "/images/projects/Ravichandram interior (15).jpg",
+      "/images/projects/Ravichandram interior (16).jpg",
+      "/images/projects/Ravichandram interior (17).jpg",
+      "/images/projects/Ravichandram interior (18).jpg",
+      "/images/projects/Ravichandram interior (19).jpg",
+      "/images/projects/Ravichandram interior (20).jpg",
+      "/images/projects/Ravichandram interior (21).jpg",
+      "/images/projects/Ravichandram interior (22).jpg",
+      "/images/projects/Ravichandram interior (23).jpg",
+      "/images/projects/Ravichandram interior (24).jpg"
     ],
 
-    video: "/videos/projects/aria.mp4",
+    video: "/videos/projects/test.mp4",
   },
 
   {
@@ -90,8 +132,8 @@ export const PROJECTS: Project[] = [
     location: "Chennai",
 
     image: "/images/projects/elysian.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/elysian.jpg",
@@ -112,8 +154,8 @@ export const PROJECTS: Project[] = [
     location: "Bangalore",
 
     image: "/images/projects/solara.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/solara.jpg",
@@ -126,7 +168,7 @@ export const PROJECTS: Project[] = [
   },
 
   // ============================================================
-  // COMMERCIAL — 5 PROJECTS
+  // COMMERCIAL — 4 PROJECTS
   // ============================================================
 
   {
@@ -137,18 +179,38 @@ export const PROJECTS: Project[] = [
     category: "Commercial",
     location: "Bangalore",
 
-    image: "/images/projects/aurelia-office.jpg",
-    width: 1600,
-    height: 1067,
+    image: "/images/projects/sasi (5).png",
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
-      "/images/projects/aurelia-office.jpg",
-      "/images/projects/aurelia-office-2.jpg",
-      "/images/projects/aurelia-office-3.jpg",
-      "/images/projects/aurelia-office-4.jpg",
+      "/images/projects/sasi (5).png",
+      "/images/projects/sasi (2).png",
+      "/images/projects/sasi (3).png",
+      "/images/projects/sasi (4).png",
+      "/images/projects/sasi (1).png", 
+      "/images/projects/sasi (6).png",
+      "/images/projects/sasi (7).png",
+      "/images/projects/sasi (8).png",
+      "/images/projects/sasi (9).png",
+      "/images/projects/sasi (10).png",
+      "/images/projects/sasi (11).png",
+      "/images/projects/sasi (12).png",
+      "/images/projects/sasi (13).png",
+      "/images/projects/sasi (14).png",
+      "/images/projects/sasi (15).png",
+      "/images/projects/sasi (16).png",
+      "/images/projects/sasi (17).png",
+      "/images/projects/sasi (18).png",
+      "/images/projects/sasi (19).png",
+      "/images/projects/sasi (20).png",
+      "/images/projects/sasi (21).png",
+      "/images/projects/sasi (22).png",
+      "/images/projects/sasi (23).png",
+      "/images/projects/sasi (24).png"
     ],
 
-    video: "/videos/projects/aurelia-office.mp4",
+    video: "/videos/projects/sasi.mp4",
   },
 
   {
@@ -160,8 +222,8 @@ export const PROJECTS: Project[] = [
     location: "Coimbatore",
 
     image: "/images/projects/atelier.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/atelier.jpg",
@@ -182,8 +244,8 @@ export const PROJECTS: Project[] = [
     location: "Chennai",
 
     image: "/images/projects/vertex.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/vertex.jpg",
@@ -204,8 +266,8 @@ export const PROJECTS: Project[] = [
     location: "Bangalore",
 
     image: "/images/projects/nexa.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/nexa.jpg",
@@ -218,7 +280,7 @@ export const PROJECTS: Project[] = [
   },
 
   // ============================================================
-  // MODERN — 5 PROJECTS
+  // MODERN — 4 PROJECTS
   // ============================================================
 
   {
@@ -229,15 +291,36 @@ export const PROJECTS: Project[] = [
     category: "Modern",
     location: "Bangalore",
 
-    image: "/images/projects/monochrome.jpg",
-    width: 1600,
-    height: 1067,
+    image: "/images/projects/Dr. Shankar (1).jpg",
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
-      "/images/projects/monochrome.jpg",
-      "/images/projects/monochrome-2.jpg",
-      "/images/projects/monochrome-3.jpg",
-      "/images/projects/monochrome-4.jpg",
+      "/images/projects/Dr. Shankar (1).jpg",
+      "/images/projects/Dr. Shankar (2).jpg",
+      "/images/projects/Dr. Shankar (3).jpg",
+      "/images/projects/Dr. Shankar (4).jpg",
+      "/images/projects/Dr. Shankar (5).jpg",
+      "/images/projects/Dr. Shankar (6).jpg",
+      "/images/projects/Dr. Shankar (7).jpg",
+      "/images/projects/Dr. Shankar (8).jpg",
+      "/images/projects/Dr. Shankar (9).jpg",
+      "/images/projects/Dr. Shankar (10).jpg",
+      "/images/projects/Dr. Shankar (11).jpg",
+      "/images/projects/Dr. Shankar (12).jpg",
+      "/images/projects/Dr. Shankar (13).jpg",
+      "/images/projects/Dr. Shankar (14).jpg",
+      "/images/projects/Dr. Shankar (15).jpg",
+      "/images/projects/Dr. Shankar (16).jpg",
+      "/images/projects/Dr. Shankar (17).jpg",
+      "/images/projects/Dr. Shankar (18).jpg",
+      "/images/projects/Dr. Shankar (19).jpg",
+      "/images/projects/Dr. Shankar (20).jpg",
+      "/images/projects/Dr. Shankar (21).jpg",
+      "/images/projects/Dr. Shankar (22).jpg",
+      "/images/projects/Dr. Shankar (23).jpg",
+      "/images/projects/Dr. Shankar (24).jpg",
+      "/images/projects/Dr. Shankar (25).jpg",
     ],
 
     video: "/videos/projects/monochrome.mp4",
@@ -252,8 +335,8 @@ export const PROJECTS: Project[] = [
     location: "Chennai",
 
     image: "/images/projects/linear.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/linear.jpg",
@@ -274,8 +357,8 @@ export const PROJECTS: Project[] = [
     location: "Coimbatore",
 
     image: "/images/projects/minimalist.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/minimalist.jpg",
@@ -296,8 +379,8 @@ export const PROJECTS: Project[] = [
     location: "Bangalore",
 
     image: "/images/projects/axis.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/axis.jpg",
@@ -310,7 +393,7 @@ export const PROJECTS: Project[] = [
   },
 
   // ============================================================
-  // LUXURY — 5 PROJECTS
+  // LUXURY — 4 PROJECTS
   // ============================================================
 
   {
@@ -321,15 +404,26 @@ export const PROJECTS: Project[] = [
     category: "Luxury",
     location: "Bangalore",
 
-    image: "/images/projects/grand-residence.jpg",
-    width: 1600,
-    height: 1067,
+    image: "/images/projects/NOOR (1).png",
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
-      "/images/projects/grand-residence.jpg",
-      "/images/projects/grand-residence-2.jpg",
-      "/images/projects/grand-residence-3.jpg",
-      "/images/projects/grand-residence-4.jpg",
+      "/images/projects/NOOR (1).png ",
+      "/images/projects/NOOR (2).PNG",
+      "/images/projects/NOOR (3).PNG",
+      "/images/projects/NOOR (4).PNG",
+      "/images/projects/NOOR (5).PNG",
+      "/images/projects/NOOR (6).PNG",
+      "/images/projects/NOOR (7).PNG",
+      "/images/projects/NOOR (8).PNG",
+      "/images/projects/NOOR (9).PNG",
+      "/images/projects/NOOR (10).PNG",
+      "/images/projects/NOOR (11).PNG",
+      "/images/projects/NOOR (12).PNG",
+      "/images/projects/NOOR (13).PNG",
+      "/images/projects/NOOR (14).PNG",
+      "/images/projects/NOOR (15).PNG",
     ],
 
     video: "/videos/projects/grand-residence.mp4",
@@ -344,8 +438,8 @@ export const PROJECTS: Project[] = [
     location: "Chennai",
 
     image: "/images/projects/imperial-villa.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/imperial-villa.jpg",
@@ -366,8 +460,8 @@ export const PROJECTS: Project[] = [
     location: "Coimbatore",
 
     image: "/images/projects/royale-estate.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/royale-estate.jpg",
@@ -388,8 +482,8 @@ export const PROJECTS: Project[] = [
     location: "Bangalore",
 
     image: "/images/projects/opulent-house.jpg",
-    width: 1600,
-    height: 1067,
+    width: 1920 ,
+    height: 1080 ,
 
     gallery: [
       "/images/projects/opulent-house.jpg",
@@ -399,6 +493,116 @@ export const PROJECTS: Project[] = [
     ],
 
     video: "/videos/projects/opulent-house.mp4",
+  },
+
+  // ============================================================
+  // Hospitality — 2 PROJECTS
+  // ============================================================
+  {
+    id: 21,
+    number: "01",
+    title: "The Luxe Hotel",
+    slug: "luxe-hotel",
+    category: "Hospitality",
+    location: "Bangalore",
+
+    image: "/images/projects/sengeetha (5).png",
+    width: 1920 ,
+    height: 1080 ,
+
+    gallery: [
+      "/images/projects/sengeetha (1).png",
+      "/images/projects/sengeetha (2).png",
+      "/images/projects/sengeetha (3).png",
+      "/images/projects/sengeetha (4).png",
+      "/images/projects/sengeetha (5).png",
+      "/images/projects/sengeetha (6).png",
+      "/images/projects/sengeetha (7).png",
+      "/images/projects/sengeetha (8).png",
+      "/images/projects/sengeetha (9).png",
+      "/images/projects/sengeetha (10).png",
+      "/images/projects/sengeetha (11).png",
+      "/images/projects/sengeetha (12).png",
+      "/images/projects/sengeetha (13).png",
+      "/images/projects/sengeetha (14).png",
+    ],
+
+    video: "/videos/projects/luxe-hotel.mp4",
+  },
+
+  {
+    id: 22,
+    number: "02",
+    title: "The Grand Resort",
+    slug: "grand-resort",
+    category: "Hospitality",
+    location: "Chennai",
+
+    image: "/images/projects/grand-resort.jpg",
+    width: 1920 ,
+    height: 1080 ,
+
+    gallery: [
+      "/images/projects/grand-resort.jpg",
+      "/images/projects/grand-resort-2.jpg",
+      "/images/projects/grand-resort-3.jpg",
+      "/images/projects/grand-resort-4.jpg",
+    ],
+
+    video: "/videos/projects/grand-resort.mp4",
+  },
+  // ============================================================
+  // Institute — 2 PROJECTS
+  // ============================================================
+  {
+    id: 23,
+    number: "01",
+    title: "The Elite Academy",
+    slug: "elite-academy",
+    category: "Institute",
+    location: "Bangalore",
+
+    image: "/images/projects/kongu (1).png",
+    width: 1920 ,
+    height: 1080 ,
+
+    gallery: [
+      "/images/projects/kongu (1).png",
+      "/images/projects/kongu (2).png",
+      "/images/projects/kongu (3).png",
+      "/images/projects/kongu (4).png",
+      "/images/projects/kongu (5).png",
+      "/images/projects/kongu (6).png",
+      "/images/projects/kongu (7).png",
+      "/images/projects/kongu (8).png",
+      "/images/projects/kongu (9).png",
+      "/images/projects/kongu (10).png",
+      "/images/projects/kongu (11).png",
+    ],
+
+    video: "/videos/projects/elite-academy.mp4",
+  },
+
+  {
+    id: 24,
+    number: "02",
+    title: "The Knowledge Hub",
+    slug: "knowledge-hub",
+    category: "Institute",
+    location: "Chennai",
+
+    image: "/images/projects/knowledge-hub.jpg",
+    width: 1920 ,
+    height: 1080 ,
+
+    gallery: [
+      "/images/projects/knowledge-hub.jpg",
+      "/images/projects/knowledge-hub-2.jpg",
+      "/images/projects/knowledge-hub-3.jpg",
+      "/images/projects/knowledge-hub-4.jpg",
+    ],
+
+    video: "/videos/projects/knowledge-hub.mp4",
   },
 
 ];

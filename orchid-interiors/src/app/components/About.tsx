@@ -33,8 +33,7 @@ export default function About() {
         <p
           data-about-label
           className="mb-6 text-sm font-medium tracking-[0.32em] text-stone-600 sm:text-base md:text-lg"
-        >
-        </p>
+        ></p>
 
         {/* Main Layout - Grid */}
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20">
@@ -72,7 +71,10 @@ export default function About() {
               className="group inline-flex items-center gap-2 text-sm font-medium text-black transition-opacity duration-300 hover:opacity-60 md:text-base"
             >
               Discover Our Approach
-              <span aria-hidden="true" className="transition-transform duration-300 group-hover:translate-x-1">
+              <span
+                aria-hidden="true"
+                className="transition-transform duration-300 group-hover:translate-x-1"
+              >
                 →
               </span>
             </Link>
@@ -83,7 +85,7 @@ export default function About() {
             data-about-image
             className="relative w-full overflow-hidden rounded-lg"
           >
-            <div 
+            <div
               className="relative w-full mb-8"
               style={{ aspectRatio: "26 / 18" }}
             >
@@ -109,6 +111,7 @@ export default function About() {
                       alt={`Orchid Interiors interior design ${index + 1}`}
                       fill
                       priority={index === 0}
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-cover"
                     />
                   </SwiperSlide>
