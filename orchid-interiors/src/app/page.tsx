@@ -7,8 +7,24 @@ import Footer from "./components/Footer";
 import FeaturedProjects from "./components/FeaturedProjects";
 import VideoShowcase from "./components/VideoShowcase";
 import BrandPartners from "./components/BrandPartners";
+import { getProjects, getServices } from "@/lib/content";
 
-export default function Home() {
+export const dynamic = "force-dynamic";
+
+export default async function Home() {
+  const [projectItems, services] = await Promise.all([
+    getProjects(),
+    getServices(),
+  ]);
+  const projects = projectItems.map((project) => ({
+    ...project,
+    category: project.category as
+      | "Residential"
+      | "Commercial"
+      | "Hospitality"
+      | "Institute"
+      | "Luxury",
+  }));
   return (
     <>
       <Navbar />
@@ -16,12 +32,11 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <Services />
-        <FeaturedProjects />
+        <Services services={services} />
+        <FeaturedProjects projects={projectItems} />
         <BrandPartners />
         <VideoShowcase />
-        <Projects />
-        
+        <Projects projectLimit={2} projects={projects} />
       </main>
 
       <Footer />

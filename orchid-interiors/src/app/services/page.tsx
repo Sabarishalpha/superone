@@ -4,6 +4,7 @@ import Services from "../components/Services";
 import Footer from "../components/Footer";
 import Link from "next/link";
 import PageHeader from "../components/PageHeader";
+import { getServices } from "@/lib/content";
 
 const processSteps = [
   {
@@ -29,10 +30,16 @@ const valuePoints = [
 export const metadata: Metadata = {
   title: "Interior Design Services",
   description:
-    "Explore Orchid Interiors services including residential interiors, commercial design, space planning, custom furniture and turnkey execution.",
+    "Explore Orchid Interiors services including modular kitchens, bedrooms, living rooms, workspaces, partitions, institutions and hospitality interiors.",
+  alternates: { canonical: "/services" },
+  openGraph: { url: "/services", images: ["/images/services.jpg"] },
+  twitter: { images: ["/images/services.jpg"] },
 };
 
-export default function ServicesPage() {
+export const dynamic = "force-dynamic";
+
+export default async function ServicesPage() {
+  const services = await getServices();
   return (
     <>
       <Navbar />
@@ -40,9 +47,9 @@ export default function ServicesPage() {
         image="/images/services.jpg"
         imageAlt="Refined residential interior designed by Orchid Interiors"
       />
-      <Services />
+      <Services services={services} />
 
-      <section className="relative w-full bg-stone-50 px-4 py-20 sm:px-6 md:px-10 lg:px-16">
+      <section className="relative w-full bg-stone-50 px-4 py-14 sm:px-6 sm:py-16 md:px-10 md:py-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div className="mt-0 grid gap-10 lg:grid-cols-3">
             <div className="mb-4 text-center lg:col-span-3">
@@ -62,13 +69,15 @@ export default function ServicesPage() {
                 <div className="mb-5 flex h-10 w-10 items-center justify-center rounded-full bg-stone-900 text-sm font-medium text-white">
                   0{index + 1}
                 </div>
-                <h4 className="mb-3 text-xl font-light text-black">{step.title}</h4>
+                <h4 className="mb-3 text-xl font-light text-black">
+                  {step.title}
+                </h4>
                 <p className="text-sm leading-7 text-stone-700">{step.text}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-20 rounded-[2rem] bg-black px-6 py-10 text-white sm:px-8 lg:px-10 lg:py-12">
+          <div className="mt-12 rounded-[2rem] bg-black px-6 py-8 text-white sm:px-8 lg:px-10 lg:py-10">
             <div className="grid gap-10 lg:grid-cols-[1.2fr_2fr] lg:items-center">
               <div>
                 <p className="mb-4 text-xs font-medium tracking-[0.32em] text-stone-300 uppercase">
@@ -85,15 +94,19 @@ export default function ServicesPage() {
                     key={item.label}
                     className="rounded-[1.5rem] border border-white/15 bg-white/5 p-5"
                   >
-                    <p className="mb-3 text-2xl font-light text-white">{item.value}</p>
-                    <p className="text-sm leading-6 text-stone-300">{item.label}</p>
+                    <p className="mb-3 text-2xl font-light text-white">
+                      {item.value}
+                    </p>
+                    <p className="text-sm leading-6 text-stone-300">
+                      {item.label}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="mt-20">
+          <div className="mt-12">
             <div className="mb-8 text-center">
               <p className="mb-4 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
                 FEATURED STYLING NOTES
@@ -125,14 +138,18 @@ export default function ServicesPage() {
                   <p className="mb-3 text-[10px] font-medium tracking-[0.2em] uppercase text-stone-500">
                     Studio note
                   </p>
-                  <h4 className="mb-3 text-xl font-light text-black">{note.title}</h4>
-                  <p className="text-sm leading-7 text-stone-700">{note.text}</p>
+                  <h4 className="mb-3 text-xl font-light text-black">
+                    {note.title}
+                  </h4>
+                  <p className="text-sm leading-7 text-stone-700">
+                    {note.text}
+                  </p>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="mt-20 rounded-[2rem] border border-stone-300 bg-white px-6 py-10 text-center sm:px-8 lg:px-12 lg:py-14">
+          <div className="mt-12 rounded-[2rem] border border-stone-300 bg-white px-6 py-8 text-center sm:px-8 lg:px-12 lg:py-10">
             <p className="mb-4 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
               START YOUR PROJECT
             </p>
@@ -140,7 +157,8 @@ export default function ServicesPage() {
               Let’s shape a home or workspace that feels distinctly yours.
             </h3>
             <p className="mx-auto mt-5 max-w-xl text-base leading-7 text-stone-700">
-              Share your brief, timeline and vision. We’ll guide you through the next steps with a tailored design approach.
+              Share your brief, timeline and vision. We’ll guide you through the
+              next steps with a tailored design approach.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <a

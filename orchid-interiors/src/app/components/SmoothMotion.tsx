@@ -10,6 +10,8 @@ export default function SmoothMotion() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (pathname.startsWith("/admin")) return;
+
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     if (reduceMotion.matches) return;
 
@@ -18,14 +20,14 @@ export default function SmoothMotion() {
       autoRaf: true,
       smoothWheel: true,
     });
-    let setupFrame = 0;
+    let setupTimeout = 0;
     const observers: IntersectionObserver[] = [];
 
     let sectionAnimations: gsap.core.Tween[] = [];
 
-    setupFrame = window.requestAnimationFrame(() => {
+    setupTimeout = window.setTimeout(() => {
       const sections = gsap.utils.toArray<HTMLElement>(
-        "main > section, main > footer, body > section, body > footer",
+        "main:not([data-library-page]) > section, main:not([data-library-page]) > footer, body > section, body > footer",
       );
       sectionAnimations = sections.map((section) =>
         gsap.fromTo(
@@ -44,19 +46,22 @@ export default function SmoothMotion() {
 
       sections.forEach((section, index) => {
         const animation = sectionAnimations[index];
-        const observer = new IntersectionObserver(([entry]) => {
-          if (entry.isIntersecting) {
-            animation.play();
-            observer.disconnect();
-          }
-        }, { threshold: 0.12 });
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              animation.play();
+              observer.disconnect();
+            }
+          },
+          { threshold: 0.12 },
+        );
         observers.push(observer);
         observer.observe(section);
       });
-    });
+    }, 150);
 
     return () => {
-      window.cancelAnimationFrame(setupFrame);
+      window.clearTimeout(setupTimeout);
       lenis.destroy();
       observers.forEach((observer) => observer.disconnect());
       sectionAnimations.forEach((animation) => animation.kill());

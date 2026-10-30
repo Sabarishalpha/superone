@@ -1,16 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowLeft,
-  ArrowRight,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ImageGallery from "../../components/ImageGallery";
+import { notFound } from "next/navigation";
 
-import { SERVICES } from "../../data/services";
+import { getServices } from "@/lib/content";
 
 type ServicePageProps = {
   params: Promise<{
@@ -18,20 +16,14 @@ type ServicePageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return SERVICES.map((service) => ({
-    slug: service.slug,
-  }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({
   params,
 }: ServicePageProps): Promise<Metadata> {
   const { slug } = await params;
 
-  const service = SERVICES.find(
-    (item) => item.slug === slug
-  );
+  const service = (await getServices()).find((item) => item.slug === slug);
 
   return {
     title: service
@@ -39,20 +31,19 @@ export async function generateMetadata({
       : "Service | Orchid Interiors",
 
     description: service?.description,
+    alternates: { canonical: `/services/${slug}` },
+    openGraph: service ? { images: [service.image] } : undefined,
+    twitter: service ? { images: [service.image] } : undefined,
   };
 }
 
-export default async function ServiceDetailPage({
-  params,
-}: ServicePageProps) {
+export default async function ServiceDetailPage({ params }: ServicePageProps) {
   const { slug } = await params;
 
-  const service = SERVICES.find(
-    (item) => item.slug === slug
-  );
+  const service = (await getServices()).find((item) => item.slug === slug);
 
   if (!service) {
-    return null;
+    notFound();
   }
 
   return (
@@ -63,8 +54,7 @@ export default async function ServiceDetailPage({
 
       <Navbar />
 
-      <main className="bg-stone-50 pt-24">
-
+      <main className="bg-stone-50 pt-16">
         {/* ==================================================
             HERO
         ================================================== */}
@@ -76,18 +66,17 @@ export default async function ServiceDetailPage({
             max-w-7xl
             gap-10
             px-4
-            py-12
+            py-8
             sm:px-6
             md:px-10
-            md:py-20
+            md:py-12
             lg:grid-cols-[0.9fr_1.1fr]
             lg:items-center
             lg:px-16
-            lg:py-24
+            lg:py-16
           "
         >
           <div>
-
             {/* Back */}
 
             <Link
@@ -106,7 +95,6 @@ export default async function ServiceDetailPage({
               "
             >
               <ArrowLeft className="h-4 w-4" />
-
               All services
             </Link>
 
@@ -174,7 +162,6 @@ export default async function ServiceDetailPage({
               "
             >
               Discuss your project
-
               <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
@@ -203,6 +190,24 @@ export default async function ServiceDetailPage({
           </div>
         </section>
 
+        {service.video ? (
+          <section className="bg-stone-50 px-4 pb-12 sm:px-6 md:px-10 lg:px-16 lg:pb-16">
+            <div className="mx-auto max-w-7xl overflow-hidden bg-black">
+              <video
+                className="aspect-video w-full object-cover"
+                controls
+                controlsList="nodownload"
+                muted
+                playsInline
+                preload="metadata"
+              >
+                <source src={service.video} />
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </section>
+        ) : null}
+
         {/* ==================================================
             APPROACH
         ================================================== */}
@@ -213,11 +218,11 @@ export default async function ServiceDetailPage({
             border-stone-300
             bg-white
             px-4
-            py-16
+            py-12
             sm:px-6
             md:px-10
             lg:px-16
-            lg:py-20
+            lg:py-16
           "
         >
           <div
@@ -249,8 +254,7 @@ export default async function ServiceDetailPage({
                   text-black
                 "
               >
-                Designed around your way of
-                living.
+                Designed around your way of living.
               </h2>
             </div>
 
@@ -261,10 +265,9 @@ export default async function ServiceDetailPage({
                 text-stone-700
               "
             >
-              Every project starts with listening.
-              We balance your brief, the architecture
-              and the details that make a space feel
-              unmistakably yours.
+              Every project starts with listening. We balance your brief, the
+              architecture and the details that make a space feel unmistakably
+              yours.
             </p>
 
             <p
@@ -274,9 +277,8 @@ export default async function ServiceDetailPage({
                 text-stone-700
               "
             >
-              From concept and material selection to
-              execution, our team keeps the process
-              clear, considered and personal.
+              From concept and material selection to execution, our team keeps
+              the process clear, considered and personal.
             </p>
           </div>
         </section>
@@ -289,15 +291,14 @@ export default async function ServiceDetailPage({
           className="
             bg-stone-50
             px-4
-            py-16
+            py-12
             sm:px-6
             md:px-10
             lg:px-16
-            lg:py-24
+            lg:py-16
           "
         >
           <div className="mx-auto max-w-7xl">
-
             {/* Heading */}
 
             <div
@@ -344,19 +345,14 @@ export default async function ServiceDetailPage({
                   text-stone-600
                 "
               >
-                Materials, proportions and moments
-                that bring each design direction to
-                life.
+                Materials, proportions and moments that bring each design
+                direction to life.
               </p>
             </div>
 
             {/* Interactive Gallery */}
 
-            <ImageGallery
-              images={service.gallery}
-              title={service.title}
-            />
-
+            <ImageGallery images={service.gallery} title={service.title} />
           </div>
         </section>
       </main>

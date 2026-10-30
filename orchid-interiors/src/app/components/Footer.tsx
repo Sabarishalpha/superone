@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
+  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
-  FaPinterestP,
-  FaXTwitter,
+  FaYoutube,
 } from "react-icons/fa6";
 
 export default function Footer() {
@@ -15,11 +15,11 @@ export default function Footer() {
       className="relative w-full bg-black text-white"
     >
       {/* Main Footer Content */}
-      <div className="px-4 py-16 sm:px-6 md:px-10 md:py-20 lg:px-16 lg:py-24">
+      <div className="px-4 py-12 sm:px-6 md:px-10 md:py-16 lg:px-16 lg:py-20">
         <div className="mx-auto max-w-7xl">
           {/* Top Section - Brand & CTA */}
-          <div className="mb-16 border-b border-white/10 pb-16 md:mb-20 md:pb-20">
-            <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mb-12 border-b border-white/10 pb-12 md:mb-14 md:pb-14">
+            <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
               {/* Brand Column */}
               <div className="lg:col-span-1">
                 {/* Logo */}
@@ -41,7 +41,6 @@ export default function Footer() {
                   >
                     Make Dream Into reality
                   </h2>
-
                 </div>
 
                 {/* CTA Button */}
@@ -176,7 +175,10 @@ export default function Footer() {
           </div>
 
           {/* Bottom Section - Social & Legal */}
-          <div data-footer-bottom className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between">
+          <div
+            data-footer-bottom
+            className="flex flex-col gap-8 md:flex-row md:items-center md:justify-between"
+          >
             {/* Left - Copyright */}
             <div className="text-xs leading-relaxed text-white/60 sm:text-sm md:text-base">
               <p className="mb-2">© 2026 Orchid Interiors</p>
@@ -184,9 +186,12 @@ export default function Footer() {
             </div>
 
             {/* Middle - Social Links */}
-            <div data-footer-social className="flex items-center gap-6 sm:gap-8">
+            <div
+              data-footer-social
+              className="flex items-center gap-6 sm:gap-8"
+            >
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/orchid.modular.interiors/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow Orchid Interiors on Instagram"
@@ -195,25 +200,25 @@ export default function Footer() {
                 <FaInstagram className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
-                href="https://x.com"
+                href="https://www.facebook.com/profile.php?id=61591790151314"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Orchid Interiors on X (Twitter)"
+                aria-label="Follow Orchid Interiors on Facebook"
                 className="transition-colors duration-300 hover:text-white/60"
               >
-                <FaXTwitter className="h-5 w-5 sm:h-6 sm:w-6" />
+                <FaFacebookF className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
-                href="https://pinterest.com"
+                href="https://www.youtube.com/@orchid_interiors"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Orchid Interiors on Pinterest"
+                aria-label="Follow Orchid Interiors on YouTube"
                 className="transition-colors duration-300 hover:text-white/60"
               >
-                <FaPinterestP className="h-5 w-5 sm:h-6 sm:w-6" />
+                <FaYoutube className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/company/orchid-modular-interiors/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Connect with Orchid Interiors on LinkedIn"
