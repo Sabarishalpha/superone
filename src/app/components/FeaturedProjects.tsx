@@ -5,8 +5,15 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+<<<<<<< HEAD
 
 type Project = {
+=======
+import type { Project as ProjectContent } from "../data/projects";
+import { resolveProjectAsset } from "@/lib/project-assets";
+
+type FeaturedProject = {
+>>>>>>> origin/main
   id: number;
   title: string;
   location: string;
@@ -15,6 +22,7 @@ type Project = {
   href: string;
 };
 
+<<<<<<< HEAD
 const projects: Project[] = [
   {
     id: 1,
@@ -64,6 +72,22 @@ const projects: Project[] = [
 ];
 
 export default function FeaturedProjects() {
+=======
+export default function FeaturedProjects({
+  projects: projectItems,
+}: {
+  projects: readonly ProjectContent[];
+}) {
+  const projects: FeaturedProject[] = projectItems.slice(0, 5).map((project) => ({
+    id: project.id,
+    title: project.title,
+    location: project.location,
+    description: project.description ?? `${project.category} interiors by Orchid Interiors.`,
+    image: resolveProjectAsset(project.image),
+    href: `/projects/${project.slug}`,
+  }));
+  const projectCount = projects.length;
+>>>>>>> origin/main
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
 
@@ -73,6 +97,10 @@ export default function FeaturedProjects() {
 
   const touchStartX = useRef<number | null>(null);
   const autoplayRef = useRef<NodeJS.Timeout | null>(null);
+<<<<<<< HEAD
+=======
+  const transitionRef = useRef<gsap.core.Timeline | null>(null);
+>>>>>>> origin/main
 
   const activeProject = projects[activeIndex];
 
@@ -95,10 +123,19 @@ export default function FeaturedProjects() {
 
       const timeline = gsap.timeline({
         onComplete: () => {
+<<<<<<< HEAD
+=======
+          transitionRef.current = null;
+>>>>>>> origin/main
           setActiveIndex(newIndex);
           setIsAnimating(false);
         },
       });
+<<<<<<< HEAD
+=======
+      transitionRef.current?.kill();
+      transitionRef.current = timeline;
+>>>>>>> origin/main
 
       /*
        * Current image leaves
@@ -131,7 +168,11 @@ export default function FeaturedProjects() {
           duration: 1,
           ease: "power3.out",
         },
+<<<<<<< HEAD
         "-=0.45"
+=======
+        "-=0.45",
+>>>>>>> origin/main
       );
 
       /*
@@ -148,7 +189,11 @@ export default function FeaturedProjects() {
             stagger: 0.03,
             ease: "power2.in",
           },
+<<<<<<< HEAD
           "-=0.8"
+=======
+          "-=0.8",
+>>>>>>> origin/main
         )
         .to(
           contentRef.current.children,
@@ -159,10 +204,17 @@ export default function FeaturedProjects() {
             stagger: 0.06,
             ease: "power3.out",
           },
+<<<<<<< HEAD
           "-=0.05"
         );
     },
     [activeIndex, isAnimating]
+=======
+          "-=0.05",
+        );
+    },
+    [activeIndex, isAnimating],
+>>>>>>> origin/main
   );
 
   /*
@@ -172,6 +224,7 @@ export default function FeaturedProjects() {
    */
 
   const nextSlide = useCallback(() => {
+<<<<<<< HEAD
     const nextIndex = (activeIndex + 1) % projects.length;
     changeSlide(nextIndex, 1);
   }, [activeIndex, changeSlide]);
@@ -182,6 +235,17 @@ export default function FeaturedProjects() {
 
     changeSlide(previousIndex, -1);
   }, [activeIndex, changeSlide]);
+=======
+    const nextIndex = (activeIndex + 1) % projectCount;
+    changeSlide(nextIndex, 1);
+  }, [activeIndex, changeSlide, projectCount]);
+
+  const previousSlide = useCallback(() => {
+    const previousIndex = (activeIndex - 1 + projectCount) % projectCount;
+
+    changeSlide(previousIndex, -1);
+  }, [activeIndex, changeSlide, projectCount]);
+>>>>>>> origin/main
 
   /*
    * ------------------------------------------
@@ -190,17 +254,29 @@ export default function FeaturedProjects() {
    */
 
   const startAutoplay = useCallback(() => {
+<<<<<<< HEAD
+=======
+    if (projectCount < 2) return;
+>>>>>>> origin/main
     if (autoplayRef.current) {
       clearInterval(autoplayRef.current);
     }
 
     autoplayRef.current = setInterval(() => {
       if (!isAnimating) {
+<<<<<<< HEAD
         const nextIndex = (activeIndex + 1) % projects.length;
         changeSlide(nextIndex, 1);
       }
     }, 5500);
   }, [activeIndex, changeSlide, isAnimating]);
+=======
+        const nextIndex = (activeIndex + 1) % projectCount;
+        changeSlide(nextIndex, 1);
+      }
+    }, 5500);
+  }, [activeIndex, changeSlide, isAnimating, projectCount]);
+>>>>>>> origin/main
 
   useEffect(() => {
     startAutoplay();
@@ -270,7 +346,14 @@ export default function FeaturedProjects() {
    */
 
   useEffect(() => {
+<<<<<<< HEAD
     imageRefs.current.forEach((image, index) => {
+=======
+    const mountedImages = imageRefs.current;
+    const mountedContent = contentRef.current;
+
+    mountedImages.forEach((image, index) => {
+>>>>>>> origin/main
       if (!image) return;
 
       gsap.set(image, {
@@ -279,8 +362,22 @@ export default function FeaturedProjects() {
         xPercent: 0,
       });
     });
+<<<<<<< HEAD
   }, []);
 
+=======
+
+    return () => {
+      transitionRef.current?.kill();
+      transitionRef.current = null;
+      mountedImages.forEach((image) => image && gsap.killTweensOf(image));
+      if (mountedContent) gsap.killTweensOf(mountedContent.children);
+    };
+  }, []);
+
+  if (projects.length === 0) return null;
+
+>>>>>>> origin/main
   return (
     <section
       className="
@@ -331,7 +428,10 @@ export default function FeaturedProjects() {
                 src={project.image}
                 alt={project.title}
                 fill
+<<<<<<< HEAD
                 priority={index === 0}
+=======
+>>>>>>> origin/main
                 sizes="100vw"
                 className="
                   object-cover
@@ -499,7 +599,10 @@ export default function FeaturedProjects() {
             >
               <span className="relative">
                 View Project
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
                 <span
                   className="
                     absolute
@@ -743,19 +846,27 @@ export default function FeaturedProjects() {
             <button
               key={project.id}
               type="button"
+<<<<<<< HEAD
               onClick={() =>
                 changeSlide(index, index > activeIndex ? 1 : -1)
               }
+=======
+              onClick={() => changeSlide(index, index > activeIndex ? 1 : -1)}
+>>>>>>> origin/main
               aria-label={`Go to project ${index + 1}`}
               className={`
                 h-[2px]
                 transition-all
                 duration-500
+<<<<<<< HEAD
                 ${
                   activeIndex === index
                     ? "w-7 bg-white"
                     : "w-2 bg-white/40"
                 }
+=======
+                ${activeIndex === index ? "w-7 bg-white" : "w-2 bg-white/40"}
+>>>>>>> origin/main
               `}
             />
           ))}

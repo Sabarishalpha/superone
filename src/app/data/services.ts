@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export const SERVICES = [
   {
     number: "01",
@@ -105,3 +106,16 @@ export const SERVICES = [
       "Bespoke furniture designed in proportion to your space, then crafted with materials and finishes chosen to last beautifully.",
   },
 ] as const;
+=======
+export type Service = {
+  number: string;
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  gallery: string[];
+  detail: string;
+  published?: boolean;
+  video?: string;
+};
+>>>>>>> origin/main

@@ -7,7 +7,11 @@ import PageHeader from "../components/PageHeader";
 
 const storyTimeline = [
   {
+<<<<<<< HEAD
     year: "2014",
+=======
+    year: "2010",
+>>>>>>> origin/main
     title: "Studio founded",
     text: "Orchid Interiors began with a simple philosophy: design spaces that feel personal, warm and enduring.",
   },
@@ -32,20 +36,34 @@ export const metadata: Metadata = {
   title: "About Our Interior Design Studio",
   description:
     "Meet Orchid Interiors, a thoughtful interior design studio creating refined residential and commercial spaces in Coimbatore and Tamil Nadu.",
+<<<<<<< HEAD
+=======
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about", images: ["/images/about-1.jpeg"] },
+  twitter: { images: ["/images/about-1.jpeg"] },
+>>>>>>> origin/main
 };
 
 const teamMembers = [
   {
     name: "Aarav Menon",
     role: "Creative Director",
+<<<<<<< HEAD
     focus:
       "Concept, identity and the emotional language of each space.",
+=======
+    focus: "Concept, identity and the emotional language of each space.",
+>>>>>>> origin/main
   },
   {
     name: "Meera Iyer",
     role: "Design Lead",
+<<<<<<< HEAD
     focus:
       "Material palettes, detailing and the rhythm between rooms.",
+=======
+    focus: "Material palettes, detailing and the rhythm between rooms.",
+>>>>>>> origin/main
   },
   {
     name: "Rohan Shah",
@@ -86,10 +104,17 @@ export default function AboutPage() {
       <About />
 
       {/* OUR STORY */}
+<<<<<<< HEAD
       <section className="relative w-full bg-stone-50 px-4 py-20 sm:px-6 md:px-10 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div>
             <div className="mb-12 text-center">
+=======
+      <section className="relative w-full bg-stone-50 px-4 py-14 sm:px-6 sm:py-16 md:px-10 md:py-20 lg:px-16">
+        <div className="mx-auto max-w-7xl">
+          <div>
+            <div className="mb-8 text-center">
+>>>>>>> origin/main
               <p className="mb-4 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
                 OUR STORY
               </p>
@@ -126,8 +151,13 @@ export default function AboutPage() {
           {/* =========================================================
               FOUNDER & CEO
           ========================================================== */}
+<<<<<<< HEAD
           <section className="relative mt-28 border-t border-stone-300 pt-20 sm:mt-32 sm:pt-24">
             <div className="grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
+=======
+          <section className="relative mt-14 border-t border-stone-300 pt-12 sm:mt-16 sm:pt-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+>>>>>>> origin/main
               {/* IMAGE SIDE */}
               <div className="relative">
                 {/* Decorative background */}
@@ -174,6 +204,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Experience badge */}
+<<<<<<< HEAD
                 <div className="absolute -bottom-8 left-6 z-30 flex h-24 w-24 items-center justify-center rounded-full bg-black text-center text-white shadow-xl sm:-bottom-10 sm:left-8 sm:h-28 sm:w-28">
                   <div>
                     <p className="text-2xl font-light">10+</p>
@@ -182,6 +213,8 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
+=======
+>>>>>>> origin/main
               </div>
 
               {/* CONTENT SIDE */}
@@ -193,9 +226,13 @@ export default function AboutPage() {
                 <h2 className="max-w-2xl text-4xl font-light leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl">
                   Designing with purpose.
                   <br />
+<<<<<<< HEAD
                   <span className="text-stone-400">
                     Building with belief.
                   </span>
+=======
+                  <span className="text-stone-400">Building with belief.</span>
+>>>>>>> origin/main
                 </h2>
 
                 <div className="mt-8 h-px w-16 bg-black" />
@@ -216,9 +253,15 @@ export default function AboutPage() {
 
                 <p className="mt-5 max-w-xl text-base leading-8 text-stone-700">
                   With a deep appreciation for architecture, materials and
+<<<<<<< HEAD
                   craftsmanship, our founder continues to guide Orchid
                   Interiors with a focus on thoughtful design, honest
                   execution and long-lasting relationships.
+=======
+                  craftsmanship, our founder continues to guide Orchid Interiors
+                  with a focus on thoughtful design, honest execution and
+                  long-lasting relationships.
+>>>>>>> origin/main
                 </p>
 
                 {/* Quote */}
@@ -228,8 +271,13 @@ export default function AboutPage() {
                   </span>
 
                   <blockquote className="text-lg font-light leading-8 text-black sm:text-xl">
+<<<<<<< HEAD
                     We don&apos;t simply design rooms. We create environments that
                     become part of people&apos;s everyday stories.
+=======
+                    We don&apos;t simply design rooms. We create environments
+                    that become part of people&apos;s everyday stories.
+>>>>>>> origin/main
                   </blockquote>
 
                   <p className="mt-4 text-xs tracking-[0.2em] text-stone-500 uppercase">
@@ -238,6 +286,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Founder stats */}
+<<<<<<< HEAD
                 <div className="mt-12 grid max-w-xl grid-cols-3 border-t border-stone-300 pt-7">
                   <div>
                     <p className="text-2xl font-light text-black sm:text-3xl">
@@ -266,6 +315,8 @@ export default function AboutPage() {
                     </p>
                   </div>
                 </div>
+=======
+>>>>>>> origin/main
               </div>
             </div>
           </section>
@@ -273,8 +324,13 @@ export default function AboutPage() {
           {/* =========================================================
               TEAM
           ========================================================== */}
+<<<<<<< HEAD
           <div className="mt-32 border-t border-stone-300 pt-20 sm:mt-36 sm:pt-24">
             <div className="mb-12 max-w-2xl">
+=======
+          <div className="mt-16 border-t border-stone-300 pt-12 sm:mt-20 sm:pt-16">
+            <div className="mb-8 max-w-2xl">
+>>>>>>> origin/main
               <p className="mb-4 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
                 THE TEAM
               </p>
@@ -320,8 +376,13 @@ export default function AboutPage() {
           {/* =========================================================
               GOALS
           ========================================================== */}
+<<<<<<< HEAD
           <div className="mt-28 bg-black px-6 py-12 text-white sm:px-10 lg:mt-36 lg:px-14 lg:py-16">
             <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+=======
+          <div className="mt-16 bg-black px-6 py-10 text-white sm:px-10 lg:mt-20 lg:px-14 lg:py-12">
+            <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+>>>>>>> origin/main
               <div>
                 <p className="mb-4 text-xs font-medium tracking-[0.32em] text-stone-400 uppercase">
                   OUR GOALS
@@ -343,9 +404,13 @@ export default function AboutPage() {
                     key={goal.number}
                     className="grid gap-4 py-7 first:pt-0 sm:grid-cols-[56px_1fr]"
                   >
+<<<<<<< HEAD
                     <p className="text-sm text-stone-400">
                       {goal.number}
                     </p>
+=======
+                    <p className="text-sm text-stone-400">{goal.number}</p>
+>>>>>>> origin/main
 
                     <div>
                       <h4 className="text-xl font-light text-white sm:text-2xl">

@@ -4,17 +4,27 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { ArrowRight } from "lucide-react";
+<<<<<<< HEAD
 import { PROJECTS } from "../data/projects";
+=======
+import { resolveProjectAsset } from "@/lib/project-assets";
+>>>>>>> origin/main
 
 const CATEGORIES = [
   "Residential",
   "Commercial",
+<<<<<<< HEAD
   "Modern",
+=======
+  "Hospitality",
+  "Institute",
+>>>>>>> origin/main
   "Luxury",
 ] as const;
 
 type CategoryType = (typeof CATEGORIES)[number];
 
+<<<<<<< HEAD
 export default function Projects() {
   const [activeCategory, setActiveCategory] =
     useState<CategoryType>("Residential");
@@ -22,6 +32,40 @@ export default function Projects() {
   const filteredProjects = PROJECTS.filter(
     (project) => project.category === activeCategory
   );
+=======
+type ProjectShape = {
+  id: number;
+  number: string;
+  title: string;
+  slug: string;
+  category: string;
+  location: string;
+  image: string;
+  width: number;
+  height: number;
+  gallery: readonly string[];
+  video?: string;
+};
+
+type ProjectsProps = {
+  projectLimit?: number;
+  projects: readonly ProjectShape[];
+};
+
+export default function Projects({
+  projectLimit,
+  projects,
+}: ProjectsProps) {
+  const [activeCategory, setActiveCategory] =
+    useState<CategoryType>("Residential");
+
+  const filteredProjects = projects.filter(
+    (project) => project.category === activeCategory,
+  );
+  const visibleProjects = projectLimit
+    ? filteredProjects.slice(0, projectLimit)
+    : filteredProjects;
+>>>>>>> origin/main
 
   /*
    * Re-run your project animation after category changes.
@@ -29,9 +73,13 @@ export default function Projects() {
    * animation code can listen for if required.
    */
   useEffect(() => {
+<<<<<<< HEAD
     window.dispatchEvent(
       new CustomEvent("projects-category-change")
     );
+=======
+    window.dispatchEvent(new CustomEvent("projects-category-change"));
+>>>>>>> origin/main
   }, [activeCategory]);
 
   return (
@@ -44,6 +92,7 @@ export default function Projects() {
         overflow-hidden
         bg-stone-50
         px-4
+<<<<<<< HEAD
         py-20
         sm:px-6
         sm:py-24
@@ -55,17 +104,37 @@ export default function Projects() {
     >
       <div className="mx-auto max-w-[1600px]">
 
+=======
+        py-14
+        sm:px-6
+        sm:py-16
+        md:px-10
+        md:py-20
+        lg:px-16
+        lg:py-24
+      "
+    >
+      <div className="mx-auto max-w-[1600px]">
+>>>>>>> origin/main
         {/* =====================================================
             SECTION INTRODUCTION
         ====================================================== */}
 
         <div
           className="
+<<<<<<< HEAD
             mb-14
             text-center
             sm:mb-16
             md:mb-20
             lg:mb-24
+=======
+            mb-10
+            text-center
+            sm:mb-12
+            md:mb-14
+            lg:mb-16
+>>>>>>> origin/main
           "
         >
           <p
@@ -83,12 +152,20 @@ export default function Projects() {
             Our Projects
           </p>
 
+<<<<<<< HEAD
           <h2
+=======
+          <h5
+>>>>>>> origin/main
             data-projects-title
             className="
               mx-auto
               mb-7
+<<<<<<< HEAD
               max-w-3xl
+=======
+              max-w-4xl
+>>>>>>> origin/main
               text-4xl
               font-light
               leading-[1.05]
@@ -99,10 +176,15 @@ export default function Projects() {
               lg:text-7xl
             "
           >
+<<<<<<< HEAD
             Spaces we&apos;ve
             <br />
             brought to life.
           </h2>
+=======
+            Spaces we&apos;ve brought to life.
+          </h5>
+>>>>>>> origin/main
 
           <p
             data-projects-description
@@ -143,8 +225,13 @@ export default function Projects() {
           "
         >
           {CATEGORIES.map((category) => {
+<<<<<<< HEAD
             const count = PROJECTS.filter(
               (project) => project.category === category
+=======
+            const count = projects.filter(
+              (project) => project.category === category,
+>>>>>>> origin/main
             ).length;
 
             return (
@@ -235,7 +322,11 @@ export default function Projects() {
             lg:gap-8
           "
         >
+<<<<<<< HEAD
           {filteredProjects.map((project, index) => {
+=======
+          {visibleProjects.map((project) => {
+>>>>>>> origin/main
             const aspectRatio = project.width / project.height;
 
             return (
@@ -272,10 +363,16 @@ export default function Projects() {
                   "
                 >
                   <Image
+<<<<<<< HEAD
                     src={project.image}
                     alt={project.title}
                     fill
                     priority={index === 0}
+=======
+                    src={resolveProjectAsset(project.image)}
+                    alt={project.title}
+                    fill
+>>>>>>> origin/main
                     className="
                       object-cover
                       transition-transform
@@ -435,7 +532,11 @@ export default function Projects() {
             EMPTY STATE
         ====================================================== */}
 
+<<<<<<< HEAD
         {filteredProjects.length === 0 && (
+=======
+        {visibleProjects.length === 0 && (
+>>>>>>> origin/main
           <div
             className="
               flex
@@ -448,9 +549,13 @@ export default function Projects() {
               text-center
             "
           >
+<<<<<<< HEAD
             <p className="text-sm text-stone-500">
               Projects coming soon.
             </p>
+=======
+            <p className="text-sm text-stone-500">Projects coming soon.</p>
+>>>>>>> origin/main
           </div>
         )}
 
@@ -459,6 +564,7 @@ export default function Projects() {
         ====================================================== */}
 
         <div className="mt-8 flex justify-between text-[10px] uppercase tracking-[0.2em] text-stone-400">
+<<<<<<< HEAD
           <span>
             {activeCategory}
           </span>
@@ -466,13 +572,22 @@ export default function Projects() {
           <span>
             {filteredProjects.length} Projects
           </span>
+=======
+          <span>{activeCategory}</span>
+
+          <span>{visibleProjects.length} Projects</span>
+>>>>>>> origin/main
         </div>
 
         {/* =====================================================
             VIEW ALL PROJECTS
         ====================================================== */}
 
+<<<<<<< HEAD
         <div className="mt-14 flex items-center justify-center md:mt-20">
+=======
+        <div className="mt-10 flex items-center justify-center md:mt-14">
+>>>>>>> origin/main
           <Link
             href="/projects"
             className="
@@ -493,7 +608,10 @@ export default function Projects() {
             "
           >
             View All Projects
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
             <ArrowRight
               className="
                 h-4

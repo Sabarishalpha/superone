@@ -14,15 +14,25 @@ import { useCallback, useEffect, useState } from "react";
 type ImageGalleryProps = {
   images: readonly string[];
   title: string;
+<<<<<<< HEAD
+=======
+  layout?: "default" | "design-library";
+>>>>>>> origin/main
 };
 
 export default function ImageGallery({
   images,
   title,
+<<<<<<< HEAD
 }: ImageGalleryProps) {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(
     null
   );
+=======
+  layout = "default",
+}: ImageGalleryProps) {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+>>>>>>> origin/main
 
   const [zoom, setZoom] = useState(1);
 
@@ -53,9 +63,13 @@ export default function ImageGallery({
   const nextImage = useCallback(() => {
     if (selectedIndex === null) return;
 
+<<<<<<< HEAD
     setSelectedIndex(
       (selectedIndex + 1) % images.length
     );
+=======
+    setSelectedIndex((selectedIndex + 1) % images.length);
+>>>>>>> origin/main
 
     setZoom(1);
   }, [images.length, selectedIndex]);
@@ -67,10 +81,14 @@ export default function ImageGallery({
   const previousImage = useCallback(() => {
     if (selectedIndex === null) return;
 
+<<<<<<< HEAD
     setSelectedIndex(
       (selectedIndex - 1 + images.length) %
         images.length
     );
+=======
+    setSelectedIndex((selectedIndex - 1 + images.length) % images.length);
+>>>>>>> origin/main
 
     setZoom(1);
   }, [images.length, selectedIndex]);
@@ -98,6 +116,7 @@ export default function ImageGallery({
 
         case "+":
         case "=":
+<<<<<<< HEAD
           setZoom((value) =>
             Math.min(value + 0.25, 3)
           );
@@ -107,6 +126,13 @@ export default function ImageGallery({
           setZoom((value) =>
             Math.max(value - 0.25, 1)
           );
+=======
+          setZoom((value) => Math.min(value + 0.25, 3));
+          break;
+
+        case "-":
+          setZoom((value) => Math.max(value - 0.25, 1));
+>>>>>>> origin/main
           break;
 
         case "0":
@@ -115,6 +141,7 @@ export default function ImageGallery({
       }
     };
 
+<<<<<<< HEAD
     document.addEventListener(
       "keydown",
       handleKeyDown
@@ -125,6 +152,12 @@ export default function ImageGallery({
         "keydown",
         handleKeyDown
       );
+=======
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+>>>>>>> origin/main
     };
   }, [closeGallery, isOpen, nextImage, previousImage, selectedIndex]);
 
@@ -150,12 +183,30 @@ export default function ImageGallery({
           GALLERY GRID
       ====================================================== */}
 
+<<<<<<< HEAD
       <div className="grid grid-cols-2 gap-3 sm:gap-5 md:grid-cols-3 lg:grid-cols-4">
+=======
+      <div
+        className={`grid grid-cols-1 gap-4 sm:gap-5 ${
+          layout === "design-library"
+            ? "sm:grid-cols-2"
+            : "sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
+        }`}
+      >
+>>>>>>> origin/main
         {images.map((image, index) => (
           <button
             key={image}
             type="button"
             onClick={() => openGallery(index)}
+<<<<<<< HEAD
+=======
+            style={
+              layout === "design-library"
+                ? { aspectRatio: "16 / 9" }
+                : undefined
+            }
+>>>>>>> origin/main
             className={`
               group
               relative
@@ -166,6 +217,7 @@ export default function ImageGallery({
               focus-visible:ring-2
               focus-visible:ring-black
               ${
+<<<<<<< HEAD
                 index === 0
                   ? "col-span-2 aspect-16/10 md:col-span-2"
                   : "aspect-16/10"
@@ -174,6 +226,16 @@ export default function ImageGallery({
             aria-label={`Open ${title} image ${
               index + 1
             }`}
+=======
+                layout === "design-library"
+                  ? "w-full"
+                  : index === 0
+                    ? "aspect-16/10 sm:col-span-2 md:col-span-2"
+                    : "aspect-16/10"
+              }
+            `}
+            aria-label={`Open ${title} image ${index + 1}`}
+>>>>>>> origin/main
           >
             <Image
               src={image}
@@ -186,7 +248,11 @@ export default function ImageGallery({
                 group-hover:scale-105
               "
               sizes="
+<<<<<<< HEAD
                 (max-width: 640px) 50vw,
+=======
+                (max-width: 640px) 100vw,
+>>>>>>> origin/main
                 (max-width: 1024px) 33vw,
                 25vw
               "
@@ -230,10 +296,14 @@ export default function ImageGallery({
                 group-hover:opacity-100
               "
             >
+<<<<<<< HEAD
               <ZoomIn
                 className="h-4 w-4"
                 strokeWidth={1.5}
               />
+=======
+              <ZoomIn className="h-4 w-4" strokeWidth={1.5} />
+>>>>>>> origin/main
             </div>
           </button>
         ))}
@@ -281,9 +351,13 @@ export default function ImageGallery({
               backdrop-blur-md
               sm:px-6
             "
+<<<<<<< HEAD
             onClick={(event) =>
               event.stopPropagation()
             }
+=======
+            onClick={(event) => event.stopPropagation()}
+>>>>>>> origin/main
           >
             {/* Counter */}
 
@@ -295,6 +369,7 @@ export default function ImageGallery({
                 uppercase
               "
             >
+<<<<<<< HEAD
               {String(selectedIndex + 1).padStart(
                 2,
                 "0"
@@ -304,6 +379,11 @@ export default function ImageGallery({
                 2,
                 "0"
               )}
+=======
+              {String(selectedIndex + 1).padStart(2, "0")}
+              {" / "}
+              {String(images.length).padStart(2, "0")}
+>>>>>>> origin/main
             </div>
 
             {/* Controls */}
@@ -313,6 +393,7 @@ export default function ImageGallery({
 
               <button
                 type="button"
+<<<<<<< HEAD
                 onClick={() =>
                   setZoom((value) =>
                     Math.max(
@@ -321,6 +402,9 @@ export default function ImageGallery({
                     )
                   )
                 }
+=======
+                onClick={() => setZoom((value) => Math.max(value - 0.25, 1))}
+>>>>>>> origin/main
                 disabled={zoom <= 1}
                 className="
                   flex
@@ -362,6 +446,7 @@ export default function ImageGallery({
 
               <button
                 type="button"
+<<<<<<< HEAD
                 onClick={() =>
                   setZoom((value) =>
                     Math.min(
@@ -370,6 +455,9 @@ export default function ImageGallery({
                     )
                   )
                 }
+=======
+                onClick={() => setZoom((value) => Math.min(value + 0.25, 3))}
+>>>>>>> origin/main
                 disabled={zoom >= 3}
                 className="
                   flex
@@ -535,9 +623,13 @@ export default function ImageGallery({
               sm:h-[calc(100vh-140px)]
               sm:w-[calc(100vw-150px)]
             "
+<<<<<<< HEAD
             onClick={(event) =>
               event.stopPropagation()
             }
+=======
+            onClick={(event) => event.stopPropagation()}
+>>>>>>> origin/main
           >
             <div
               className="
@@ -552,11 +644,16 @@ export default function ImageGallery({
               <Image
                 key={images[selectedIndex]}
                 src={images[selectedIndex]}
+<<<<<<< HEAD
                 alt={`${title} detail ${
                   selectedIndex + 1
                 }`}
                 fill
                 priority
+=======
+                alt={`${title} detail ${selectedIndex + 1}`}
+                fill
+>>>>>>> origin/main
                 className="
                   object-contain
                   transition-transform
@@ -592,9 +689,13 @@ export default function ImageGallery({
               pt-14
               text-center
             "
+<<<<<<< HEAD
             onClick={(event) =>
               event.stopPropagation()
             }
+=======
+            onClick={(event) => event.stopPropagation()}
+>>>>>>> origin/main
           >
             <p className="text-xs tracking-[0.2em] text-white/50 uppercase">
               {title}
@@ -604,4 +705,8 @@ export default function ImageGallery({
       )}
     </>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

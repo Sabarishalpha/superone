@@ -6,8 +6,15 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import ImageGallery from "../../components/ImageGallery";
+<<<<<<< HEAD
 
 import { PROJECTS } from "../../data/projects";
+=======
+import { notFound } from "next/navigation";
+
+import { getProjects } from "@/lib/content";
+import { resolveProjectAsset } from "@/lib/project-assets";
+>>>>>>> origin/main
 
 type ProjectPageProps = {
   params: Promise<{
@@ -15,16 +22,24 @@ type ProjectPageProps = {
   }>;
 };
 
+<<<<<<< HEAD
+=======
+export const dynamic = "force-dynamic";
+
+>>>>>>> origin/main
 /* ==========================================================
    STATIC PROJECT PAGES
 ========================================================== */
 
+<<<<<<< HEAD
 export function generateStaticParams() {
   return PROJECTS.map((project) => ({
     slug: project.slug,
   }));
 }
 
+=======
+>>>>>>> origin/main
 /* ==========================================================
    SEO METADATA
 ========================================================== */
@@ -34,9 +49,13 @@ export async function generateMetadata({
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
 
+<<<<<<< HEAD
   const project = PROJECTS.find(
     (item) => item.slug === slug
   );
+=======
+  const project = (await getProjects()).find((item) => item.slug === slug);
+>>>>>>> origin/main
 
   return {
     title: project
@@ -46,6 +65,16 @@ export async function generateMetadata({
     description: project
       ? `${project.category} interiors by Orchid Interiors in ${project.location}.`
       : "Selected work by Orchid Interiors.",
+<<<<<<< HEAD
+=======
+    alternates: { canonical: `/projects/${slug}` },
+    openGraph: project
+      ? { images: [resolveProjectAsset(project.image)] }
+      : undefined,
+    twitter: project
+      ? { images: [resolveProjectAsset(project.image)] }
+      : undefined,
+>>>>>>> origin/main
   };
 }
 
@@ -53,6 +82,7 @@ export async function generateMetadata({
    PROJECT DETAIL PAGE
 ========================================================== */
 
+<<<<<<< HEAD
 export default async function ProjectDetailPage({
   params,
 }: ProjectPageProps) {
@@ -64,6 +94,15 @@ export default async function ProjectDetailPage({
 
   if (!project) {
     return null;
+=======
+export default async function ProjectDetailPage({ params }: ProjectPageProps) {
+  const { slug } = await params;
+
+  const project = (await getProjects()).find((item) => item.slug === slug);
+
+  if (!project) {
+    notFound();
+>>>>>>> origin/main
   }
 
   return (
@@ -74,8 +113,12 @@ export default async function ProjectDetailPage({
 
       <Navbar />
 
+<<<<<<< HEAD
       <main className="bg-stone-50 pt-24">
 
+=======
+      <main className="bg-stone-50 pt-16">
+>>>>>>> origin/main
         {/* ==================================================
             PROJECT HERO
         ================================================== */}
@@ -85,6 +128,7 @@ export default async function ProjectDetailPage({
             mx-auto
             max-w-7xl
             px-4
+<<<<<<< HEAD
             py-12
             sm:px-6
             md:px-10
@@ -94,6 +138,16 @@ export default async function ProjectDetailPage({
           "
         >
 
+=======
+            py-8
+            sm:px-6
+            md:px-10
+            md:py-12
+            lg:px-16
+            lg:py-16
+          "
+        >
+>>>>>>> origin/main
           {/* Back to Projects */}
 
           <Link
@@ -112,7 +166,10 @@ export default async function ProjectDetailPage({
             "
           >
             <ArrowLeft className="h-4 w-4" />
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
             All projects
           </Link>
 
@@ -126,11 +183,17 @@ export default async function ProjectDetailPage({
               lg:items-end
             "
           >
+<<<<<<< HEAD
 
             {/* Project Information */}
 
             <div>
 
+=======
+            {/* Project Information */}
+
+            <div>
+>>>>>>> origin/main
               {/* Category */}
 
               <p
@@ -173,11 +236,16 @@ export default async function ProjectDetailPage({
                   text-stone-700
                 "
               >
+<<<<<<< HEAD
                 A considered{" "}
                 {project.category.toLowerCase()}{" "}
                 interior shaped around atmosphere,
                 materiality and the everyday
                 experience of the space.
+=======
+                {project.description ??
+                  `A considered ${project.category.toLowerCase()} interior shaped around atmosphere, materiality and the everyday experience of the space.`}
+>>>>>>> origin/main
               </p>
 
               {/* CTA */}
@@ -199,7 +267,10 @@ export default async function ProjectDetailPage({
                 "
               >
                 Discuss your project
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
@@ -215,7 +286,11 @@ export default async function ProjectDetailPage({
               "
             >
               <Image
+<<<<<<< HEAD
                 src={project.image}
+=======
+                src={resolveProjectAsset(project.image)}
+>>>>>>> origin/main
                 alt={`${project.title}, ${project.location}`}
                 fill
                 priority
@@ -239,11 +314,19 @@ export default async function ProjectDetailPage({
             border-stone-300
             bg-white
             px-4
+<<<<<<< HEAD
             py-16
             sm:px-6
             md:px-10
             lg:px-16
             lg:py-20
+=======
+            py-12
+            sm:px-6
+            md:px-10
+            lg:px-16
+            lg:py-16
+>>>>>>> origin/main
           "
         >
           <div
@@ -255,7 +338,10 @@ export default async function ProjectDetailPage({
               md:grid-cols-3
             "
           >
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
             {/* Heading */}
 
             <div>
@@ -278,8 +364,12 @@ export default async function ProjectDetailPage({
                   text-black
                 "
               >
+<<<<<<< HEAD
                 A space with its own point
                 of view.
+=======
+                A space with its own point of view.
+>>>>>>> origin/main
               </h2>
             </div>
 
@@ -292,10 +382,15 @@ export default async function ProjectDetailPage({
                 text-stone-700
               "
             >
+<<<<<<< HEAD
               Every decision is made to bring
               the architecture, the brief and
               the people who use it into quiet
               alignment.
+=======
+              Every decision is made to bring the architecture, the brief and
+              the people who use it into quiet alignment.
+>>>>>>> origin/main
             </p>
 
             {/* Text */}
@@ -307,10 +402,15 @@ export default async function ProjectDetailPage({
                 text-stone-700
               "
             >
+<<<<<<< HEAD
               From the larger composition to
               the smallest finish, the result
               is personal, functional and made
               to last.
+=======
+              From the larger composition to the smallest finish, the result is
+              personal, functional and made to last.
+>>>>>>> origin/main
             </p>
           </div>
         </section>
@@ -319,6 +419,7 @@ export default async function ProjectDetailPage({
             PROJECT JOURNAL
         ================================================== */}
 
+<<<<<<< HEAD
         {project.gallery &&
           project.gallery.length > 0 && (
             <section
@@ -338,6 +439,25 @@ export default async function ProjectDetailPage({
 
                 <div
                   className="
+=======
+        {project.gallery && project.gallery.length > 0 && (
+          <section
+            className="
+                bg-stone-50
+                px-4
+                py-12
+                sm:px-6
+                md:px-10
+                lg:px-16
+                lg:py-16
+              "
+          >
+            <div className="mx-auto max-w-7xl">
+              {/* Gallery Header */}
+
+              <div
+                className="
+>>>>>>> origin/main
                     mb-10
                     flex
                     flex-col
@@ -346,28 +466,45 @@ export default async function ProjectDetailPage({
                     sm:flex-row
                     sm:items-end
                   "
+<<<<<<< HEAD
                 >
                   <div>
 
                     <p
                       className="
+=======
+              >
+                <div>
+                  <p
+                    className="
+>>>>>>> origin/main
                         mb-4
                         text-xs
                         tracking-[0.28em]
                         text-stone-500
                         uppercase
                       "
+<<<<<<< HEAD
                     >
                       PROJECT JOURNAL
                     </p>
 
                     <h2
                       className="
+=======
+                  >
+                    PROJECT JOURNAL
+                  </p>
+
+                  <h2
+                    className="
+>>>>>>> origin/main
                         text-3xl
                         font-light
                         text-black
                         sm:text-4xl
                       "
+<<<<<<< HEAD
                     >
                       {project.title}, in
                       detail.
@@ -377,11 +514,21 @@ export default async function ProjectDetailPage({
 
                   <p
                     className="
+=======
+                  >
+                    {project.title}, in detail.
+                  </h2>
+                </div>
+
+                <p
+                  className="
+>>>>>>> origin/main
                       max-w-sm
                       text-sm
                       leading-6
                       text-stone-600
                     "
+<<<<<<< HEAD
                   >
                     A visual study of the
                     materials, rooms and
@@ -399,10 +546,27 @@ export default async function ProjectDetailPage({
                   <div className="mb-6 overflow-hidden bg-black">
                     <video
                       className="
+=======
+                >
+                  A visual study of the materials, rooms and considered details
+                  behind this {project.location} project.
+                </p>
+              </div>
+
+              {/* ==================================================
+                    PROJECT VIDEO
+                ================================================== */}
+
+              {project.video && (
+                <div className="mb-6 overflow-hidden bg-black">
+                  <video
+                    className="
+>>>>>>> origin/main
                         aspect-video
                         w-full
                         object-cover
                       "
+<<<<<<< HEAD
                       controls
                       muted
                       playsInline
@@ -432,6 +596,31 @@ export default async function ProjectDetailPage({
               </div>
             </section>
           )}
+=======
+                    controls
+                    controlsList="nodownload"
+                    muted
+                    playsInline
+                    preload="metadata"
+                  >
+                    <source src={project.video} />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              )}
+
+              {/* ==================================================
+                    INTERACTIVE IMAGE GALLERY
+                ================================================== */}
+
+              <ImageGallery
+                images={project.gallery.map(resolveProjectAsset)}
+                title={project.title}
+              />
+            </div>
+          </section>
+        )}
+>>>>>>> origin/main
       </main>
 
       {/* ====================================================
@@ -441,4 +630,8 @@ export default async function ProjectDetailPage({
       <Footer />
     </>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

@@ -5,17 +5,29 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+<<<<<<< HEAD
+=======
+import { useConsultationModal } from "./ConsultationModalProvider";
+>>>>>>> origin/main
 
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Projects", href: "/projects" },
+<<<<<<< HEAD
+=======
+  { label: "Design Library", href: "/design-library" },
+>>>>>>> origin/main
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const pathname = usePathname();
+<<<<<<< HEAD
+=======
+  const { openModal } = useConsultationModal();
+>>>>>>> origin/main
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -232,7 +244,11 @@ export default function Navbar() {
                       rounded-full
                       px-4
                       py-2.5
+<<<<<<< HEAD
                       text-[13px]
+=======
+                      text-[15.6px]
+>>>>>>> origin/main
                       font-medium
                       tracking-[-0.01em]
                       transition-all
@@ -281,8 +297,13 @@ export default function Navbar() {
           ================================================= */}
 
           <div className="hidden items-center md:flex">
+<<<<<<< HEAD
             <Link
               href="/contact"
+=======
+            <button
+              onClick={openModal}
+>>>>>>> origin/main
               className="
                 group
                 flex
@@ -292,16 +313,27 @@ export default function Navbar() {
                 bg-[#171717]
                 px-5
                 py-3
+<<<<<<< HEAD
                 text-[13px]
+=======
+                text-[15.6px]
+>>>>>>> origin/main
                 font-medium
                 text-white
                 transition-all
                 duration-300
                 hover:bg-black
                 hover:shadow-[0_10px_25px_rgba(0,0,0,0.18)]
+<<<<<<< HEAD
               "
             >
               <span>Start a Project</span>
+=======
+                cursor-pointer
+              "
+            >
+              <span>Talk to an Expert</span>
+>>>>>>> origin/main
 
               <span
                 className="
@@ -319,7 +351,11 @@ export default function Navbar() {
               >
                 <ArrowUpRight className="h-3.5 w-3.5" />
               </span>
+<<<<<<< HEAD
             </Link>
+=======
+            </button>
+>>>>>>> origin/main
           </div>
 
           {/* =================================================
@@ -352,6 +388,7 @@ export default function Navbar() {
             "
           >
             {isMenuOpen ? (
+<<<<<<< HEAD
               <X
                 className="h-5 w-5"
                 strokeWidth={1.7}
@@ -361,6 +398,11 @@ export default function Navbar() {
                 className="h-5 w-5"
                 strokeWidth={1.7}
               />
+=======
+              <X className="h-5 w-5" strokeWidth={1.7} />
+            ) : (
+              <Menu className="h-5 w-5" strokeWidth={1.7} />
+>>>>>>> origin/main
             )}
           </button>
         </nav>
@@ -437,17 +479,25 @@ export default function Navbar() {
                         className={`
                           text-[10px]
                           font-medium
+<<<<<<< HEAD
                           ${
                             isActive
                               ? "text-black/40"
                               : "text-white/25"
                           }
+=======
+                          ${isActive ? "text-black/40" : "text-white/25"}
+>>>>>>> origin/main
                         `}
                       >
                         0{index + 1}
                       </span>
 
+<<<<<<< HEAD
                       <span className="text-[15px] font-medium">
+=======
+                      <span className="text-[18px] font-medium">
+>>>>>>> origin/main
                         {link.label}
                       </span>
                     </div>
@@ -475,11 +525,22 @@ export default function Navbar() {
 
               {/* Mobile CTA */}
 
+<<<<<<< HEAD
               <Link
                 href="/contact"
                 onClick={() => setIsMenuOpen(false)}
                 className="
                   group
+=======
+              <button
+                onClick={() => {
+                  openModal();
+                  setIsMenuOpen(false);
+                }}
+                className="
+                  group
+                  w-full
+>>>>>>> origin/main
                   flex
                   items-center
                   justify-between
@@ -491,6 +552,7 @@ export default function Navbar() {
                   transition-all
                   duration-300
                   hover:bg-[#f0eee9]
+<<<<<<< HEAD
                 "
               >
                 <div>
@@ -507,6 +569,15 @@ export default function Navbar() {
 
                   <p className="mt-1 text-[15px] font-medium">
                     Start a Project
+=======
+                  cursor-pointer
+                  text-left
+                "
+              >
+                <div>
+                  <p className="mt-1 text-[18px] font-medium">
+                    Talk to an Expert
+>>>>>>> origin/main
                   </p>
                 </div>
 
@@ -515,6 +586,10 @@ export default function Navbar() {
                     flex
                     h-9
                     w-9
+<<<<<<< HEAD
+=======
+                    shrink-0
+>>>>>>> origin/main
                     items-center
                     justify-center
                     rounded-full
@@ -527,11 +602,19 @@ export default function Navbar() {
                 >
                   <ArrowUpRight className="h-4 w-4" />
                 </span>
+<<<<<<< HEAD
               </Link>
+=======
+              </button>
+>>>>>>> origin/main
             </div>
           </div>
         </div>
       </div>
     </header>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> origin/main

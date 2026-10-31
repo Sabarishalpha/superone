@@ -16,19 +16,33 @@ gsap.registerPlugin(ScrollTrigger);
 const videos = [
   {
     desktop: "/videos/orchid-interiors-landscape.mp4",
+<<<<<<< HEAD
     mobile: "/videos/orchid-interiors-mobile-1.mp4",
+=======
+    mobile: "/videos/orchid-interiors-mobile.mp4",
+>>>>>>> origin/main
     title: "Every detail tells a story.",
     category: "Design · Craft · Detail",
   },
   {
+<<<<<<< HEAD
     desktop: "/videos/orchid-interiors-landscape-2.mp4",
     mobile: "/videos/orchid-interiors-mobile-2.mp4",
+=======
+    desktop: "/videos/orchid-interiors-landscape.mp4",
+    mobile: "/videos/orchid-interiors-mobile.mp4",
+>>>>>>> origin/main
     title: "Spaces designed around you.",
     category: "Space · Form · Living",
   },
   {
+<<<<<<< HEAD
     desktop: "/videos/orchid-interiors-landscape-3.mp4",
     mobile: "/videos/orchid-interiors-mobile-3.mp4",
+=======
+    desktop: "/videos/orchid-interiors-landscape.mp4",
+    mobile: "/videos/orchid-interiors-mobile.mp4",
+>>>>>>> origin/main
     title: "Where craftsmanship meets comfort.",
     category: "Material · Texture · Craft",
   },
@@ -40,6 +54,10 @@ export default function VideoShowcase() {
   const desktopVideoRef = useRef<HTMLVideoElement>(null);
   const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+<<<<<<< HEAD
+=======
+  const transitionRef = useRef<gsap.core.Tween | null>(null);
+>>>>>>> origin/main
 
   const [currentVideo, setCurrentVideo] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
@@ -88,7 +106,11 @@ export default function VideoShowcase() {
             duration: 0.9,
             ease: "power3.out",
           },
+<<<<<<< HEAD
           "-=0.8"
+=======
+          "-=0.8",
+>>>>>>> origin/main
         );
 
       /* ------------------------------------------
@@ -121,7 +143,12 @@ export default function VideoShowcase() {
 
     if (!video) return;
 
+<<<<<<< HEAD
     gsap.to(video, {
+=======
+    transitionRef.current?.kill();
+    transitionRef.current = gsap.to(video, {
+>>>>>>> origin/main
       opacity: 0,
       x: direction === "next" ? -30 : 30,
       duration: 0.25,
@@ -146,12 +173,28 @@ export default function VideoShowcase() {
             x: 0,
             duration: 0.4,
             ease: "power3.out",
+<<<<<<< HEAD
           }
         );
+=======
+          },
+        );
+        transitionRef.current = null;
+>>>>>>> origin/main
       },
     });
   };
 
+<<<<<<< HEAD
+=======
+  useLayoutEffect(() => {
+    return () => {
+      transitionRef.current?.kill();
+      transitionRef.current = null;
+    };
+  }, []);
+
+>>>>>>> origin/main
   /* ------------------------------------------
      MUTE / UNMUTE
   ------------------------------------------ */
@@ -177,15 +220,25 @@ export default function VideoShowcase() {
       ref={sectionRef}
       className="
         relative w-full overflow-hidden bg-[#11100e]
+<<<<<<< HEAD
         px-3 py-20
         sm:px-5 sm:py-24
         md:px-8 md:py-28
         lg:px-12 lg:py-32
+=======
+        px-3 py-14
+        sm:px-5 sm:py-16
+        md:px-8 md:py-20
+        lg:px-12 lg:py-24
+>>>>>>> origin/main
         xl:px-16
       "
     >
       <div className="mx-auto max-w-[1600px]">
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
         {/* =====================================================
             INTRO
         ====================================================== */}
@@ -193,9 +246,15 @@ export default function VideoShowcase() {
         <div
           ref={contentRef}
           className="
+<<<<<<< HEAD
             mb-10 flex flex-col justify-between gap-8
             md:mb-14 md:flex-row md:items-end
             lg:mb-16
+=======
+            mb-8 flex flex-col justify-between gap-6
+            md:mb-10 md:flex-row md:items-end
+            lg:mb-12
+>>>>>>> origin/main
           "
         >
           {/* LEFT */}
@@ -235,9 +294,15 @@ export default function VideoShowcase() {
                 sm:text-base sm:leading-8
               "
             >
+<<<<<<< HEAD
               Discover our approach to interior design, from the first
               sketch to the final detail. Every space is thoughtfully
               crafted around the people who live in it.
+=======
+              Discover our approach to interior design, from the first sketch to
+              the final detail. Every space is thoughtfully crafted around the
+              people who live in it.
+>>>>>>> origin/main
             </p>
           </div>
         </div>
@@ -253,13 +318,19 @@ export default function VideoShowcase() {
             will-change-transform
           "
         >
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
           {/* =================================================
               DESKTOP / LAPTOP — 16:9
           ================================================== */}
 
           <div className="relative hidden aspect-video w-full md:block">
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
             <video
               key={`desktop-${currentVideo}`}
               ref={desktopVideoRef}
@@ -273,11 +344,15 @@ export default function VideoShowcase() {
               playsInline
               preload="metadata"
             >
+<<<<<<< HEAD
               <source
                 src={activeVideo.desktop}
                 type="video/mp4"
               />
 
+=======
+              <source src={activeVideo.desktop} type="video/mp4" />
+>>>>>>> origin/main
               Your browser does not support the video tag.
             </video>
 
@@ -289,7 +364,10 @@ export default function VideoShowcase() {
           ================================================== */}
 
           <div className="relative block aspect-[9/16] w-full md:hidden">
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
             <video
               key={`mobile-${currentVideo}`}
               ref={mobileVideoRef}
@@ -303,11 +381,15 @@ export default function VideoShowcase() {
               playsInline
               preload="metadata"
             >
+<<<<<<< HEAD
               <source
                 src={activeVideo.mobile}
                 type="video/mp4"
               />
 
+=======
+              <source src={activeVideo.mobile} type="video/mp4" />
+>>>>>>> origin/main
               Your browser does not support the video tag.
             </video>
 
@@ -346,9 +428,13 @@ export default function VideoShowcase() {
           <button
             type="button"
             onClick={toggleMute}
+<<<<<<< HEAD
             aria-label={
               isMuted ? "Unmute video" : "Mute video"
             }
+=======
+            aria-label={isMuted ? "Unmute video" : "Mute video"}
+>>>>>>> origin/main
             className="
               absolute right-5 top-5 z-20
               flex h-10 w-10 items-center justify-center
@@ -392,10 +478,14 @@ export default function VideoShowcase() {
               lg:left-10
             "
           >
+<<<<<<< HEAD
             <ChevronLeft
               size={20}
               strokeWidth={1.3}
             />
+=======
+            <ChevronLeft size={20} strokeWidth={1.3} />
+>>>>>>> origin/main
           </button>
 
           {/* =================================================
@@ -421,10 +511,14 @@ export default function VideoShowcase() {
               lg:right-10
             "
           >
+<<<<<<< HEAD
             <ChevronRight
               size={20}
               strokeWidth={1.3}
             />
+=======
+            <ChevronRight size={20} strokeWidth={1.3} />
+>>>>>>> origin/main
           </button>
 
           {/* =================================================
@@ -443,7 +537,10 @@ export default function VideoShowcase() {
               lg:px-10 lg:pb-10
             "
           >
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
             <div>
               <p
                 className="
@@ -475,10 +572,14 @@ export default function VideoShowcase() {
                 sm:h-12 sm:w-12
               "
             >
+<<<<<<< HEAD
               <ArrowDownRight
                 size={18}
                 strokeWidth={1.2}
               />
+=======
+              <ArrowDownRight size={18} strokeWidth={1.2} />
+>>>>>>> origin/main
             </div>
           </div>
 
@@ -502,9 +603,13 @@ export default function VideoShowcase() {
                 className={`
                   h-[2px] transition-all duration-500
                   ${
+<<<<<<< HEAD
                     currentVideo === index
                       ? "w-10 bg-white"
                       : "w-5 bg-white/40"
+=======
+                    currentVideo === index ? "w-10 bg-white" : "w-5 bg-white/40"
+>>>>>>> origin/main
                   }
                 `}
               />
@@ -529,9 +634,14 @@ export default function VideoShowcase() {
               sm:text-sm sm:leading-7
             "
           >
+<<<<<<< HEAD
             Thoughtful materials, refined proportions and
             personal details come together to create interiors
             that feel uniquely yours.
+=======
+            Thoughtful materials, refined proportions and personal details come
+            together to create interiors that feel uniquely yours.
+>>>>>>> origin/main
           </p>
 
           <span
@@ -544,7 +654,10 @@ export default function VideoShowcase() {
             {currentVideo + 1} / {videos.length}
           </span>
         </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
       </div>
     </section>
   );

@@ -1,7 +1,12 @@
 export type ProjectCategory =
   | "Residential"
   | "Commercial"
+<<<<<<< HEAD
   | "Modern"
+=======
+  | "Hospitality"
+  | "Institute"
+>>>>>>> origin/main
   | "Luxury";
 
 export type Project = {
@@ -11,6 +16,7 @@ export type Project = {
   slug: string;
   category: ProjectCategory;
   location: string;
+<<<<<<< HEAD
 
   image: string;
   width: number;
@@ -488,3 +494,13 @@ export const PROJECTS: Project[] = [
     video: "/videos/projects/prestige-villa.mp4",
   },
 ];
+=======
+  description?: string;
+  image: string;
+  width: number;
+  height: number;
+  gallery: string[];
+  published?: boolean;
+  video?: string;
+};
+>>>>>>> origin/main

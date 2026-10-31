@@ -25,6 +25,10 @@ body {
   color: var(--foreground);
   font-family: 'Viga', cursive;
 }
+<<<<<<< HEAD
+=======
+p{font-size: 1.2rem; line-height: 1.6;}
+>>>>>>> origin/main
 
 @media (prefers-reduced-motion: reduce) {
   html {

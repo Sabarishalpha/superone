@@ -1,11 +1,18 @@
 "use client";
 
+<<<<<<< HEAD
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, ArrowLeft } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+=======
+import Image from "next/image";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+import { useConsultationModal } from "./ConsultationModalProvider";
+>>>>>>> origin/main
 
 import "swiper/css";
 import "swiper/css/effect-fade";
@@ -21,6 +28,7 @@ const HERO_IMAGES = [
 ];
 
 export default function Hero() {
+<<<<<<< HEAD
   const [step, setStep] = useState(1);
 
   const [formData, setFormData] = useState({
@@ -55,6 +63,9 @@ export default function Hero() {
 
     // Add your API / WhatsApp / email submission here
   };
+=======
+  const { openModal } = useConsultationModal();
+>>>>>>> origin/main
 
   return (
     <section
@@ -108,9 +119,14 @@ export default function Hero() {
       {/* =========================
           HERO CONTENT
       ========================== */}
+<<<<<<< HEAD
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl items-center px-4 pb-20 pt-28 sm:px-6 md:px-10 lg:px-12 xl:px-16">
         <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_450px]">
           
+=======
+      <div className="relative z-10 mx-auto flex min-h-[82vh] w-full max-w-7xl items-center px-4 pb-14 pt-24 sm:px-6 md:px-10 lg:px-12 xl:px-16">
+        <div className="grid w-full items-center gap-8 lg:grid-cols-[1fr_420px] xl:grid-cols-[1fr_450px]">
+>>>>>>> origin/main
           {/* =====================
               LEFT CONTENT
           ====================== */}
@@ -126,6 +142,7 @@ export default function Hero() {
               data-hero-description
               className="max-w-xl text-sm leading-7 text-white/75 sm:text-base md:text-lg"
             >
+<<<<<<< HEAD
               Thoughtfully designed interiors that bring together
               architecture, comfort and timeless elegance.
             </p>
@@ -138,12 +155,27 @@ export default function Hero() {
               >
                 Explore Projects
 
+=======
+              Thoughtfully designed interiors that bring together architecture,
+              comfort and timeless elegance.
+            </p>
+
+            <div className="mt-10">
+              <button
+                type="button"
+                onClick={openModal}
+                data-hero-cta
+                className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-medium tracking-[0.04em] text-black transition-all duration-300 hover:bg-black hover:text-white sm:px-8 sm:py-4 sm:text-base"
+              >
+                Talk to an Expert
+>>>>>>> origin/main
                 <span
                   aria-hidden="true"
                   className="transition-transform duration-300 group-hover:translate-x-1"
                 >
                   →
                 </span>
+<<<<<<< HEAD
               </Link>
             </div>
           </div>
@@ -402,6 +434,9 @@ export default function Hero() {
                 </Link>
                 .
               </p>
+=======
+              </button>
+>>>>>>> origin/main
             </div>
           </div>
         </div>
