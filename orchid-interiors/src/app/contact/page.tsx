@@ -129,20 +129,15 @@ export default function ContactPage() {
           items?: { title: string }[];
           error?: string;
         };
-        if (!response.ok)
-          throw new Error(result.error ?? "Services could not be loaded.");
-        if (active)
-          setServiceOptions((result.items ?? []).map((item) => item.title));
+        if (!response.ok) throw new Error(result.error ?? "Services could not be loaded.");
+        if (active) setServiceOptions((result.items ?? []).map((item) => item.title));
       })
       .catch((error: unknown) => {
         console.error(
           "Could not load enquiry service options:",
           error instanceof Error ? error.message : "Unknown error",
         );
-        if (active)
-          setServicesLoadError(
-            "Service options are temporarily unavailable. Please try again shortly.",
-          );
+        if (active) setServicesLoadError("Service options are temporarily unavailable. Please try again shortly.");
       });
     return () => {
       active = false;
@@ -203,17 +198,14 @@ export default function ContactPage() {
     },
     [],
   );
-  const handlePhoneVerified = useCallback(
-    (token: string) => {
-      setPhoneVerificationToken(token);
-      const values = pendingSubmission.current;
-      if (values) {
-        pendingSubmission.current = null;
-        void submitEnquiry(values, token);
-      }
-    },
-    [submitEnquiry],
-  );
+  const handlePhoneVerified = useCallback((token: string) => {
+    setPhoneVerificationToken(token);
+    const values = pendingSubmission.current;
+    if (values) {
+      pendingSubmission.current = null;
+      void submitEnquiry(values, token);
+    }
+  }, [submitEnquiry]);
 
   const onSubmit = async (values: ContactFormData) => {
     setSubmitError(null);
@@ -255,6 +247,7 @@ export default function ContactPage() {
       <PageHeader
         image="/images/hero.jpeg"
         imageAlt="Warm interior space designed by Orchid Interiors"
+        title="Contact Orchid Interiors"
         description="Tell us about your project, and our team will get back to you to discuss your vision, requirements and next steps."
       />
 
@@ -344,51 +337,6 @@ export default function ContactPage() {
                   <br />
                   9:30 AM – 6:30 PM
                 </p>
-              </div>
-
-              {/* Social Links */}
-              <div>
-                <h3 className="mb-6 text-xs font-medium tracking-[0.32em] uppercase text-stone-600">
-                  Follow Us
-                </h3>
-                <div className="flex flex-wrap gap-x-6 gap-y-3">
-                  <a
-                    href="https://www.instagram.com/orchid.modular.interiors/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow Orchid Interiors on Instagram"
-                    className="text-black transition-opacity duration-300 hover:opacity-60"
-                  >
-                    Instagram
-                  </a>
-                  <a
-                    href="https://www.facebook.com/profile.php?id=61591790151314"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow Orchid Interiors on Facebook"
-                    className="text-black transition-opacity duration-300 hover:opacity-60"
-                  >
-                    Facebook
-                  </a>
-                  <a
-                    href="https://www.youtube.com/@orchid_interiors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Follow Orchid Interiors on YouTube"
-                    className="text-black transition-opacity duration-300 hover:opacity-60"
-                  >
-                    YouTube
-                  </a>
-                  <a
-                    href="https://www.linkedin.com/company/orchid-modular-interiors/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Connect with Orchid Interiors on LinkedIn"
-                    className="text-black transition-opacity duration-300 hover:opacity-60"
-                  >
-                    LinkedIn
-                  </a>
-                </div>
               </div>
 
               <div className="rounded-[2rem] border border-stone-200 bg-stone-50 p-7">
@@ -575,32 +523,24 @@ export default function ContactPage() {
                     </label>
                     <div className="space-y-2">
                       {servicesLoadError ? (
-                        <p className="text-sm text-red-700">
-                          {servicesLoadError}
-                        </p>
+                        <p className="text-sm text-red-700">{servicesLoadError}</p>
                       ) : serviceOptions.length === 0 ? (
-                        <p className="text-sm text-stone-500">
-                          Loading services...
-                        </p>
-                      ) : (
-                        serviceOptions.map((service) => (
-                          <label
-                            key={service}
-                            className="flex items-center gap-3"
-                          >
-                            <input
-                              type="checkbox"
-                              value={service}
-                              checked={selectedServices.includes(service)}
-                              onChange={() => toggleService(service)}
-                              className="h-4 w-4 border border-stone-300 bg-white accent-black"
-                            />
-                            <span className="text-sm text-black">
-                              {service}
-                            </span>
-                          </label>
-                        ))
-                      )}
+                        <p className="text-sm text-stone-500">Loading services...</p>
+                      ) : serviceOptions.map((service) => (
+                        <label
+                          key={service}
+                          className="flex items-center gap-3"
+                        >
+                          <input
+                            type="checkbox"
+                            value={service}
+                            checked={selectedServices.includes(service)}
+                            onChange={() => toggleService(service)}
+                            className="h-4 w-4 border border-stone-300 bg-white accent-black"
+                          />
+                          <span className="text-sm text-black">{service}</span>
+                        </label>
+                      ))}
                     </div>
                     {selectedServices.length === 0 && errors.services && (
                       <p className="mt-2 text-xs text-red-600">

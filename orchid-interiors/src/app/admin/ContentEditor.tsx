@@ -5,19 +5,19 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState, type ChangeEvent, type FormEvent } from "react";
 import type { ContentKind } from "@/lib/content-schema";
+import { normalizeMediaUrl } from "@/lib/media-url";
 
 type EditableContent = {
   id?: number;
   number?: string;
   title: string;
   slug: string;
-  description: string;
+  description?: string;
   published?: boolean;
   image?: string;
   images?: string[];
   gallery?: string[];
   video?: string;
-  detail?: string;
   category?: "Residential" | "Commercial" | "Hospitality" | "Institute" | "Luxury";
   location?: string;
   width?: number;
@@ -61,10 +61,10 @@ function putFile(url: string, file: File, onProgress: (progress: number) => void
     };
     request.onload = () => {
       if (request.status >= 200 && request.status < 300) resolve();
-      else reject(new Error("The media upload failed. Check Firebase Storage CORS settings and try again."));
+      else reject(new Error(`Firebase Storage rejected the upload (HTTP ${request.status}). Check the storage permissions and signed upload URL.`));
     };
     request.onerror = () =>
-      reject(new Error("The media upload could not reach Firebase Storage. Check its CORS settings and try again."));
+      reject(new Error("The media upload could not reach Firebase Storage. Check the bucket CORS policy and your network connection."));
     request.onabort = () => reject(new Error("The media upload was cancelled."));
     request.send(file);
   });
@@ -83,12 +83,15 @@ export default function ContentEditor({
   const [slug, setSlug] = useState(initialItem?.slug ? makeSlug(initialItem.slug) : "");
   const [slugManuallyEdited, setSlugManuallyEdited] = useState(isEditing);
   const [description, setDescription] = useState(initialItem?.description ?? "");
-  const [cover, setCover] = useState(initialItem?.image ?? initialItem?.images?.[0] ?? "");
+  const [cover, setCover] = useState(
+    initialItem?.image ??
+      (kind !== "services" ? initialItem?.images?.[0] : undefined) ??
+      "",
+  );
   const [gallery, setGallery] = useState(
     initialItem?.images ?? initialItem?.gallery ?? [],
   );
   const [video, setVideo] = useState(initialItem?.video ?? "");
-  const [detail, setDetail] = useState(initialItem?.detail ?? "");
   const [category, setCategory] = useState<EditableContent["category"]>(
     initialItem?.category ?? "Residential",
   );
@@ -114,7 +117,7 @@ export default function ContentEditor({
   const publicPath = useMemo(
     () =>
       kind === "services"
-        ? `/services/${slug || "your-slug"}`
+        ? "/services"
         : kind === "projects"
           ? `/projects/${slug || "your-slug"}`
           : `/design-library/${slug || "your-slug"}`,
@@ -204,7 +207,7 @@ export default function ContentEditor({
 
   function changeTitle(value: string) {
     setTitle(value);
-    if (!slugManuallyEdited) setSlug(makeSlug(value));
+    if (kind === "services" || !slugManuallyEdited) setSlug(makeSlug(value));
     setHasUnsavedChanges(true);
   }
 
@@ -222,19 +225,21 @@ export default function ContentEditor({
     const item: EditableContent = {
       title: title.trim(),
       slug: slug.trim(),
-      description: description.trim(),
+      ...(kind !== "services" ? { description: description.trim() } : {}),
       published: true,
-      video,
       ...(kind === "services"
-        ? { image: cover, gallery, detail: detail.trim() }
+        ? { image: cover ? normalizeMediaUrl(cover) : "" }
+        : {}),
+      ...(kind !== "services"
+        ? { video: video ? normalizeMediaUrl(video) : "" }
         : {}),
       ...(kind === "design-library"
-        ? { images: gallery }
+        ? { images: gallery.map(normalizeMediaUrl) }
         : {}),
       ...(kind === "projects"
         ? {
-            image: cover,
-            gallery,
+            image: cover ? normalizeMediaUrl(cover) : "",
+            gallery: gallery.map(normalizeMediaUrl),
             category,
             location: location.trim(),
             width: initialItem?.width ?? 1920,
@@ -305,10 +310,13 @@ export default function ContentEditor({
 
         <form className="mt-8 space-y-6" onSubmit={save}>
           <section className="rounded-2xl border border-stone-200 bg-white p-5 sm:p-7">
-            <h2 className="text-lg font-medium">Content details</h2>
+            <h2 className="text-lg font-medium">
+              {kind === "services" ? "Service details" : "Content details"}
+            </h2>
             <div className="mt-5 grid gap-5 sm:grid-cols-2">
               <label className="text-sm text-stone-700">
-                Title <span className="text-red-700">*</span>
+                {kind === "services" ? "Service Name" : "Title"}{" "}
+                <span className="text-red-700">*</span>
                 <input
                   className="mt-2 w-full rounded-xl border border-stone-200 px-4 py-3 outline-none focus:border-stone-500"
                   maxLength={120}
@@ -317,45 +325,37 @@ export default function ContentEditor({
                   value={title}
                 />
               </label>
-              <label className="text-sm text-stone-700">
-                Slug <span className="text-red-700">*</span>
-                <input
-                  className="mt-2 w-full rounded-xl border border-stone-200 px-4 py-3 outline-none focus:border-stone-500"
-                  maxLength={100}
-                  onChange={(event) => {
-                    setSlugManuallyEdited(true);
-                    setSlug(makeSlug(event.target.value));
-                    setHasUnsavedChanges(true);
-                  }}
-                  pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
-                  required
-                  value={slug}
-                />
-                <span className="mt-1 block break-all text-xs text-stone-500">
-                  Public URL: {publicPath}
-                </span>
-              </label>
-              <label className="text-sm text-stone-700 sm:col-span-2">
-                Description <span className="text-red-700">*</span>
-                <textarea
-                  className="mt-2 min-h-28 w-full rounded-xl border border-stone-200 px-4 py-3 leading-6 outline-none focus:border-stone-500"
-                  maxLength={1000}
-                  onChange={(event) => setText(setDescription, event)}
-                  required
-                  value={description}
-                />
-              </label>
-              {kind === "services" ? (
-                <label className="text-sm text-stone-700 sm:col-span-2">
-                  Service details <span className="text-red-700">*</span>
-                  <textarea
-                    className="mt-2 min-h-36 w-full rounded-xl border border-stone-200 px-4 py-3 leading-6 outline-none focus:border-stone-500"
-                    maxLength={3000}
-                    onChange={(event) => setText(setDetail, event)}
+              {kind !== "services" ? (
+                <>
+                  <label className="text-sm text-stone-700">
+                  Slug <span className="text-red-700">*</span>
+                  <input
+                    className="mt-2 w-full rounded-xl border border-stone-200 px-4 py-3 outline-none focus:border-stone-500"
+                    maxLength={100}
+                    onChange={(event) => {
+                      setSlugManuallyEdited(true);
+                      setSlug(makeSlug(event.target.value));
+                      setHasUnsavedChanges(true);
+                    }}
+                    pattern="[a-z0-9]+(?:-[a-z0-9]+)*"
                     required
-                    value={detail}
+                    value={slug}
                   />
-                </label>
+                  <span className="mt-1 block break-all text-xs text-stone-500">
+                    Public URL: {publicPath}
+                  </span>
+                  </label>
+                  <label className="text-sm text-stone-700 sm:col-span-2">
+                  Description <span className="text-red-700">*</span>
+                  <textarea
+                    className="mt-2 min-h-28 w-full rounded-xl border border-stone-200 px-4 py-3 leading-6 outline-none focus:border-stone-500"
+                    maxLength={1000}
+                    onChange={(event) => setText(setDescription, event)}
+                    required
+                    value={description}
+                  />
+                  </label>
+                </>
               ) : null}
               {kind === "projects" ? (
                 <>
@@ -391,14 +391,14 @@ export default function ContentEditor({
           {kind !== "design-library" ? (
             <section className="rounded-2xl border border-stone-200 bg-white p-5 sm:p-7">
               <div>
-                <h2 className="text-lg font-medium">Cover image</h2>
+                <h2 className="text-lg font-medium">Cover Image</h2>
                 <p className="mt-1 text-sm text-stone-500">
                   Choose the main image visitors will see in listings.
                 </p>
               </div>
               {cover ? (
                 <div className="relative mt-5 aspect-[16/8] overflow-hidden rounded-xl bg-stone-100">
-                  <Image alt="Content cover preview" className="object-cover" fill sizes="(max-width: 768px) 100vw, 800px" src={cover} />
+                  <Image alt="Content cover preview" className="object-cover" fill sizes="(max-width: 768px) 100vw, 800px" src={normalizeMediaUrl(cover)} />
                   <button
                     className="absolute right-3 top-3 rounded-lg bg-white/95 px-3 py-2 text-xs font-medium text-red-700 shadow"
                     onClick={() => {
@@ -428,6 +428,7 @@ export default function ContentEditor({
             </section>
           ) : null}
 
+          {kind !== "services" ? (
           <section className="rounded-2xl border border-stone-200 bg-white p-5 sm:p-7">
             <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-end">
               <div>
@@ -459,7 +460,7 @@ export default function ContentEditor({
               <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                 {galleryImages.map((image, index) => (
                   <figure className="group relative aspect-square overflow-hidden rounded-xl bg-stone-100" key={`${image}-${index}`}>
-                    <Image alt={`Gallery image ${index + 1}`} className="object-cover" fill sizes="(max-width: 640px) 50vw, 25vw" src={image} />
+                    <Image alt={`Gallery image ${index + 1}`} className="object-cover" fill sizes="(max-width: 640px) 50vw, 25vw" src={normalizeMediaUrl(image)} />
                     <button
                       aria-label={`Remove image ${index + 1}`}
                       className="absolute right-2 top-2 rounded-lg bg-white/95 px-2.5 py-1.5 text-xs font-medium text-red-700 opacity-100 shadow sm:opacity-0 sm:transition group-hover:opacity-100"
@@ -477,7 +478,9 @@ export default function ContentEditor({
               </p>
             ) : null}
           </section>
+          ) : null}
 
+          {kind !== "services" ? (
           <section className="rounded-2xl border border-stone-200 bg-white p-5 sm:p-7">
             <h2 className="text-lg font-medium">Video (optional)</h2>
             <p className="mt-1 text-sm text-stone-500">MP4, WebM, or QuickTime video up to 50 MB.</p>
@@ -511,6 +514,7 @@ export default function ContentEditor({
               {video ? "Replace video" : "Upload video"}
             </button>
           </section>
+          ) : null}
 
           {uploads.length ? (
             <section aria-live="polite" className="rounded-2xl border border-stone-200 bg-white p-5">

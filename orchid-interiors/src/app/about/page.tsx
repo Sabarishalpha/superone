@@ -7,34 +7,62 @@ import PageHeader from "../components/PageHeader";
 
 const storyTimeline = [
   {
-    year: "2010",
-    title: "Studio founded",
-    text: "Orchid Interiors began with a simple philosophy: design spaces that feel personal, warm and enduring.",
+    year: "2015",
+    title: "A thoughtful beginning",
+    text: "Orchid Modular Interiors began with a simple idea: to create long-lasting interiors that look beautiful, work hard every day and feel right for the people who use them.",
   },
   {
-    year: "2017",
-    title: "Residential portfolio expands",
-    text: "We grew from boutique residential projects into complete lifestyle-focused home transformations.",
+    year: "Early 2017",
+    title: "Our first services",
+    text: "We began with modular kitchens, wardrobes and related interior solutions. As we grew, we expanded into bedrooms and living spaces, creating designs to suit each family’s needs, style and budget.",
   },
   {
-    year: "2020",
-    title: "Commercial projects added",
-    text: "Our expertise broadened into offices, hospitality and thoughtfully designed commercial interiors.",
+    year: "Mid-2017",
+    title: "Our own automated factory",
+    text: "We established our own fully automated factory, giving us greater control over modular furniture production. It helps us manufacture from approved designs with precision and achieve consistent finishes.",
   },
   {
-    year: "2025",
-    title: "Multi-city showroom presence",
-    text: "We extended our design footprint with a multi-city showroom presence and a stronger nationwide identity.",
+    year: "2018",
+    title: "A new experience centre in Tirupur",
+    text: "Orchid has established its fully equipped, modern experience centre in Tirupur, giving customers a place to explore design ideas, materials and complete residential and commercial interior solutions.",
+  },
+  {
+    year: "Late 2018",
+    title: "Complete turnkey interiors",
+    text: "We expanded our services to execute complete turnkey interiors, from flooring to lighting and interior works, for a more connected project experience across residential and commercial needs.",
+  },
+  {
+    year: "2019",
+    title: "Interiors for businesses",
+    text: "Orchid stepped into a new vision: creating tailor-made interior solutions for offices, workspaces, institutions and all types of commercial needs.",
+  },
+  {
+    year: "2026",
+    title: "A growing vision",
+    text: "We expanded our modern experience centre “VESTA” by Orchid Interiors in Coimbatore and Gobichettipalayam, to provide premium living experiences.",
   },
 ];
 
 export const metadata: Metadata = {
-  title: "About Our Interior Design Studio",
+  title: "About Orchid Interiors in Coimbatore",
   description:
-    "Meet Orchid Interiors, a thoughtful interior design studio creating refined residential and commercial spaces in Coimbatore and Tamil Nadu.",
+    "Learn about Orchid Interiors, our approach to residential and commercial interior design, and the team serving Coimbatore and Tamil Nadu.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about", images: ["/images/about-1.jpeg"] },
-  twitter: { images: ["/images/about-1.jpeg"] },
+  openGraph: {
+    type: "website",
+    title: "About Orchid Interiors in Coimbatore",
+    description:
+      "Learn about Orchid Interiors, our approach to residential and commercial interior design, and the team serving Coimbatore and Tamil Nadu.",
+    url: "/about",
+    images: [{ url: "/images/about-1.jpeg", alt: "Orchid Interiors studio" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About Orchid Interiors in Coimbatore",
+    description:
+      "Learn about Orchid Interiors, our approach to residential and commercial interior design, and the team serving Coimbatore and Tamil Nadu.",
+    images: ["/images/about-1.jpeg"],
+  },
 };
 
 const teamMembers = [
@@ -81,6 +109,7 @@ export default function AboutPage() {
       <PageHeader
         image="/images/about-1.jpeg"
         imageAlt="Layered living space designed by Orchid Interiors"
+        title="About Orchid Interiors"
       />
 
       {/* ABOUT INTRO */}
@@ -90,17 +119,19 @@ export default function AboutPage() {
       <section className="relative w-full bg-stone-50 px-4 py-14 sm:px-6 sm:py-16 md:px-10 md:py-20 lg:px-16">
         <div className="mx-auto max-w-7xl">
           <div>
-            <div className="mb-8 text-center">
+            <div className="mb-8 text-left">
               <p className="mb-4 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
                 OUR STORY
               </p>
 
-              <h3 className="mx-auto max-w-3xl text-3xl font-light leading-tight text-black sm:text-4xl lg:text-5xl">
-                A studio shaped by thoughtful design and lasting relationships.
+              <h3 className="max-w-3xl text-3xl font-light leading-tight text-black sm:text-4xl lg:text-5xl">
+                Built on thoughtful design.
+                <br />
+                Growing with every new idea.
               </h3>
             </div>
 
-            <div className="grid gap-6 lg:grid-cols-4">
+            <div className="grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
               {storyTimeline.map((item) => (
                 <div
                   key={item.year}
@@ -180,53 +211,219 @@ export default function AboutPage() {
               {/* CONTENT SIDE */}
               <div className="relative">
                 <p className="mb-5 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
-                  FOUNDER & CEO
+                  Managing Director
                 </p>
 
                 <h2 className="max-w-2xl text-4xl font-light leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl">
-                  Designing with purpose.
+                  A family vision.
                   <br />
-                  <span className="text-stone-400">Building with belief.</span>
+                  <span className="text-stone-400">Built with experience.</span>
                 </h2>
 
                 <div className="mt-8 h-px w-16 bg-black" />
 
                 <h3 className="mt-8 text-2xl font-light text-black sm:text-3xl">
-                  [Founder Name]
+                  Mr. Saravanan (D.T.Tech), MD
                 </h3>
 
                 <p className="mt-2 text-xs font-medium tracking-[0.2em] text-stone-500 uppercase">
-                  Founder & Chief Executive Officer
+                  Managing Director
                 </p>
 
                 <p className="mt-7 max-w-xl text-base leading-8 text-stone-700">
-                  Orchid Interiors was built around a simple belief — that
-                  beautiful interiors should not only look exceptional, but
-                  should also make everyday life better.
+                  Mr. Saravanan and his two sons, Sasikumar and Aravindhan,
+                  established Orchid Modular Interiors in 2017 and continue to
+                  lead the company together.
                 </p>
 
                 <p className="mt-5 max-w-xl text-base leading-8 text-stone-700">
-                  With a deep appreciation for architecture, materials and
-                  craftsmanship, our founder continues to guide Orchid Interiors
-                  with a focus on thoughtful design, honest execution and
-                  long-lasting relationships.
+                  With more than 40 years of business experience across several
+                  areas of the textile industry, Mr. Saravanan saw how factory
+                  manufacturing could simplify interior work and deliver more
+                  consistent quality. He brought that idea to life by setting up
+                  Orchid’s fully equipped modular furniture factory. The
+                  standards he established for in-house manufacturing helped
+                  Orchid build its reputation as a trusted interiors company.
                 </p>
 
-                {/* Quote */}
-                <div className="relative mt-10 max-w-xl border-l border-black pl-6 sm:pl-8">
-                  <span className="absolute -left-[6px] -top-3 text-4xl font-serif text-black">
-                    “
-                  </span>
+                {/* Founder stats */}
+              </div>
+            </div>
+          </section>
 
-                  <blockquote className="text-lg font-light leading-8 text-black sm:text-xl">
-                    We don&apos;t simply design rooms. We create environments
-                    that become part of people&apos;s everyday stories.
-                  </blockquote>
+          <section className="relative mt-14 border-t border-stone-300 pt-12 sm:mt-16 sm:pt-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
+              {/* IMAGE SIDE */}
+              <div className="relative lg:order-2">
+                {/* Decorative background */}
+                <div className="absolute -left-5 -top-5 h-full w-full rounded-[2rem] border border-stone-300 sm:-left-7 sm:-top-7" />
 
-                  <p className="mt-4 text-xs tracking-[0.2em] text-stone-500 uppercase">
-                    — Founder, Orchid Interiors
-                  </p>
+                {/* Main image */}
+                <div className="group relative z-10 overflow-hidden rounded-[2rem] bg-stone-200">
+                  <div className="relative aspect-[4/5] w-full">
+                    <Image
+                      src="/images/founder/founder-main.jpg"
+                      alt="Founder and CEO of Orchid Interiors"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                    {/* Image label */}
+                    <div className="absolute bottom-6 left-6">
+                      <p className="text-[10px] font-medium tracking-[0.3em] text-white/80 uppercase">
+                        ORCHID INTERIORS
+                      </p>
+
+                      <p className="mt-2 text-sm text-white">
+                        Founder&apos;s vision
+                      </p>
+                    </div>
+                  </div>
                 </div>
+
+                {/* Secondary floating image */}
+                <div className="absolute -bottom-10 -right-4 z-20 hidden w-36 overflow-hidden rounded-2xl border-4 border-stone-50 shadow-2xl sm:block sm:w-44 md:-right-8">
+                  <div className="relative aspect-[4/5]">
+                    <Image
+                      src="/images/founder/founder-detail.jpg"
+                      alt="Orchid Interiors founder"
+                      fill
+                      sizes="176px"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Experience badge */}
+              </div>
+
+              {/* CONTENT SIDE */}
+              <div className="relative lg:order-1">
+                <p className="mb-5 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
+                  DIRECTOR
+                </p>
+
+                <h2 className="max-w-2xl text-4xl font-light leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl">
+                  Experience built on site.
+                  <br />
+                  <span className="text-stone-400">
+                    Precision in every detail.
+                  </span>
+                </h2>
+
+                <div className="mt-8 h-px w-16 bg-black" />
+
+                <h3 className="mt-8 text-2xl font-light text-black sm:text-3xl">
+                  Mr. Sasikumar (B.E. Civil Engineering, MBA)
+                </h3>
+
+                <p className="mt-2 text-xs font-medium tracking-[0.2em] text-stone-500 uppercase">
+                  Director
+                </p>
+
+                <p className="mt-7 max-w-xl text-base leading-8 text-stone-700">
+                  Sasikumar, the elder son, brings more than 13 years of
+                  experience in civil and interior projects. In his earlier
+                  work, he planned and executed projects using manual
+                  fabrication, working directly with carpenters and site teams.
+                  His civil engineering background and practical site experience
+                  helped turn his father’s manufacturing vision into a turnkey
+                  interior service that coordinates project planning, factory
+                  production and on-site installation.
+                </p>
+
+                {/* Founder stats */}
+              </div>
+            </div>
+          </section>
+
+          <section className="relative mt-14 border-t border-stone-300 pt-12 sm:mt-16 sm:pt-16">
+            <div className="grid items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
+              {/* IMAGE SIDE */}
+              <div className="relative">
+                {/* Decorative background */}
+                <div className="absolute -left-5 -top-5 h-full w-full rounded-[2rem] border border-stone-300 sm:-left-7 sm:-top-7" />
+
+                {/* Main image */}
+                <div className="group relative z-10 overflow-hidden rounded-[2rem] bg-stone-200">
+                  <div className="relative aspect-[4/5] w-full">
+                    <Image
+                      src="/images/founder/founder-main.jpg"
+                      alt="Founder and CEO of Orchid Interiors"
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+
+                    {/* Image label */}
+                    <div className="absolute bottom-6 left-6">
+                      <p className="text-[10px] font-medium tracking-[0.3em] text-white/80 uppercase">
+                        ORCHID INTERIORS
+                      </p>
+
+                      <p className="mt-2 text-sm text-white">
+                        Founder&apos;s vision
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Secondary floating image */}
+                <div className="absolute -bottom-10 -right-4 z-20 hidden w-36 overflow-hidden rounded-2xl border-4 border-stone-50 shadow-2xl sm:block sm:w-44 md:-right-8">
+                  <div className="relative aspect-[4/5]">
+                    <Image
+                      src="/images/founder/founder-detail.jpg"
+                      alt="Orchid Interiors founder"
+                      fill
+                      sizes="176px"
+                      className="object-cover"
+                    />
+                  </div>
+                </div>
+
+                {/* Experience badge */}
+              </div>
+
+              {/* CONTENT SIDE */}
+              <div className="relative">
+                <p className="mb-5 text-xs font-medium tracking-[0.32em] text-stone-600 uppercase">
+                  Director
+                </p>
+
+                <h2 className="max-w-2xl text-4xl font-light leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl">
+                  Design-led execution.
+                  <br />
+                  <span className="text-stone-400">
+                    Built for demanding spaces.
+                  </span>
+                </h2>
+
+                <div className="mt-8 h-px w-16 bg-black" />
+
+                <h3 className="mt-8 text-2xl font-light text-black sm:text-3xl">
+                  Mr. Aravindhan (B.E. EEE, MBA)
+                </h3>
+
+                <p className="mt-2 text-xs font-medium tracking-[0.2em] text-stone-500 uppercase">
+                  Director
+                </p>
+
+                <p className="mt-7 max-w-xl text-base leading-8 text-stone-700">
+                  Aravindhan, the younger son, brings eight years of experience
+                  in interiors. He uses design software to work through complex
+                  client requirements before production and develop solutions
+                  that Orchid’s factory and site teams can build and install.
+                  This approach has helped Orchid take on more demanding
+                  projects, with a focus on delivering turnkey interiors for
+                  luxury homes and commercial spaces.
+                </p>
 
                 {/* Founder stats */}
               </div>

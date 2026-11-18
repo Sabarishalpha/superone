@@ -6,10 +6,9 @@ import { FieldValue, type DocumentData } from "firebase-admin/firestore";
 import type { Bucket } from "@google-cloud/storage";
 import designLibrarySeed from "../../data/design-library.json";
 import projectsSeed from "../../data/projects.json";
-import servicesSeed from "../../data/services.json";
 import type { DesignCategory } from "@/app/data/designLibrary";
 import type { Project } from "@/app/data/projects";
-import type { Service } from "@/app/data/services";
+import { servicesSeed, type Service } from "@/app/data/services";
 import { getFirebaseServices } from "@/lib/firebase-admin";
 import type { ContentKind } from "@/lib/content-schema";
 
@@ -17,7 +16,7 @@ export type ManagedContent = Service | DesignCategory | Project;
 const publicDirectory = path.join(process.cwd(), "public");
 
 const seedData: Record<ContentKind, ManagedContent[]> = {
-  services: servicesSeed as Service[],
+  services: servicesSeed,
   "design-library": designLibrarySeed as DesignCategory[],
   projects: projectsSeed as Project[],
 };
@@ -27,6 +26,144 @@ const collectionNames: Record<ContentKind, string> = {
   "design-library": "designLibrary",
   projects: "projects",
 };
+
+async function syncDesignLibraryCategories(
+  firebase: NonNullable<ReturnType<typeof getFirebaseServices>>,
+) {
+  const categories = seedData["design-library"] as DesignCategory[];
+  const catalogKey = createHash("sha256")
+    .update(
+      categories
+        .map(
+          (category) =>
+            `${category.slug}:${category.number}:${category.images.join("|")}`,
+        )
+        .sort()
+        .join("\n"),
+    )
+    .digest("hex")
+    .slice(0, 16);
+  const migration = firebase.db
+    .collection("_system")
+    .doc(`sync-design-library-${catalogKey}`);
+  if ((await migration.get()).exists) return false;
+
+  return firebase.db.runTransaction(async (transaction) => {
+    if ((await transaction.get(migration)).exists) return false;
+
+    const categoryReferences = categories.map((category) =>
+      firebase.db.collection("designLibrary").doc(category.slug),
+    );
+    const existingCategories = await Promise.all(
+      categoryReferences.map((reference) => transaction.get(reference)),
+    );
+    let updated = false;
+
+    for (const [index, category] of categories.entries()) {
+      if (!existingCategories[index].exists) {
+        transaction.set(categoryReferences[index], {
+          ...category,
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+        updated = true;
+        continue;
+      }
+
+      const updates: Record<string, unknown> = {};
+      if (existingCategories[index].get("number") !== category.number) {
+        updates.number = category.number;
+      }
+
+      if (category.slug === "living-room") {
+        const existingImages = existingCategories[index].get("images");
+        const hasBundledImagePaths =
+          Array.isArray(existingImages) &&
+          existingImages.every(
+            (image) =>
+              typeof image === "string" &&
+              image.startsWith("/images/design-library/"),
+          );
+        if (
+          hasBundledImagePaths &&
+          JSON.stringify(existingImages) !== JSON.stringify(category.images)
+        ) {
+          updates.images = category.images;
+        }
+      }
+
+      if (Object.keys(updates).length > 0) {
+        transaction.update(categoryReferences[index], {
+          ...updates,
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+        updated = true;
+      }
+    }
+
+    transaction.set(migration, { completedAt: FieldValue.serverTimestamp() });
+    return updated;
+  });
+}
+
+async function syncProjectCatalog(
+  firebase: NonNullable<ReturnType<typeof getFirebaseServices>>,
+) {
+  const projects = seedData.projects as Project[];
+  const projectSlugs = new Set(projects.map((project) => project.slug));
+  if (projectSlugs.size !== projects.length) {
+    throw new Error("The project seed contains duplicate slugs.");
+  }
+
+  const catalogKey = createHash("sha256")
+    .update(JSON.stringify(projects))
+    .digest("hex")
+    .slice(0, 16);
+  const migration = firebase.db
+    .collection("_system")
+    .doc(`sync-project-catalog-${catalogKey}`);
+  if ((await migration.get()).exists) return false;
+
+  const collection = firebase.db.collection("projects");
+  return firebase.db.runTransaction(async (transaction) => {
+    if ((await transaction.get(migration)).exists) return false;
+
+    const snapshot = await transaction.get(collection);
+    const existingProjects = new Map(
+      snapshot.docs.map((document) => [document.id, document]),
+    );
+    let updated = false;
+
+    for (const project of projects) {
+      const document = existingProjects.get(project.slug);
+      transaction.set(
+        collection.doc(project.slug),
+        {
+          ...project,
+          updatedAt: FieldValue.serverTimestamp(),
+        },
+        { merge: true },
+      );
+      if (!document || Object.keys(project).some(
+        (key) => JSON.stringify(document.get(key)) !== JSON.stringify(project[key as keyof Project]),
+      )) {
+        updated = true;
+      }
+    }
+
+    for (const document of snapshot.docs) {
+      if (!projectSlugs.has(document.id) && document.get("published") !== false) {
+        transaction.update(document.ref, {
+          published: false,
+          updatedAt: FieldValue.serverTimestamp(),
+        });
+        updated = true;
+      }
+    }
+
+    transaction.set(migration, { completedAt: FieldValue.serverTimestamp() });
+    return updated;
+  });
+}
 
 async function migrateSeedMedia(item: ManagedContent, bucket: Bucket) {
   const copy: Record<string, unknown> = { ...item };
@@ -83,7 +220,7 @@ export async function getContentItems(kind: ContentKind, includeUnpublished = fa
   }
 
   const collection = firebase.db.collection(collectionNames[kind]);
-  const snapshot = await collection.get();
+  let snapshot = await collection.get();
   const seedMarker = firebase.db.collection("_system").doc(`seed-${collectionNames[kind]}`);
   const markerSnapshot = await seedMarker.get();
   if (snapshot.empty) {
@@ -104,6 +241,15 @@ export async function getContentItems(kind: ContentKind, includeUnpublished = fa
   }
   if (!markerSnapshot.exists) {
     await seedMarker.set({ completedAt: FieldValue.serverTimestamp() });
+  }
+  if (
+    kind === "design-library" &&
+    (await syncDesignLibraryCategories(firebase))
+  ) {
+    snapshot = await collection.get();
+  }
+  if (kind === "projects" && (await syncProjectCatalog(firebase))) {
+    snapshot = await collection.get();
   }
 
   return snapshot.docs
@@ -171,18 +317,33 @@ export async function updateContentItem(
   await firebase.db.runTransaction(async (transaction) => {
     const existing = await transaction.get(oldDocument);
     if (!existing.exists) throw new Error("The content item no longer exists.");
+    const updatedItem =
+      kind === "services"
+        ? {
+            ...data,
+            number: existing.get("number") ?? "01",
+            updatedAt: FieldValue.serverTimestamp(),
+          }
+        : item;
 
     if (oldSlug !== data.slug) {
       const slugCollision = await transaction.get(newDocument);
       if (slugCollision.exists) throw new Error("An item with this slug already exists.");
-      transaction.set(newDocument, {
-        ...existing.data(),
-        ...item,
-        ...(kind === "projects" ? { id: existing.get("id") } : {}),
-      });
+      transaction.set(
+        newDocument,
+        kind === "services"
+          ? updatedItem
+          : {
+              ...existing.data(),
+              ...updatedItem,
+              ...(kind === "projects" ? { id: existing.get("id") } : {}),
+            },
+      );
       transaction.delete(oldDocument);
+    } else if (kind === "services") {
+      transaction.set(oldDocument, updatedItem);
     } else {
-      transaction.update(oldDocument, item);
+      transaction.update(oldDocument, updatedItem);
     }
   });
 }

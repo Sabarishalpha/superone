@@ -1,22 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useInView } from "react-intersection-observer";
 import CountUp from "react-countup";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/effect-fade";
-import "swiper/css/pagination";
-
-// About carousel images
-const ABOUT_CAROUSEL_IMAGES = [
-  "/images/about-1.jpeg",
-  "/images/about-2.jpeg",
-  "/images/about-3.jpeg",
-  "/images/about-4.jpeg",
-];
 
 type AboutStatistics = {
   yearsExperience: number;
@@ -54,32 +40,35 @@ export default function About({
         ></p>
 
         {/* Main Layout - Grid */}
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        <div className="grid items-stretch gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-12 xl:gap-16">
           {/* Left Content */}
-          <div className="flex flex-col justify-start">
+          <div className="flex max-w-3xl flex-col items-start text-left">
             {/* Main Heading */}
             <h2
               data-about-title
-              className="mb-6 max-w-lg text-4xl font-light leading-tight text-black sm:text-5xl md:text-6xl"
+              className="mb-6 max-w-3xl text-4xl font-light leading-tight text-black sm:text-5xl md:text-6xl"
             >
-              Designing spaces
+              Your space has a story.
               <br />
-              with purpose.
+              Let&apos;s design it well.
             </h2>
 
             {/* Description */}
             <p
               data-about-description
-              className="mb-7 max-w-lg text-base leading-8 text-stone-700 sm:text-lg md:text-xl"
+              className="mb-7 max-w-3xl text-base leading-8 text-stone-700 sm:text-lg md:text-xl"
             >
-              At Orchid Interiors, we create thoughtful spaces that balance
-              architecture, functionality and timeless beauty.
+              A home should feel like yours in every detail: the way it reflects
+              your lifestyle, the way your kitchen works, how your storage fits
+              your needs and how each room welcomes you at the end of the day.
             </p>
 
-            <p className="mb-8 max-w-lg text-base leading-8 text-stone-700 sm:text-lg md:text-xl">
-              Every project is shaped around the people who experience it,
-              combining refined materials, intelligent planning and a distinct
-              sense of identity.
+            <p className="mb-8 max-w-3xl text-base leading-8 text-stone-700 sm:text-lg md:text-xl">
+              Since 2017, Orchid Modular Interiors has been designing and
+              creating practical, beautiful spaces for homes and businesses. We
+              bring design, manufacturing and installation together, with our
+              own fully automated factory supporting the manufacturing behind
+              every finished interior.
             </p>
 
             {/* CTA */}
@@ -98,45 +87,21 @@ export default function About({
             </Link>
           </div>
 
-          {/* Right Image Carousel */}
+          {/* Right Video */}
           <div
-            data-about-image
-            className="relative w-full overflow-hidden rounded-lg"
+            data-about-video
+            className="relative w-full overflow-hidden rounded-lg bg-stone-200"
           >
-            <div
-              className="relative w-full mb-8"
-              style={{ aspectRatio: "26 / 18" }}
-            >
-              <Swiper
-                modules={[Autoplay, EffectFade, Pagination]}
-                effect="fade"
-                autoplay={{
-                  delay: 6000,
-                  disableOnInteraction: false,
-                }}
-                pagination={{
-                  clickable: true,
-                  dynamicBullets: true,
-                  el: ".about-swiper-pagination",
-                }}
-                loop
-                className="h-full w-full"
-              >
-                {ABOUT_CAROUSEL_IMAGES.map((imagePath, index) => (
-                  <SwiperSlide key={index} className="relative h-full w-full">
-                    <Image
-                      src={imagePath}
-                      alt={`Orchid Interiors interior design ${index + 1}`}
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 50vw"
-                      className="object-cover"
-                    />
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-
-              {/* Pagination Dots */}
-              <div className="about-swiper-pagination absolute bottom-4 left-1/2 z-10 -translate-x-1/2" />
+            <div className="relative aspect-video w-full lg:aspect-auto lg:h-full">
+              <iframe
+                src="https://www.youtube.com/embed/FerrUBGbAfg?si=vsuAqqlzx7vSbW8U"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                loading="lazy"
+                className="absolute inset-0 h-full w-full border-0"
+              />
             </div>
           </div>
         </div>

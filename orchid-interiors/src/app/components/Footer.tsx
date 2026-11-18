@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import {
-  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
+  FaPinterestP,
+  FaXTwitter,
+  FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa6";
 
@@ -114,31 +116,31 @@ export default function Footer() {
                     data-footer-link
                     className="text-sm leading-relaxed text-white/80 transition-colors duration-300 hover:text-white md:text-base"
                   >
-                    Interior Design
+                    Services
                   </Link>
                   <Link
-                    href="/services"
+                    href="/design-library"
                     data-footer-link
                     className="text-sm leading-relaxed text-white/80 transition-colors duration-300 hover:text-white md:text-base"
                   >
-                    Residential
+                    Design Library
                   </Link>
                   <Link
-                    href="/services"
+                    href="/projects"
                     data-footer-link
                     className="text-sm leading-relaxed text-white/80 transition-colors duration-300 hover:text-white md:text-base"
                   >
                     Commercial
                   </Link>
                   <Link
-                    href="/services"
+                    href="/contact"
                     data-footer-link
                     className="text-sm leading-relaxed text-white/80 transition-colors duration-300 hover:text-white md:text-base"
                   >
                     Space Planning
                   </Link>
                   <Link
-                    href="/services"
+                    href="/contact"
                     data-footer-link
                     className="text-sm leading-relaxed text-white/80 transition-colors duration-300 hover:text-white md:text-base"
                   >
@@ -154,12 +156,14 @@ export default function Footer() {
                 </h3>
                 <div className="space-y-4 md:space-y-5">
                   <p className="text-sm leading-relaxed text-white/80 md:text-base">
-                    Coimbatore,
+                     Avinashi Main Rd, Periyar Colony,
                     <br />
-                    Tamil Nadu, India
+                    Tiruppur, Tamil Nadu - 641 603
                   </p>
                   <p className="text-sm leading-relaxed text-white/80 md:text-base">
-                    Phone details available on request
+                    +91 97903 52563
+                    <br />
+                    +91 97912 55355
                   </p>
                   <p className="text-sm leading-relaxed text-white/80 md:text-base">
                     <a
@@ -190,6 +194,15 @@ export default function Footer() {
               data-footer-social
               className="flex items-center gap-6 sm:gap-8"
             >
+               <a
+                href="wa.me/91790352563"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Connect with Orchid Interiors on WhatsApp"
+                className="transition-colors duration-300 hover:text-white/60"
+              >
+                <FaWhatsapp className="h-5 w-5 sm:h-6 sm:w-6" />
+              </a>
               <a
                 href="https://www.instagram.com/orchid.modular.interiors/"
                 target="_blank"
@@ -199,26 +212,26 @@ export default function Footer() {
               >
                 <FaInstagram className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
-              <a
-                href="https://www.facebook.com/profile.php?id=61591790151314"
+              {/* <a
+                href="https://www.x.com/orchidmodular"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Orchid Interiors on Facebook"
+                aria-label="Follow Orchid Interiors on X (Twitter)"
                 className="transition-colors duration-300 hover:text-white/60"
               >
-                <FaFacebookF className="h-5 w-5 sm:h-6 sm:w-6" />
-              </a>
+                <FaXTwitter className="h-5 w-5 sm:h-6 sm:w-6" />
+              </a> */}
               <a
-                href="https://www.youtube.com/@orchid_interiors"
+                href="https://www.pinterest.com/orchidmodular/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Follow Orchid Interiors on YouTube"
+                aria-label="Follow Orchid Interiors on Pinterest"
                 className="transition-colors duration-300 hover:text-white/60"
               >
-                <FaYoutube className="h-5 w-5 sm:h-6 sm:w-6" />
+                <FaPinterestP className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
               <a
-                href="https://www.linkedin.com/company/orchid-modular-interiors/"
+                href="https://www.linkedin.com/company/orchid-modular-interiors"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Connect with Orchid Interiors on LinkedIn"
@@ -226,10 +239,20 @@ export default function Footer() {
               >
                 <FaLinkedinIn className="h-5 w-5 sm:h-6 sm:w-6" />
               </a>
+              <a
+                href="https://www.youtube.com/@orchid_interiors"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Connect with Orchid Interiors on YouTube"
+                className="transition-colors duration-300 hover:text-white/60"
+              >
+                <FaYoutube className="h-5 w-5 sm:h-6 sm:w-6" />
+              </a>
+
             </div>
 
             {/* Right - Legal Links */}
-            <div className="flex gap-4 text-xs sm:gap-6 sm:text-sm md:text-base">
+            {/* <div className="flex gap-4 text-xs sm:gap-6 sm:text-sm md:text-base">
               <Link
                 href="#privacy"
                 className="text-white/60 transition-colors duration-300 hover:text-white"
@@ -243,7 +266,7 @@ export default function Footer() {
               >
                 Terms & Conditions
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
