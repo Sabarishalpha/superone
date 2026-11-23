@@ -169,7 +169,7 @@ export default function AboutPage() {
                 <div className="group relative z-10 overflow-hidden rounded-[2rem] bg-stone-200">
                   <div className="relative aspect-[4/5] w-full">
                     <Image
-                      src="/images/founder/founder-main.jpg"
+                      src="/images/founder/saravanan.png"
                       alt="Founder and CEO of Orchid Interiors"
                       fill
                       priority
@@ -196,7 +196,7 @@ export default function AboutPage() {
                 <div className="absolute -bottom-10 -right-4 z-20 hidden w-36 overflow-hidden rounded-2xl border-4 border-stone-50 shadow-2xl sm:block sm:w-44 md:-right-8">
                   <div className="relative aspect-[4/5]">
                     <Image
-                      src="/images/founder/founder-detail.jpg"
+                      src="/images/founder/saravanan.png"
                       alt="Orchid Interiors founder"
                       fill
                       sizes="176px"
@@ -215,7 +215,7 @@ export default function AboutPage() {
                 </p>
 
                 <h2 className="max-w-2xl text-4xl font-light leading-[1.05] tracking-tight text-black sm:text-5xl lg:text-6xl">
-                  A family vision.
+                  A vision.
                   <br />
                   <span className="text-stone-400">Built with experience.</span>
                 </h2>
@@ -231,9 +231,9 @@ export default function AboutPage() {
                 </p>
 
                 <p className="mt-7 max-w-xl text-base leading-8 text-stone-700">
-                  Mr. Saravanan and his two sons, Sasikumar and Aravindhan,
-                  established Orchid Modular Interiors in 2017 and continue to
-                  lead the company together.
+                  Mr. Saravanan, Sasikumar and Aravindhan, established Orchid
+                  Modular Interiors in 2017 and continue to lead the company
+                  together.
                 </p>
 
                 <p className="mt-5 max-w-xl text-base leading-8 text-stone-700">
@@ -262,7 +262,7 @@ export default function AboutPage() {
                 <div className="group relative z-10 overflow-hidden rounded-[2rem] bg-stone-200">
                   <div className="relative aspect-[4/5] w-full">
                     <Image
-                      src="/images/founder/founder-main.jpg"
+                      src="/images/founder/sasi.png"
                       alt="Founder and CEO of Orchid Interiors"
                       fill
                       priority
@@ -289,7 +289,7 @@ export default function AboutPage() {
                 <div className="absolute -bottom-10 -right-4 z-20 hidden w-36 overflow-hidden rounded-2xl border-4 border-stone-50 shadow-2xl sm:block sm:w-44 md:-right-8">
                   <div className="relative aspect-[4/5]">
                     <Image
-                      src="/images/founder/founder-detail.jpg"
+                      src="/images/founder/sasi.png"
                       alt="Orchid Interiors founder"
                       fill
                       sizes="176px"
@@ -326,14 +326,14 @@ export default function AboutPage() {
                 </p>
 
                 <p className="mt-7 max-w-xl text-base leading-8 text-stone-700">
-                  Sasikumar, the elder son, brings more than 13 years of
-                  experience in civil and interior projects. In his earlier
-                  work, he planned and executed projects using manual
-                  fabrication, working directly with carpenters and site teams.
-                  His civil engineering background and practical site experience
-                  helped turn his father’s manufacturing vision into a turnkey
-                  interior service that coordinates project planning, factory
-                  production and on-site installation.
+                  Sasikumar, brings more than 13 years of experience in civil
+                  and interior projects. In his earlier work, he planned and
+                  executed projects using manual fabrication, working directly
+                  with carpenters and site teams. His civil engineering
+                  background and practical site experience helped turn his
+                  father’s manufacturing vision into a turnkey interior service
+                  that coordinates project planning, factory production and
+                  on-site installation.
                 </p>
 
                 {/* Founder stats */}
@@ -352,7 +352,7 @@ export default function AboutPage() {
                 <div className="group relative z-10 overflow-hidden rounded-[2rem] bg-stone-200">
                   <div className="relative aspect-[4/5] w-full">
                     <Image
-                      src="/images/founder/founder-main.jpg"
+                      src="/images/founder/aravindhan.png"
                       alt="Founder and CEO of Orchid Interiors"
                       fill
                       priority
@@ -379,7 +379,7 @@ export default function AboutPage() {
                 <div className="absolute -bottom-10 -right-4 z-20 hidden w-36 overflow-hidden rounded-2xl border-4 border-stone-50 shadow-2xl sm:block sm:w-44 md:-right-8">
                   <div className="relative aspect-[4/5]">
                     <Image
-                      src="/images/founder/founder-detail.jpg"
+                      src="/images/founder/aravindhan.png"
                       alt="Orchid Interiors founder"
                       fill
                       sizes="176px"
@@ -416,13 +416,13 @@ export default function AboutPage() {
                 </p>
 
                 <p className="mt-7 max-w-xl text-base leading-8 text-stone-700">
-                  Aravindhan, the younger son, brings eight years of experience
-                  in interiors. He uses design software to work through complex
-                  client requirements before production and develop solutions
-                  that Orchid’s factory and site teams can build and install.
-                  This approach has helped Orchid take on more demanding
-                  projects, with a focus on delivering turnkey interiors for
-                  luxury homes and commercial spaces.
+                  Aravindhan, brings eight years of experience in interiors. He
+                  uses design software to work through complex client
+                  requirements before production and develop solutions that
+                  Orchid’s factory and site teams can build and install. This
+                  approach has helped Orchid take on more demanding projects,
+                  with a focus on delivering turnkey interiors for luxury homes
+                  and commercial spaces.
                 </p>
 
                 {/* Founder stats */}

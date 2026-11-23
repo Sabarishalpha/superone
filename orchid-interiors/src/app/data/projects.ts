@@ -2,8 +2,7 @@ export type ProjectCategory =
   | "Residential"
   | "Commercial"
   | "Hospitality"
-  | "Institute"
-  | "Luxury";
+  | "Institute";
 
 export type Project = {
   id: number;

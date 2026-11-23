@@ -129,15 +129,20 @@ export default function ContactPage() {
           items?: { title: string }[];
           error?: string;
         };
-        if (!response.ok) throw new Error(result.error ?? "Services could not be loaded.");
-        if (active) setServiceOptions((result.items ?? []).map((item) => item.title));
+        if (!response.ok)
+          throw new Error(result.error ?? "Services could not be loaded.");
+        if (active)
+          setServiceOptions((result.items ?? []).map((item) => item.title));
       })
       .catch((error: unknown) => {
         console.error(
           "Could not load enquiry service options:",
           error instanceof Error ? error.message : "Unknown error",
         );
-        if (active) setServicesLoadError("Service options are temporarily unavailable. Please try again shortly.");
+        if (active)
+          setServicesLoadError(
+            "Service options are temporarily unavailable. Please try again shortly.",
+          );
       });
     return () => {
       active = false;
@@ -198,14 +203,17 @@ export default function ContactPage() {
     },
     [],
   );
-  const handlePhoneVerified = useCallback((token: string) => {
-    setPhoneVerificationToken(token);
-    const values = pendingSubmission.current;
-    if (values) {
-      pendingSubmission.current = null;
-      void submitEnquiry(values, token);
-    }
-  }, [submitEnquiry]);
+  const handlePhoneVerified = useCallback(
+    (token: string) => {
+      setPhoneVerificationToken(token);
+      const values = pendingSubmission.current;
+      if (values) {
+        pendingSubmission.current = null;
+        void submitEnquiry(values, token);
+      }
+    },
+    [submitEnquiry],
+  );
 
   const onSubmit = async (values: ContactFormData) => {
     setSubmitError(null);
@@ -270,12 +278,10 @@ export default function ContactPage() {
                     <p className="mb-2 text-[10px] font-medium tracking-[0.2em] uppercase text-stone-500">
                       Showroom 01
                     </p>
-                    <p className="text-base font-light text-black">
-                      Palangarai
-                    </p>
+                    <p className="text-base font-light text-black">Avinashi</p>
                     <p className="mt-2 text-sm text-stone-700">
-                      5/83, Main Rd, Avinashilingampalayam, Palangarai, Tamil
-                      Nadu 641654
+                      5/83, Main Rd, Avinashilingampalayam, Avinashi, Tamil Nadu
+                      641654
                     </p>
                     <p className="mt-2 text-sm text-stone-700">
                       9790352563 / 9791255355
@@ -300,10 +306,11 @@ export default function ContactPage() {
                     <p className="mb-2 text-[10px] font-medium tracking-[0.2em] uppercase text-stone-500">
                       Showroom 03
                     </p>
-                    <p className="text-base font-light text-black">Avinashi</p>
+                    <p className="text-base font-light text-black">
+                      Gobichettipalayam
+                    </p>
                     <p className="mt-2 text-sm text-stone-700">
-                      5/83, Main Rd, Avinashilingampalayam, Palangarai,
-                      Avinashi, Tamil Nadu 641654
+                      Modachur Rd, Gobichettipalayam, Tamil Nadu 638476
                     </p>
                     <p className="mt-2 text-sm text-stone-700">
                       9790352563 / 9791255355
@@ -316,7 +323,7 @@ export default function ContactPage() {
                 </h3>
                 <div className="rounded-[1.25rem] border border-stone-200 bg-white p-4">
                   <p className="mb-2 text-[10px] font-medium tracking-[0.2em] uppercase text-stone-500">
-                    Tiruppur Office
+                    Tiruppur
                   </p>
                   <p className="text-base font-light text-black">Tiruppur</p>
                   <p className="mt-2 text-sm text-stone-700">
@@ -523,24 +530,32 @@ export default function ContactPage() {
                     </label>
                     <div className="space-y-2">
                       {servicesLoadError ? (
-                        <p className="text-sm text-red-700">{servicesLoadError}</p>
+                        <p className="text-sm text-red-700">
+                          {servicesLoadError}
+                        </p>
                       ) : serviceOptions.length === 0 ? (
-                        <p className="text-sm text-stone-500">Loading services...</p>
-                      ) : serviceOptions.map((service) => (
-                        <label
-                          key={service}
-                          className="flex items-center gap-3"
-                        >
-                          <input
-                            type="checkbox"
-                            value={service}
-                            checked={selectedServices.includes(service)}
-                            onChange={() => toggleService(service)}
-                            className="h-4 w-4 border border-stone-300 bg-white accent-black"
-                          />
-                          <span className="text-sm text-black">{service}</span>
-                        </label>
-                      ))}
+                        <p className="text-sm text-stone-500">
+                          Loading services...
+                        </p>
+                      ) : (
+                        serviceOptions.map((service) => (
+                          <label
+                            key={service}
+                            className="flex items-center gap-3"
+                          >
+                            <input
+                              type="checkbox"
+                              value={service}
+                              checked={selectedServices.includes(service)}
+                              onChange={() => toggleService(service)}
+                              className="h-4 w-4 border border-stone-300 bg-white accent-black"
+                            />
+                            <span className="text-sm text-black">
+                              {service}
+                            </span>
+                          </label>
+                        ))
+                      )}
                     </div>
                     {selectedServices.length === 0 && errors.services && (
                       <p className="mt-2 text-xs text-red-600">
