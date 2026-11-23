@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import Script from "next/script";
-import { Geist, Geist_Mono, Caveat } from "next/font/google";
+import { Viga } from "next/font/google";
 import SmoothMotion from "./components/SmoothMotion";
 import ChatBot from "./components/ChatBot";
 import { ConsultationModalProvider } from "./components/ConsultationModalProvider";
@@ -10,19 +10,10 @@ import ContextMenuGuard from "./components/ContextMenuGuard";
 import { siteUrl } from "@/lib/site-url";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const viga = Viga({
+  variable: "--font-viga",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const caveat = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
+  weight: "400",
 });
 
 const gaId = process.env.NEXT_PUBLIC_GA_ID;
@@ -81,7 +72,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${caveat.variable} h-full antialiased`}
+      className={`${viga.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <script

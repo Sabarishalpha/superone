@@ -4,7 +4,6 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaPinterestP,
-  FaXTwitter,
   FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa6";
@@ -195,7 +194,7 @@ export default function Footer() {
               className="flex items-center gap-6 sm:gap-8"
             >
                <a
-                href="wa.me/91790352563"
+                href="https://wa.me/919790352563"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Connect with Orchid Interiors on WhatsApp"

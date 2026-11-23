@@ -411,7 +411,6 @@ export default function FeaturedProjects({
             <h2
               className="
                 max-w-[550px]
-                font-serif
                 text-[40px]
                 font-light
                 leading-[0.98]

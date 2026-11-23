@@ -38,7 +38,7 @@ export default function Testimonials() {
             A note from our clients
           </p>
           <h3
-            className="max-w-lg font-serif text-4xl font-light leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl"
+            className="max-w-lg text-4xl font-light leading-[1.08] tracking-[-0.035em] text-white sm:text-5xl lg:text-6xl"
             id="testimonials-title"
           >
             Spaces that feel{" "}
@@ -84,7 +84,7 @@ export default function Testimonials() {
                       className="mb-4 h-8 w-8 fill-stone-300 text-stone-300 sm:mb-5"
                       strokeWidth={1}
                     />
-                    <blockquote className="max-w-2xl font-serif text-xl font-light leading-8 tracking-[-0.015em] text-stone-900 sm:text-2xl sm:leading-10 lg:text-[1.75rem]">
+                    <blockquote className="max-w-2xl text-xl font-light leading-8 tracking-[-0.015em] text-stone-900 sm:text-2xl sm:leading-10 lg:text-[1.75rem]">
                       “{testimonial}”
                     </blockquote>
                   </div>
