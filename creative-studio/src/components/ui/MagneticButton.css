@@ -1,0 +1,55 @@
+.magnetic-button {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #050505;
+  font-family: var(--font-family-heading), sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease;
+}
+
+.magnetic-button:hover {
+  border-color: rgb(255 255 255 / 20%);
+  background: #e8e8e8;
+}
+
+.magnetic-button:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+.magnetic-button--navbar {
+  padding: 0 1.15rem;
+}
+
+.magnetic-button__arrow {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+@media (max-width: 767px) {
+  .magnetic-button--navbar {
+    min-height: 36px;
+    gap: 0.35rem;
+    padding-inline: 0.75rem;
+    font-size: 0.625rem;
+  }
+
+  .magnetic-button--navbar .magnetic-button__arrow {
+    width: 13px;
+    height: 13px;
+  }
+}

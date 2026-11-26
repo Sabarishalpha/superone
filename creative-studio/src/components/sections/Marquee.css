@@ -1,0 +1,69 @@
+.agency-marquee {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: clamp(7rem, 13vw, 11rem);
+  align-items: center;
+  overflow: hidden;
+  background: #ffffff;
+  color: #050505;
+}
+
+.agency-marquee__viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.agency-marquee__track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  will-change: transform;
+}
+
+.agency-marquee__segment {
+  display: flex;
+  flex: none;
+  width: max-content;
+  align-items: center;
+  gap: clamp(0.85rem, 2.8vw, 2.5rem);
+  padding-right: clamp(0.85rem, 2.8vw, 2.5rem);
+}
+
+.agency-marquee__item {
+  display: inline-flex;
+  flex: none;
+  align-items: center;
+  gap: clamp(0.85rem, 2.8vw, 2.5rem);
+  color: inherit;
+  font-family: var(--font-family-display), sans-serif;
+  font-size: clamp(5rem, 7.6vw, 6.875rem);
+  font-weight: 700;
+  letter-spacing: -0.075em;
+  line-height: 0.88;
+  white-space: nowrap;
+}
+
+.agency-marquee__logo {
+  display: block;
+  width: clamp(1.35rem, 3.6vw, 2.8rem);
+  height: auto;
+  flex: none;
+}
+
+.agency-marquee__accessible {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .agency-marquee__item {
+    font-size: clamp(2.25rem, 10vw, 3rem);
+    letter-spacing: -0.07em;
+  }
+}

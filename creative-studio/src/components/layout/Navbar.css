@@ -1,0 +1,214 @@
+html {
+  scroll-padding-top: 92px;
+}
+
+.nav-shell {
+  position: fixed;
+  z-index: 1000;
+  top: 20px;
+  right: 0;
+  left: 0;
+  width: min(94%, 1440px);
+  margin-inline: auto;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  will-change: transform, opacity;
+}
+
+.nav-shell--ready {
+  pointer-events: auto;
+}
+
+.floating-navbar {
+  display: grid;
+  height: 72px;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  padding-inline: clamp(1.1rem, 2vw, 1.8rem);
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 100px;
+  background: rgb(15 15 15 / 75%);
+  box-shadow: 0 8px 30px rgb(0 0 0 / 12%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition:
+    height 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    background-color 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease;
+}
+
+.nav-shell--scrolled .floating-navbar {
+  height: 60px;
+  border-color: rgb(255 255 255 / 16%);
+  background: rgb(15 15 15 / 92%);
+  box-shadow: 0 10px 36px rgb(0 0 0 / 24%);
+}
+
+.navbar-logo {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-logo__image {
+  display: block;
+  width: 40px;
+  height: auto;
+}
+
+.primary-nav {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1.5rem, 3.2vw, 3rem);
+}
+
+.primary-nav__link {
+  position: relative;
+  display: inline-flex;
+  height: 100%;
+  align-items: center;
+  color: #a1a1aa;
+  font-family: var(--font-family-heading), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.015em;
+  transition: color 180ms ease;
+}
+
+.primary-nav__link::after {
+  position: absolute;
+  right: 0;
+  bottom: 17px;
+  left: 0;
+  height: 1px;
+  background: #ffffff;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 240ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.nav-shell--scrolled .primary-nav__link::after {
+  bottom: 11px;
+}
+
+.primary-nav__link:hover,
+.primary-nav__link[aria-current="page"] {
+  color: #ffffff;
+}
+
+.primary-nav__link:hover::after,
+.primary-nav__link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.navbar-menu-toggle {
+  position: relative;
+  display: none;
+  width: 40px;
+  height: 40px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1px solid rgb(255 255 255 / 15%);
+  border-radius: 50%;
+  color: #ffffff;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    transform 240ms ease;
+}
+
+.navbar-menu-toggle:hover {
+  border-color: rgb(255 255 255 / 35%);
+  background: rgb(255 255 255 / 8%);
+}
+
+.navbar-menu-toggle--open {
+  transform: rotate(90deg);
+}
+
+.navbar-menu-toggle__line {
+  width: 16px;
+  height: 1px;
+  background: currentColor;
+  transition:
+    transform 220ms ease,
+    width 220ms ease;
+}
+
+.navbar-menu-toggle--open .navbar-menu-toggle__line:first-child {
+  transform: translateY(3px) rotate(45deg);
+}
+
+.navbar-menu-toggle--open .navbar-menu-toggle__line:last-child {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+.nav-shell :focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 767px) {
+  html {
+    scroll-padding-top: 80px;
+  }
+
+  .nav-shell {
+    top: 12px;
+    width: calc(100% - 24px);
+  }
+
+  .floating-navbar,
+  .nav-shell--scrolled .floating-navbar {
+    display: flex;
+    height: 60px;
+    justify-content: space-between;
+    padding-inline: 12px;
+  }
+
+  .navbar-logo__image {
+    width: 40px;
+  }
+
+  .primary-nav {
+    display: none;
+  }
+
+  .navbar-actions {
+    gap: 0.5rem;
+  }
+
+  .navbar-menu-toggle {
+    display: inline-flex;
+    flex: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .floating-navbar,
+  .primary-nav__link,
+  .primary-nav__link::after,
+  .navbar-menu-toggle {
+    transition-duration: 0.01ms;
+  }
+
+  .navbar-menu-toggle__line {
+    transition-duration: 0.01ms;
+  }
+}

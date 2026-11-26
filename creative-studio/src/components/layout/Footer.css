@@ -1,0 +1,218 @@
+.studio-footer {
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  background: #050505;
+  color: #ffffff;
+}
+
+.studio-footer__inner {
+  width: min(calc(100% - var(--page-gutter) * 2), var(--content-max));
+  margin-inline: auto;
+  padding-block: clamp(2.5rem, 6vw, 5rem) 1.5rem;
+}
+
+.studio-footer__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.studio-footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--text-primary);
+  font-family: var(--font-family-heading), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.studio-footer__logo {
+  display: block;
+  width: 2.8rem;
+  height: auto;
+  object-fit: contain;
+}
+
+.studio-footer__tagline {
+  color: var(--text-secondary);
+  font-family: var(--font-family-heading), sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: right;
+}
+
+.studio-footer__heading {
+  margin: clamp(4rem, 10vw, 8rem) 0 clamp(4rem, 9vw, 7rem);
+  color: var(--text-primary);
+  font-family: var(--font-family-display), sans-serif;
+  font-size: clamp(5rem, 15vw, 13rem);
+  font-weight: 700;
+  letter-spacing: -0.095em;
+  line-height: 0.78;
+}
+
+.studio-footer__heading-accent {
+  color: var(--accent-light);
+}
+
+.studio-footer__links {
+  display: grid;
+  grid-template-columns: 0.8fr 1.3fr 0.8fr;
+  gap: clamp(2rem, 6vw, 6rem);
+  padding-block: 2rem 3rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.studio-footer__links h3 {
+  margin: 0 0 1.2rem;
+  color: var(--text-secondary);
+  font-family: var(--font-family-heading), sans-serif;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+}
+
+.studio-footer__links ul {
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.studio-footer__links a {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 0.35rem;
+  color: rgb(255 255 255 / 76%);
+  font-size: 0.82rem;
+  line-height: 1.45;
+  transition: color 180ms ease;
+}
+
+.studio-footer__links a svg {
+  flex: none;
+  margin-top: 0.1rem;
+  color: var(--accent-light);
+  opacity: 0;
+  transform: translate(-2px, 2px);
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.studio-footer__links a:hover,
+.studio-footer__links a:focus-visible {
+  color: var(--text-primary);
+}
+
+.studio-footer__links a:hover svg,
+.studio-footer__links a:focus-visible svg {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.studio-footer__socials {
+  margin-top: 1.4rem !important;
+}
+
+.studio-footer__bottom {
+  display: flex;
+  min-height: 3.75rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  font-family: var(--font-family-heading), sans-serif;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+}
+
+.studio-footer__bottom p {
+  margin: 0;
+}
+
+.studio-footer__year {
+  display: inline-block;
+  min-width: 4ch;
+}
+
+.studio-footer__bottom button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.studio-footer__bottom button svg {
+  color: var(--accent-light);
+  transition: transform 180ms ease;
+}
+
+.studio-footer__bottom button:hover svg {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 767px) {
+  .studio-footer__inner {
+    padding-block: 2rem 1rem;
+  }
+
+  .studio-footer__tagline {
+    max-width: 15ch;
+    font-size: 0.51rem;
+    line-height: 1.6;
+  }
+
+  .studio-footer__heading {
+    margin-block: 4rem;
+    font-size: clamp(4.2rem, 17vw, 7rem);
+    line-height: 0.82;
+  }
+
+  .studio-footer__links {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.2rem 1.5rem;
+    padding-block: 1.75rem 2.5rem;
+  }
+
+  .studio-footer__links a {
+    font-size: 0.75rem;
+  }
+
+  .studio-footer__bottom {
+    min-height: 4.5rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.6rem 1rem;
+    padding-block: 0.75rem;
+    font-size: 0.5rem;
+  }
+
+  .studio-footer__bottom p:nth-child(2) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-footer__links a,
+  .studio-footer__links a svg,
+  .studio-footer__bottom button svg {
+    transition-duration: 0.01ms;
+  }
+}
